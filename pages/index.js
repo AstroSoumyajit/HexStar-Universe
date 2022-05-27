@@ -1,4 +1,6 @@
 import CitizenScience from "../components/CitizenScience";
+import Collaborators from "../components/Collaborators";
+import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import HeroCarouselCard from "../components/HeroCarouselCard";
 import MasterClass from "../components/MasterClass";
@@ -16,8 +18,10 @@ export default function Home() {
      {/* <HeroCarouselCard/> */}
      {/* <WebinarsCard/> */}
      <Webinars/>
-     {/* <MasterClass/> */}
+     <MasterClass/>
      <CitizenScience/>
+     <Collaborators/>
+     <Footer/>
 
 
     </div>
