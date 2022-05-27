@@ -1,16 +1,22 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+@layer base {
+  @font-face {
+      font-family: "gilroy";
+      src: url('/gilroy/Gilroy-Font/Gilroy-Medium.woff') format('woff')
+  }
+  @font-face {
+      font-family: "cascade";
+      src: url('/cascade/Cascade.woff') format('woff')
+  }
+  @font-face {
+      font-family: "sweet-sans-pro";
+      src: url('/sweet-sans-pro/SweetSansProMedium.woff') format('woff')
+  }
+  @font-face {
+      font-family: "sweet-sans-pro-light";
+      src: url('/sweet-sans-pro/SweetSansProLight.woff') format('woff')
+  }
 }
