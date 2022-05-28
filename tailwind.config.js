@@ -32,7 +32,7 @@ module.exports = {
         sweet_sans_pro_light: ['sweet-sans-pro-light', 'Sans-Serif']
       },
       backgroundImage: {
-        'connectbg': "url('/Images/connect.png')"
+        'connectbg': "url('/Images/connect/connect.png')"
       }
     },
   },
