@@ -2,7 +2,7 @@ import React from 'react';
 
 const WebinarsCard = () => {
   return (
-    <div className='space-y-4'>
+    <div className=' space-y-4'>
       <img src="/Images/Webinars/image/image1.png" className='rounded-3xl'/>
       <div className='flex flex-row space-x-4'>
         <img src="/Images/Webinars/person/person1.png" />

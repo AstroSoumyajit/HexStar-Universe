@@ -3,11 +3,11 @@ import WebinarsCard from './WebinarsCard';
 
 const Webinars = () => {
   return (
-    <div className="ml-16 px-12">
-      <h1 className="font-cascade bg-clip-text text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#0047FF] text-transparent">
+    <div className="">
+      <h1 className="font-cascade bg-clip-text text-2xl md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#0047FF] text-transparent ">
         WEBINARS
       </h1>
-      <div className="grid grid-cols-3 m-auto gap-8 align-items-center">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 m-auto md:gap-8 gap-12 align-items-center">
         <div>
           <WebinarsCard />
         </div>

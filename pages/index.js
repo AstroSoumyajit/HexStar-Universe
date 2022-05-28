@@ -1,5 +1,6 @@
 import CitizenScience from "../components/CitizenScience";
 import Collaborators from "../components/Collaborators";
+import Events from "../components/Events";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import HeroCarouselCard from "../components/HeroCarouselCard";
@@ -11,17 +12,20 @@ import Webinars from "../components/Webinars";
 
 export default function Home() {
   return (
-    <div className='bg-[#000]'>
+    <div className='bg-[#000] overflow-x-auto'>
      <SideNav/>
      <Navbar/>
+     <div className="md:ml-16 md:px-12 px-8">
      {/* <Hero/> */}
-     {/* <HeroCarouselCard/> */}
-     {/* <WebinarsCard/> */}
+     <HeroCarouselCard/>
      <Webinars/>
      <MasterClass/>
+     <Events/>
      <CitizenScience/>
      <Collaborators/>
      <Footer/>
+     </div>
+     
 
 
     </div>

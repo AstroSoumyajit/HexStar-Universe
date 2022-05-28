@@ -35,14 +35,14 @@ const CitizenScience = () => {
   ];
   return (
     <div>
-      <div className="ml-16 px-12">
-        <h1 className="font-cascade bg-clip-text text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[rgba(0, 0, 0, 0.96)] text-transparent">
+      <div className="">
+        <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[rgba(0, 0, 0, 0.96)] text-transparent text-2xl">
           CITIZEN SCIENCE
         </h1>
-        <div className="font-sweet_sans_pro text-lg text-white grid grid-cols-2 gap-y-8 aligh-items-center py-8">
+        <div className="font-sweet_sans_pro text-lg text-white grid md:grid-cols-2 grid-cols-1 gap-y-8 aligh-items-center py-8">
           {data.map (item => {
             return (
-              <div className="flex flex-row items-center pl-12" key={item.title}>
+              <div className="flex flex-row items-center md:pl-12" key={item.title}>
                 <img src={item.logo} className="w-28" />
                 <h1 className="mx-8">{item.title}</h1>
               </div>
