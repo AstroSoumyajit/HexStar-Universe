@@ -23,27 +23,30 @@ const Navbar = ({active}) => {
       </div>
       <div className="hidden md:block">
         <div className="flex flex-row items-center space-x-8 text-lg">
-          <button
-            className={
-              active === 'active'
-                ? 'bg-white text-black rounded-full font-gilroy px-2 py-[2px] font-semibold'
-                : 'border-2 border-white rounded-full font-gilroy text-white px-2 py-[2px] '
-            }
-          >
-            Connect
-          </button>
+          <Link href="/connect">
+            <button
+              className={
+                active === 'active'
+                  ? 'bg-white text-black rounded-full font-gilroy px-2 py-[2px] font-semibold'
+                  : 'border-2 border-white rounded-full font-gilroy text-white px-2 py-[2px] '
+              }
+            >
+              Connect
+            </button>
+          </Link>
+
           <div className="flex flex-row items-center space-x-4 text-white text-3xl child:cursor-pointer">
-            <Link href="#">
+            <Link href="https://instagram.com/hexstar_universe?igshid=YmMyMTA2M2Y=">
               <a>
                 <BsInstagram />
               </a>
             </Link>
-            <Link href="#">
+            <Link href="https://youtube.com/channel/UCxiuN3r_ibdAfHqlBBKuTwQ?sub_confirmation=1 ">
               <a>
                 <BsYoutube />
               </a>
             </Link>
-            <Link href="#">
+            <Link href="https://www.facebook.com/HexStarUniverse">
               <a>
                 <BsFacebook />
               </a>
