@@ -49,7 +49,7 @@ const CitizenScience = () => {
         <div className="font-sweet_sans_pro text-lg text-white grid md:grid-cols-2 grid-cols-1 gap-y-8 aligh-items-center py-8">
           {data.map (item => {
             return (
-              <Link href={item.link}>
+              <Link href={item.link} key={item.key}>
                 <div
                   className="flex flex-row items-center md:pl-12"
                   key={item.title}
