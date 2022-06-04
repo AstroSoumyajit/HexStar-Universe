@@ -10,7 +10,7 @@ export const webinarData = [
   {
     key: 2,
     linkEmbed: 'https://www.youtube.com/embed/8iQiMBFsUy8',
-    title: 'Variable Stars and the  AAVSO ',
+    title: 'Variable Stars and the AAVSO',
     thumbnail: 'Images/Webinars/image/image2.png',
     speaker: '-Teja Begari',
     speakerImage: 'Images/Webinars/person/person1.png',
