@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Collaborators = () => {
   return (
-    <div className="mt-12 mb-36">
+    <div className="mt-12 mb-36" id='collaborators'>
       <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#8000FF] text-transparent text-xl">
         Collaborators & Partners
       </h1>

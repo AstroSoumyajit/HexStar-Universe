@@ -12,7 +12,7 @@ import {Pagination, Navigation} from 'swiper';
 
 const Events = () => {
   return (
-    <div className="box-border">
+    <div className="box-border" id="events">
       <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#00FFF0] text-transparent text-2xl">
         Events
       </h1>

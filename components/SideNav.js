@@ -12,12 +12,12 @@ const SideNav = () => {
             <img src="/Images/icons/Search.svg"  />
           </a>
         </Link>
-        <Link href="#">
+        <Link href="#webinars">
           <a>
             <img src="/Images/icons/TV-Show.svg"  />
           </a>
         </Link>
-        <Link href="#">
+        <Link href="#masterclass">
           <a>
             <img
               src="/Images/icons/Read-Online.svg"
@@ -25,19 +25,19 @@ const SideNav = () => {
             />
           </a>
         </Link>
-        <Link href="#">
+        <Link href="#events">
           <a>
             <img
               src="/Images/icons/Event-Accepted.svg"
             />
           </a>
         </Link>
-        <Link href="#">
+        <Link href="#citizenscience">
           <a>
             <img src="/Images/icons/Comet.svg" />
           </a>
         </Link>
-        <Link href="#">
+        <Link href="#collaborators">
           <a>
             <img
               src="/Images/icons/User-Groups.svg"

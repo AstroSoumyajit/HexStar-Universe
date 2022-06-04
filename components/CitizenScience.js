@@ -42,7 +42,7 @@ const CitizenScience = () => {
   ];
   return (
     <div>
-      <div className="">
+      <div className="" id='citizenscience'>
         <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[rgba(0, 0, 0, 0.96)] text-transparent text-2xl">
           CITIZEN SCIENCE
         </h1>
