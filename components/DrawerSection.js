@@ -66,11 +66,8 @@ const DrawerSection = () => {
               </div>
               {sideNavItem.map (item => {
                 return (
-                  <Link href={item.link}>
-                    <div
-                      className="flex flex-row items-center space-x-2 text-xl font-sweet_sans_pro cursor-pointer"
-                      key={item.key}
-                    >
+                  <Link href={item.link} key={item.key}>
+                    <div className="flex flex-row items-center space-x-2 text-xl font-sweet_sans_pro cursor-pointer">
                       <img src={item.icons} className="w-8" />
                       <h1 className="text-white">{item.text}</h1>
                     </div>
@@ -79,11 +76,11 @@ const DrawerSection = () => {
               })}
             </div>
             <div className="text-center">
-            <Link href='/connect'>
-              <button className="border-2 border-white rounded-full font-gilroy text-white px-4 py-[2px] text-xl">
-                Connect
-              </button>
-            </Link>
+              <Link href="/connect">
+                <button className="border-2 border-white rounded-full font-gilroy text-white px-4 py-[2px] text-xl">
+                  Connect
+                </button>
+              </Link>
 
             </div>
 
