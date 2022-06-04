@@ -13,7 +13,7 @@ export const webinarData = [
     title: 'Variable Stars and the AAVSO',
     thumbnail: 'Images/Webinars/image/image2.png',
     speaker: '-Teja Begari',
-    speakerImage: 'Images/Webinars/person/person1.png',
+    speakerImage: 'Images/Webinars/person/person2.png',
   },
   {
     key: 3,

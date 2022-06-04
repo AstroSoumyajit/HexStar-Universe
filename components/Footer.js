@@ -15,22 +15,22 @@ const Footer = () => {
     {
       key: 'Webinars',
       name: 'Webinars',
-      link: '#',
+      link: '#webinars',
     },
     {
       key: 'Masterclass',
       name: 'Masterclass',
-      link: '#',
+      link: '#masterclass',
     },
     {
       key: 'Events',
       name: 'Events',
-      link: '#',
+      link: '#events',
     },
     {
       key: 'Citizen Science',
       name: 'Citizen Science',
-      link: '#',
+      link: '#citizenscience',
     },
   ];
   return (
