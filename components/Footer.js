@@ -10,7 +10,7 @@ const Footer = () => {
     {
       key: 'Home',
       name: 'Home',
-      link: '#',
+      link: '/',
     },
     {
       key: 'Webinars',
@@ -40,7 +40,7 @@ const Footer = () => {
         <div className="flex md:flex-row flex-col items-center justify-center md:space-x-8 md:space-y-0 space-y-8">
           {footerItem.map (item => {
             return (
-              <Link href={item.link}>
+              <Link href={item.link} key={item.key}>
                 <a
                   className="text-white font-sweet_sans_pro text-center w-full"
                   key={item.key}
@@ -52,23 +52,23 @@ const Footer = () => {
           })}
         </div>
         <div className="flex flex-row space-x-8 text-white text-3xl my-8 child:cursor-pointer">
-          <Link href="#">
+          <Link href=" https://discord.gg/XxuJMhAMaD">
             <a>
               <FaDiscord />
             </a>
           </Link>
-          <Link href="#">
+          <Link href=" https://twitter.com/hexstaruniverse">
             <a>
 
               <FaTwitter />
             </a>
           </Link>
-          <Link href="#">
+          <Link href="https://instagram.com/hexstar_universe?igshid=YmMyMTA2M2Y=">
             <a>
               <BsInstagram />
             </a>
           </Link>
-          <Link href="#">
+          <Link href="https://www.facebook.com/HexStarUniverse">
             <a>
               <BsFacebook />
             </a>

@@ -8,6 +8,8 @@ import MasterClass from "../components/MasterClass";
 import Navbar from "../components/Navbar";
 import SideNav from "../components/SideNav";
 import Webinars from "../components/Webinars";
+import {webinarData} from '../dummydb'
+
 
 
 export default function Home() {
@@ -18,7 +20,7 @@ export default function Home() {
      <div className="md:ml-16 md:px-12 px-8">
      {/* <Hero/> */}
      <HeroCarouselCard/>
-     <Webinars/>
+     <Webinars webinarData = {webinarData} title='Webinars'/>
      <MasterClass/>
      <Events/>
      <CitizenScience/>

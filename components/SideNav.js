@@ -29,7 +29,6 @@ const SideNav = () => {
           <a>
             <img
               src="/Images/icons/Event-Accepted.svg"
-              
             />
           </a>
         </Link>

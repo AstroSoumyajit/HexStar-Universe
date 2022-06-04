@@ -60,7 +60,7 @@ const DrawerSection = () => {
               </div>
               {sideNavItem.map (item => {
                 return (
-                  <div className="flex flex-row items-center space-x-2 text-xl font-sweet_sans_pro cursor-pointer">
+                  <div className="flex flex-row items-center space-x-2 text-xl font-sweet_sans_pro cursor-pointer" key={item.key}>
                     <img src={item.icons} className="w-8" />
                     <h1 className="text-white">{item.text}</h1>
                   </div>
