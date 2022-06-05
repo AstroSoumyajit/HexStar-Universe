@@ -19,8 +19,8 @@ const DrawerSection = () => {
       });
       if (filtered.length === 0) {
         alert ('data nor found');
-      }else{
-        window.location.href=`/${filtered[0].title}`
+      } else {
+        window.location.href = `/${filtered[0].title}`;
       }
     }
   }
@@ -85,12 +85,16 @@ const DrawerSection = () => {
               </div>
               {sideNavItem.map (item => {
                 return (
-                  
-                    <div className="flex flex-row items-center space-x-2 md:text-xl text-lg font-sweet_sans_pro cursor-pointer" onClick={()=> window.location.href=`${item.link}`}>
-                      <img src={item.icons} className="w-8" />
-                      <h1 className="text-white">{item.text}</h1>
-                    </div>
-                 
+                  <div
+                    className="flex flex-row items-center space-x-2 md:text-xl text-lg font-sweet_sans_pro cursor-pointer"
+                    onClick={() => {
+                      window.location.href = `${item.link}`;
+                      setIsDrawerOpen (false);
+                    }}
+                  >
+                    <img src={item.icons} className="w-8" />
+                    <h1 className="text-white">{item.text}</h1>
+                  </div>
                 );
               })}
             </div>
