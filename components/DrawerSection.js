@@ -68,7 +68,7 @@ const DrawerSection = () => {
         onClose={() => setIsDrawerOpen (false)}
       >
         <Box textAlign="center" role="presentation">
-          <div className="bg-[#000000] h-screen flex flex-col text-lgit md:px-8 px-4 md:w-fit w-[80vw] space-y-8 pt-4">
+          <div className="bg-[#000000] min-h-screen h-full flex flex-col text-lgit md:px-8 px-4 md:w-fit w-[80vw] space-y-8 py-4">
             <div className="text-white text-3xl flex flex-row items-center justify-between child:cursor-pointer">
               <img src="Images/logo.svg" className="w-36" />
               <HiOutlineX onClick={() => setIsDrawerOpen (false)} />
