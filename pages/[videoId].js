@@ -58,10 +58,10 @@ const VideoOpen = ({webinarData}) => {
               allowFullScreen
             />
             <div className="md:w-3/4 space-y-8">
-              <div className="rounded-xl bg-[#2C2E40] border border-[#5B5B5B] w-fit flex flex-row items-center pl-4">
+              <div className="rounded-xl bg-[#2C2E40] border border-[#5B5B5B] md:w-fit w-full flex flex-row items-center justify-between pl-4">
                 <h1 className="md:text-md">
                   {shareLink.length > 30
-                    ? shareLink.substring (0, 30).concat ('...')
+                    ? shareLink.substring (0, 20).concat ('...')
                     : shareLink}
                 </h1>
                 <Stack>

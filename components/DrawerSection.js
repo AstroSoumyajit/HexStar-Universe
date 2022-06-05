@@ -29,31 +29,31 @@ const DrawerSection = () => {
       icons: '/Images/icons/TV-Show.svg',
       text: 'Webinars',
       key: 'Webinars',
-      link: '#webinars',
+      link: '/#webinars',
     },
     {
       icons: '/Images/icons/Read-Online.svg',
       text: 'Masterclass',
       key: 'Masterclass',
-      link: '#masterclass',
+      link: '/#masterclass',
     },
     {
       icons: '/Images/icons/Event-Accepted.svg',
       text: 'Events',
       key: 'Events',
-      link: '#events',
+      link: '/#events',
     },
     {
       icons: '/Images/icons/Comet.svg',
       text: 'Citizen Science',
       key: 'Citizen Science',
-      link: '#citizenscience',
+      link: '/#citizenscience',
     },
     {
       icons: '/Images/icons/User-Groups.svg',
       text: 'Collaborators',
       key: 'Collaborators',
-      link: '#collaborators',
+      link: '/#collaborators',
     },
   ];
   return (
