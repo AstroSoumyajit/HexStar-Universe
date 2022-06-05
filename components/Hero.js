@@ -2,14 +2,15 @@ import React from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import {Autoplay, Pagination, Navigation} from 'swiper';
+import {Autoplay, Navigation, Pagination} from 'swiper';
 
 const Hero = () => {
   return (
     <div className="my-8">
       <Swiper
-        navigation={true}
-        modules={[Pagination, Navigation, Autoplay]}
+        // navigation={true}
+        pagination={true} 
+        modules={[  Autoplay, Pagination]}
         className="mySwiper child:cursor-pointer"
         autoplay={{
           delay: 2500,

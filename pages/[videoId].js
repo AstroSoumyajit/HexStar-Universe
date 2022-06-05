@@ -21,7 +21,7 @@ const VideoOpen = ({webinarData}) => {
     var match = url.match (regExp);
     return match && match[7].length == 11 ? match[7] : false;
   }
-  const shareLink = 'https://www.youtube.com/watch?v='.concat (
+  const shareLink = 'https://www.youtube.com/watch?v='.concat(
     youtube_parser (webinar.linkEmbed)
   );
 

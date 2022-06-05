@@ -81,6 +81,7 @@ const DrawerSection = ({path}) => {
                   className="focus:outline-none rounded-full border-2 border-white bg-[#000000] px-4 py-2 placeholder-white placeholder-opacity-100 text-white placeholder:font-sweet_sans_pro placeholder:text-lg font-sweet_sans_pro text-lg w-full"
                   placeholder="Search"
                   onChange={e => setSearchInput (e.target.value)}
+                  onKeyPress={e => e.key === 'Enter' && handleSearch ()}
                 />
               </div>
               {sideNavItem.map (item => {

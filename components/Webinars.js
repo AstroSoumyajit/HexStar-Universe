@@ -7,7 +7,7 @@ const Webinars = ({webinarData, title}) => {
   // console.log(webinarData)
   return (
     <div className="my-8" id="webinars">
-      <h1 className="font-cascade bg-clip-text text-2xl md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#0047FF] text-transparent ">
+      <h1 className="font-cascade bg-clip-text text-lg md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#0047FF] text-transparent ">
         {title}
       </h1>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 m-auto md:gap-8 gap-12 align-items-center">

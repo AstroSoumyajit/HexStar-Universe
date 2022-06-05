@@ -37,3 +37,7 @@
         font-size: 2rem !important;
     }
 }
+
+.swiper-pagination-bullet-active{
+    background-color: white !important;
+} 
