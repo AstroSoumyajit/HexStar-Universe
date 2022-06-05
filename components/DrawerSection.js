@@ -85,7 +85,7 @@ const DrawerSection = () => {
               </div>
               {sideNavItem.map (item => {
                 return (
-                  <div
+                  <div key={item.key}
                     className="flex flex-row items-center space-x-2 md:text-xl text-lg font-sweet_sans_pro cursor-pointer"
                     onClick={() => {
                       window.location.href = `${item.link}`;
