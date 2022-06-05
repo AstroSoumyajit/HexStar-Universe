@@ -6,7 +6,7 @@ import {Autoplay, Navigation, Pagination} from 'swiper';
 
 const Hero = () => {
   return (
-    <div className="my-8">
+    <div className="my-8 md:pt-24 pt-16">
       <Swiper
         // navigation={true}
         pagination={true} 
