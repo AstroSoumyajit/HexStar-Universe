@@ -50,7 +50,7 @@ export const webinarData = [
   {
     key: 7,
     linkEmbed: 'https://www.youtube.com/embed/1haxTbBn3j0',
-    title: '#Rad at Home India Citizen Science',
+    title: 'Rad at Home India Citizen Science',
     thumbnail: 'Images/Webinars/image/image7.png',
     speaker: '-Dr. Anand Hota',
     speakerImage: 'Images/Webinars/person/person7.png',
