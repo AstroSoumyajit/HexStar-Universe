@@ -7,10 +7,10 @@ import Link from 'next/link';
 const Connect = () => {
   const router = useRouter ();
   return (
-    <div className="bg-connectbg h-full md:h-screen bg-cover">
+    <div className="bg-connectbg h-full md:h-screen bg-cover ">
       <SideNav />
       <Navbar active={router.pathname === '/connect' ? 'active' : ''} />
-      <div className=" flex md:flex-row flex-col items-center justify-evenly md:space-y-0 space-y-8 py-24">
+      <div className=" flex md:flex-row flex-col items-center justify-evenly md:space-y-0 space-y-8 py-24 md:pt-28 pt-20">
         <div className="flex flex-col items-center space-y-4">
           <img src="/Images/connect/svg1.svg" />
           <h1 className="font-gilroy text-lg text-white">
