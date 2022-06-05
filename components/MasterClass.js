@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const MasterClass = () => {
   return (
-    <div className="" id='masterclass'>
+    <div className="" id="masterclass">
       <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#8000FF] text-transparent text-xl">
         MASTERCLASS
       </h1>
