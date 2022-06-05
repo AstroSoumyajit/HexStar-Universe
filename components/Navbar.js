@@ -17,7 +17,7 @@ const Navbar = ({active}) => {
           />
         </Link>
         <div className="hidden md:block">
-          <Link href="https://discord.com/invite/XxuJMhAMaD">
+          <Link href="https://discord.com/invite/XxuJMhAMaD" passHref>
             <button className="flex flex-row items-center border-2 border-[#9E00FF] rounded-full font-gilroy text-[#9E00FF] px-2 py-[2px] font-semibold md:text-lg text-sm">
               <FaDiscord
                 style={{

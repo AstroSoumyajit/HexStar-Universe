@@ -25,7 +25,7 @@ export const webinarData = [
   },
   {
     key: 4,
-    linkEmbed: 'https://www.youtube.com/embed/6x05_hOBrGQ',
+    linkEmbed: 'https://www.youtube.com/embed/GaUd9araJwg',
     title: 'Life Beyond Earth',
     thumbnail: 'Images/Webinars/image/image4.png',
     speaker: '-Anuj Soni',
@@ -33,7 +33,7 @@ export const webinarData = [
   },
   {
     key: 5,
-    linkEmbed: 'https://www.youtube.com/embed/Jl7FE1jwuKU',
+    linkEmbed: 'https://www.youtube.com/embed/6x05_hOBrGQ',
     title: 'Demystifying Black Holes',
     thumbnail: 'Images/Webinars/image/image5.png',
     speaker: '-Shivika Lamba',
@@ -41,7 +41,7 @@ export const webinarData = [
   },
   {
     key: 6,
-    linkEmbed: 'https://www.youtube.com/embed/8cPhxYJOruQ',
+    linkEmbed: 'https://www.youtube.com/embed/Jl7FE1jwuKU',
     title: 'Citizen Science for Everyone',
     thumbnail: 'Images/Webinars/image/image6.png',
     speaker: '-Amit Raka',

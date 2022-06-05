@@ -3,24 +3,37 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-      font-family: "gilroy";
-      src: url('/gilroy/Gilroy-Font/Gilroy-Medium.woff') format('woff')
-  }
-  @font-face {
-      font-family: "cascade";
-      src: url('/cascade/Cascade.woff') format('woff')
-  }
-  @font-face {
-      font-family: "sweet-sans-pro";
-      src: url('/sweet-sans-pro/SweetSansProMedium.woff') format('woff')
-  }
-  @font-face {
-      font-family: "sweet-sans-pro-light";
-      src: url('/sweet-sans-pro/SweetSansProLight.woff') format('woff')
-  }
+    @font-face {
+        font-family: "gilroy";
+        src: url('/gilroy/Gilroy-Font/Gilroy-Medium.woff') format('woff')
+    }
+
+    @font-face {
+        font-family: "cascade";
+        src: url('/cascade/Cascade.woff') format('woff')
+    }
+
+    @font-face {
+        font-family: "sweet-sans-pro";
+        src: url('/sweet-sans-pro/SweetSansProMedium.woff') format('woff')
+    }
+
+    @font-face {
+        font-family: "sweet-sans-pro-light";
+        src: url('/sweet-sans-pro/SweetSansProLight.woff') format('woff')
+    }
 }
 
-.swiper-button-prev, .swiper-button-next{
-    color: white!important;
+.swiper-button-prev,
+.swiper-button-next {
+    color: white !important;
+    font-size: 20px !important;
+}
+
+
+@media  screen and (max-width: 640px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+        font-size: 2rem !important;
+    }
 }
