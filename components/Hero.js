@@ -10,20 +10,37 @@ const Hero = () => {
       <Swiper
         navigation={true}
         modules={[Pagination, Navigation, Autoplay]}
-        className="mySwiper"
+        className="mySwiper child:cursor-pointer"
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
       >
         <SwiperSlide>
-          <img src="/Images/HeroCarouselImage/group1.png" className="m-auto" />
+          <img
+            src="/Images/HeroCarouselImage/group1.png"
+            className="m-auto"
+            onClick={() =>
+              (window.location.href =
+                ' https://unstop.com/o/bg9OVwf?lb=vBuPjqb')}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/Images/HeroCarouselImage/group2.png" className="m-auto" />
+          <img
+            src="/Images/HeroCarouselImage/group2.png"
+            className="m-auto"
+            onClick={() =>
+              (window.location.href =
+                ' https://pages.razorpay.com/orbitalmechanics')}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/Images/HeroCarouselImage/group3.png" className="m-auto" />
+          <img
+            src="/Images/HeroCarouselImage/group3.png"
+            className="m-auto"
+            onClick={() =>
+              (window.location.href = 'https://youtu.be/NCrA8CjO_tU')}
+          />
         </SwiperSlide>
       </Swiper>
     </div>

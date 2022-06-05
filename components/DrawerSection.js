@@ -5,7 +5,7 @@ import {HiOutlineX} from 'react-icons/hi';
 import Link from 'next/link';
 import {webinarData} from '../dummydb';
 
-const DrawerSection = () => {
+const DrawerSection = ({path}) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState (false);
   const [searchInput, setSearchInput] = useState ('');
   function handleSearch () {
@@ -85,7 +85,10 @@ const DrawerSection = () => {
               </div>
               {sideNavItem.map (item => {
                 return (
-                  <Link key={item.key} href={item.link}>
+                  <Link
+                    key={item.key}
+                    href={path === '/' ? `${item.link}` : '/'}
+                  >
                     <div
                       className="flex flex-row items-center space-x-2 md:text-xl text-lg font-sweet_sans_pro cursor-pointer"
                       onClick={() => {

@@ -8,12 +8,16 @@ import Navbar from '../components/Navbar';
 import SideNav from '../components/SideNav';
 import Webinars from '../components/Webinars';
 import {webinarData} from '../dummydb';
+import {useRouter} from 'next/router'
 
 export default function Home () {
+
+  const route = useRouter().pathname
+  console.log(route)
   return (
     <div className="bg-[#000] overflow-x-auto">
-      <SideNav />
-      <Navbar />
+      <SideNav path={route}/>
+      <Navbar path={route}/>
       <div className="md:ml-16 md:px-12 px-8">
         <Hero />
         <Webinars webinarData={webinarData} title="Webinars" />

@@ -6,10 +6,10 @@ import {FaDiscord} from 'react-icons/fa';
 import DrawerSection from './DrawerSection';
 import Link from 'next/link';
 
-const Navbar = ({active}) => {
+const Navbar = ({active, path}) => {
   return (
     <div className="h-24 bg-[#000000] border border-[#1E1E1E] flex flex-row justify-between items-center md:ml-16 md:px-8 px-4">
-      <div className="flex flex-row md:space-x-8 space-x-4 items-center">
+      <div className="flex flex-row md:space-x-8 space-x-2 items-center">
         <Link href="/">
           <img
             src="/Images/logo.svg"
@@ -29,6 +29,7 @@ const Navbar = ({active}) => {
               Community
             </button>
           </Link>
+
         </div>
 
       </div>
@@ -65,10 +66,11 @@ const Navbar = ({active}) => {
           </div>
         </div>
       </div>
-      <div className="">
-        <div className="flex flex-row space-x-2 items-center">
+      <div className="md:hidden">
+
+        <div className="flex flex-row space-x items-center">
           <Link href="https://discord.com/invite/XxuJMhAMaD">
-            <button className="flex flex-row items-center border-2 border-[#9E00FF] rounded-full font-gilroy text-[#9E00FF] px-2 py-[2px] font-semibold md:text-lg text-md">
+            <button className="flex flex-row items-center border-2 border-[#9E00FF] rounded-full font-gilroy text-[#9E00FF] px-2 py-[2px] font-semibold md:text-lg text-[10px] sm:text-md">
               <FaDiscord
                 style={{
                   fontSize: '20px',
@@ -79,10 +81,11 @@ const Navbar = ({active}) => {
               Community
             </button>
           </Link>
-          <DrawerSection />
+          <div className='w-14'>
+          <DrawerSection path={path}/>
+          </div>
         </div>
       </div>
-
     </div>
   );
 };
