@@ -44,7 +44,7 @@ const VideoOpen = ({webinarData}) => {
     <div className="bg-[#000000] overflow-x-hidden">
       <SideNav />
       <Navbar />
-      <div className="md:ml-16 md:px-12 px-8 text-white md:pt-24 pt-16">
+      <div className="md:ml-16 md:px-12 px-8 text-white">
         <div className="space-y-4 my-8">
           <h1 className="text-2xl font-medium font-sweet_sans_pro">
             {webinar.title}
