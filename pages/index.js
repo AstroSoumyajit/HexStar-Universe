@@ -10,6 +10,7 @@ import Webinars from '../components/Webinars';
 import {webinarData} from '../dummydb';
 import {useRouter} from 'next/router';
 import Head from 'next/head';
+import BoostButton from '../components/BoostButton';
 
 export default function Home () {
   const route = useRouter ().pathname;
@@ -30,6 +31,7 @@ export default function Home () {
         <CitizenScience />
         <Collaborators />
         <Footer />
+        <BoostButton/>
       </div>
 
     </div>

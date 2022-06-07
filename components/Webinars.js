@@ -1,6 +1,7 @@
 import React from 'react';
 import WebinarsCard from './WebinarsCard';
 import Link from 'next/link'
+import DrawerSection from './DrawerSection';
 // import {webinarData} from '../dummydb';
 
 const Webinars = ({webinarData, title}) => {

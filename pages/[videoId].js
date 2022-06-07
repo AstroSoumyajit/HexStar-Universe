@@ -8,6 +8,7 @@ import {useState} from 'react';
 import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import BoostButton from '../components/BoostButton';
 
 const VideoOpen = ({webinarData}) => {
   const router = useRouter (); 
@@ -108,6 +109,7 @@ const VideoOpen = ({webinarData}) => {
         </div>
         <Webinars webinarData={webinarData} title="Previous Webinars" />
       </div>
+      <BoostButton/>
     </div>
   );
 };

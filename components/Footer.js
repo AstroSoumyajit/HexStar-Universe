@@ -4,6 +4,8 @@ import {FaDiscord} from 'react-icons/fa';
 import {FaTwitter} from 'react-icons/fa';
 import {BsFacebook} from 'react-icons/bs';
 import {BsInstagram} from 'react-icons/bs';
+import {IoLogoWhatsapp} from 'react-icons/io';
+import {MdEmail} from 'react-icons/md';
 
 const Footer = () => {
   const footerItem = [
@@ -73,6 +75,19 @@ const Footer = () => {
               <BsFacebook />
             </a>
           </Link>
+        </div>
+        <div className="flex flex-col space-y-4 items-center">
+          <h1 className="text-white font-sweet_sans_pro items-center text-lg">
+            Contact Us
+          </h1>
+          <div className="flex flex-row text-white text-3xl space-x-8">
+            <Link href="https://wa.me/%2B918910123832?text=Hi%20Hex-Star%20Universe">
+              <IoLogoWhatsapp/>
+            </Link>
+            <Link href="mailto:hexstaruniverse@gmail.com">
+              <MdEmail/>
+            </Link>
+          </div>
         </div>
       </div>
 

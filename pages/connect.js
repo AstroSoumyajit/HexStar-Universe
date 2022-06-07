@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import SideNav from '../components/SideNav';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
+import BoostButton from '../components/BoostButton';
 
 const Connect = () => {
   const router = useRouter ();
@@ -35,6 +36,7 @@ const Connect = () => {
           </Link>
         </div>
       </div>
+      <BoostButton/>
 
     </div>
   );
