@@ -20,6 +20,7 @@ export default function Home () {
       <Head>
         <title>HexStar Universe</title>
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+        <script src="https://unpkg.com/scrollreveal"></script>
       </Head>
       <SideNav path={route} />
       <Navbar path={route} />

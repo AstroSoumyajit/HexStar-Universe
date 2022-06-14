@@ -43,6 +43,14 @@ const Hero = () => {
               (window.location.href = 'https://youtu.be/NCrA8CjO_tU')}
           />
         </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="/Images/HeroCarouselImage/group4.png"
+            className="m-auto"
+            onClick={() =>
+              (window.location.href = 'https://forms.gle/fUpkLwvUNgNBLD8y9')}
+          />
+        </SwiperSlide>
       </Swiper>
     </div>
   );
