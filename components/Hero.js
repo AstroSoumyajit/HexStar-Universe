@@ -9,14 +9,22 @@ const Hero = () => {
     <div className="my-8">
       <Swiper
         // navigation={true}
-        pagination={true} 
-        modules={[  Autoplay, Pagination]}
+        pagination={true}
+        modules={[Autoplay, Pagination]}
         className="mySwiper child:cursor-pointer"
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
       >
+        <SwiperSlide>
+          <img
+            src="/Images/HeroCarouselImage/group4.png"
+            className="m-auto"
+            onClick={() =>
+              (window.location.href = 'https://forms.gle/fUpkLwvUNgNBLD8y9')}
+          />
+        </SwiperSlide>
         <SwiperSlide>
           <img
             src="/Images/HeroCarouselImage/group1.png"
@@ -41,14 +49,6 @@ const Hero = () => {
             className="m-auto"
             onClick={() =>
               (window.location.href = 'https://youtu.be/NCrA8CjO_tU')}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="/Images/HeroCarouselImage/group4.png"
-            className="m-auto"
-            onClick={() =>
-              (window.location.href = 'https://forms.gle/fUpkLwvUNgNBLD8y9')}
           />
         </SwiperSlide>
       </Swiper>
