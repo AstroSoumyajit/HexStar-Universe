@@ -27,7 +27,7 @@ const Collaborators = () => {
           />
         </Link>
       </div>
-      <div className='flex md:flex-row flex-col md:space-x-20 md:space-y-0 space-x-0 space-y-12 py-8 w-4/5 mx-auto'>
+      <div className='flex md:flex-row flex-col md:space-x-20 md:space-y-0 space-x-0 space-y-12 py-8 md:w-4/5 mx-auto'>
         <div className="relative border border-white rounded-3xl text-white font-gilroy space-y-8 md:p-12 p-8 text-lg text-center">
           <img src="/QuoteLeft.png" className="absolute top-4 left-4" />
           <h1>

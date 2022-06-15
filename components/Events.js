@@ -4,7 +4,9 @@ import {GrPrevious} from 'react-icons/gr';
 import {GrNext} from 'react-icons/gr';
 import Link from 'next/link';
 import AnimatedNumber from 'react-animated-number';
+import {useState, useEffect} from 'react';
 // import prettyBytes from 'pretty-bytes';
+import CountUp from 'react-countup';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -13,6 +15,17 @@ import 'swiper/css/navigation';
 import {Pagination} from 'swiper';
 
 const Events = () => {
+  const [showCounter, setShowCounter] = useState (false);
+
+  useEffect (() => {
+    window.addEventListener ('scroll', () => {
+      const windowHeight = window.pageYOffset;
+      console.log (windowHeight);
+      if (windowHeight >= 2800) {
+        setShowCounter (true);
+      }
+    });
+  }, []);
   return (
     <div className="box-border" id="events">
       <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#00FFF0] text-transparent text-lg">
@@ -45,62 +58,37 @@ const Events = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className='flex flex-col md:flex-row justify-around my-12 text-3xl font-sweet_sans_pro md:space-y-0 space-y-12'>
-        <div className="flex flex-col items-center space-y-2">
-          <img src="Images/Events/icon1.svg" className=' shadow-md'/>
-          <div className='flex items-center justify-center text-white shadow-md'>
-            <AnimatedNumber
-              component="text"
-              value={2500}
-              style={{
-                transition: '0.8s ease-out',
-                color: 'white',
-              }}
-              duration={900}
-              formatValue={n => Math.round (n)}
-            /><span>+</span>
+      {showCounter &&
+        <div className="flex flex-col md:flex-row justify-around my-12 text-3xl font-sweet_sans_pro md:space-y-0 space-y-12">
+          <div className="flex flex-col items-center space-y-2">
+            <img src="Images/Events/icon1.svg" className=" shadow-md" />
+            <div className="flex items-center justify-center text-white shadow-md">
+              <CountUp start={0} end={2500} /><span>+</span>
+            </div>
+            <h1 className="text-white text-[18px] shadow-md">
+              Students OutReach
+            </h1>
           </div>
-          <h1 className="text-white text-[18px] shadow-md">
-            Students OutReach
-          </h1>
-        </div>
-        <div className="flex flex-col items-center space-y-2">
-          <img src="Images/Events/icon2.svg" />
-          <div className='flex items-center justify-center text-white'>
-            <AnimatedNumber
-              component="text"
-              value={20}
-              style={{
-                transition: '0.8s ease-out',
-                color: 'white',
-              }}
-              duration={900}
-              formatValue={n => Math.round (n)}
-            /><span>+</span>
+          <div className="flex flex-col items-center space-y-2">
+            <img src="Images/Events/icon2.svg" />
+            <div className="flex items-center justify-center text-white">
+              <CountUp start={0} end={20} /><span>+</span>
+            </div>
+            <h1 className="text-white text-[18px]">
+              MasterClass
+            </h1>
           </div>
-          <h1 className="text-white text-[18px]">
-            MasterClass
-          </h1>
-        </div>
-        <div className="flex flex-col items-center space-y-2">
-          <img src="Images/Events/icon3.svg" />
-          <div className='flex items-center justify-center text-white'>
-            <AnimatedNumber
-              component="text"
-              value={30}
-              style={{
-                transition: '0.8s ease-out',
-                color: 'white',
-              }}
-              duration={900}
-              formatValue={n => Math.round (n)}
-            /><span>+</span>
+          <div className="flex flex-col items-center space-y-2">
+            <img src="Images/Events/icon3.svg" />
+            <div className="flex items-center justify-center text-white">
+              <CountUp start={0} end={30} />
+              <span>+</span>
+            </div>
+            <h1 className="text-white text-[18px]">
+              Events
+            </h1>
           </div>
-          <h1 className="text-white text-[18px]">
-            Events
-          </h1>
-        </div>
-      </div>
+        </div>}
 
     </div>
   );
