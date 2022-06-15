@@ -9,7 +9,7 @@ import Link from 'next/link';
 const Navbar = ({active, path}) => {
   return (
     <div className='w-full z-50'>
-      <div className="md:h-20 h-16 bg-[#000000] border border-[#1E1E1E] flex flex-row justify-between items-center md:ml-16 md:px-8 px-4">
+      <div className="md:h-24 h-16 bg-[#000000] border border-[#1E1E1E] flex flex-row justify-between items-center md:ml-16 md:px-8 px-4">
         <div className="flex flex-row md:space-x-8 space-x-2 items-center">
           <Link href="/">
             <img
