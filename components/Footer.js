@@ -82,10 +82,10 @@ const Footer = () => {
           </h1>
           <div className="flex flex-row text-white text-3xl space-x-8">
             <Link href="https://wa.me/%2B918910123832?text=Hi%20Hex-Star%20Universe">
-              <IoLogoWhatsapp/>
+              <IoLogoWhatsapp />
             </Link>
             <Link href="mailto:hexstaruniverse@gmail.com">
-              <MdEmail/>
+              <MdEmail />
             </Link>
           </div>
         </div>
