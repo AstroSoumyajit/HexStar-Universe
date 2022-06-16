@@ -31,13 +31,14 @@
 }
 
 
-@media  screen and (max-width: 640px) {
+@media screen and (max-width: 640px) {
+
     .swiper-button-prev,
     .swiper-button-next {
         font-size: 2rem !important;
     }
 }
 
-.swiper-pagination-bullet-active{
+.swiper-pagination-bullet-active {
     background-color: white !important;
-} 
+}

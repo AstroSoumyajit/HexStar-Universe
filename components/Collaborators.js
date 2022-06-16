@@ -1,5 +1,31 @@
 import React from 'react';
 import Link from 'next/link';
+import {Swiper, SwiperSlide} from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import {Pagination, Navigation} from 'swiper';
+
+const testimonials = [
+  {
+    key: Date.now (),
+    comment: ' “A good platform to learn new things. It will help the enthusiast people to know more about the universe”',
+    speaker: '—  Md Ahsanul Haque Biplob',
+    speakerdetails: 'Bangladesh',
+  },
+  {
+    key: Date.now (),
+    comment: "“It's a great organization working towards creating interest in young minds regarding Space Science. ”",
+    speaker: ' —  Abhijeet Jadhav',
+    speakerdetails: 'Student',
+  },
+  {
+    key: Date.now (),
+    comment: '“A great initiative. Thank you for bringing such opportunities to everyone who are interested to learn about the universe.”',
+    speaker: '—  Sowkhya Shanbhog, ',
+    speakerdetails: 'Student',
+  },
+];
 
 const Collaborators = () => {
   return (
@@ -27,31 +53,39 @@ const Collaborators = () => {
           />
         </Link>
       </div>
-      <div className='flex md:flex-row flex-col md:space-x-20 md:space-y-0 space-x-0 space-y-12 py-8 md:w-4/5 mx-auto'>
-        <div className="relative border border-white rounded-3xl text-white font-gilroy space-y-8 md:p-12 p-8 text-lg text-center">
-          <img src="/QuoteLeft.png" className="absolute top-4 left-4" />
-          <h1>
-            s simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las indu
-          </h1>
-          <h1>
-            ⭐⭐⭐⭐⭐
-          </h1>
-          <h1>
-            Name Name
-          </h1>
-        </div>
-        <div className="relative border border-white rounded-3xl text-white font-gilroy space-y-8 md:p-12 p-8 text-lg text-center">
-          <img src="/QuoteLeft.png" className="absolute top-4 left-4" />
-          <h1>
-            s simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las indu
-          </h1>
-          <h1>
-            ⭐⭐⭐⭐⭐
-          </h1>
-          <h1>
-            Name Name
-          </h1>
-        </div>
+      <div className="md:w-4/5 mx-auto my-8">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          navigation={true}
+          modules={[Navigation]}
+          breakpoints={{
+            760: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+          }}
+          className="mySwiper"
+        >
+          {testimonials.map (data => {
+            return (
+              <SwiperSlide key={data.key}>
+                <div className="relative border border-white rounded-3xl text-white font-gilroy space-y-8 md:p-12 p-8 md:text-lg text-sm text-center">
+                  <img src="/QuoteLeft.png" className="absolute top-4 left-4" />
+                  <h1>
+                    {data.comment}
+                  </h1>
+                  <h1>
+                    ⭐⭐⭐⭐⭐
+                  </h1>
+                  <h1>
+                    {data.speaker}, {data.speakerdetails}
+                  </h1>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
     </div>
   );
