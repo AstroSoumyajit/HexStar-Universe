@@ -4,11 +4,16 @@ import SideNav from '../components/SideNav';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
 import BoostButton from '../components/BoostButton';
+import Head from 'next/head';
 
 const Connect = () => {
   const router = useRouter ();
   return (
     <div className="bg-connectbg h-full md:h-screen bg-cover ">
+    <Head>
+        <title>HexStar Universe</title>
+        <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+      </Head>
       <SideNav />
       <Navbar active={router.pathname === '/connect' ? 'active' : ''} />
       <div className=" flex md:flex-row flex-col items-center justify-evenly md:space-y-0 space-y-8 py-24">

@@ -12,6 +12,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from 'react-share';
+import Head from 'next/head';
 
 const VideoOpen = ({webinarData}) => {
   const router = useRouter ();
@@ -45,6 +46,10 @@ const VideoOpen = ({webinarData}) => {
 
   return (
     <div className="bg-[#000000] overflow-x-hidden">
+    <Head>
+        <title>HexStar Universe</title>
+        <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+      </Head>
       <SideNav />
       <Navbar />
       <div className="md:ml-16 md:px-12 px-8 text-white">
