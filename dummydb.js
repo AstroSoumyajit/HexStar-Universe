@@ -1,5 +1,21 @@
 export const webinarData = [
   {
+    key: 12,
+    linkEmbed: 'https://www.youtube.com/embed/Ffj6FBeiIng',  //need to be changes
+    title: 'Moon Mania in Monsoon',
+    thumbnail: 'Images/Webinars/image/image12.png',
+    speaker: '-Dr. Patick Dasgupta',
+    speakerImage: 'Images/Webinars/person/person12.png',
+  },
+  {
+    key: 13,
+    linkEmbed: 'https://www.youtube.com/embed/1Bcm4LO-yOs',
+    title: 'The Golden Eye Opens: The James Webb Space Telescope begins',
+    thumbnail: 'Images/Webinars/image/image13.png',
+    speaker: '-Dr. Priya Hasan',
+    speakerImage: 'Images/Webinars/person/person13.png',
+  },
+  {
     key: 10,
     linkEmbed: 'https://www.youtube.com/embed/QQRZE56jwZI',
     title: 'Asteroid hunting with SA Citizen Science Lab',

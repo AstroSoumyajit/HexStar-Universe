@@ -4,6 +4,25 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import {Autoplay, Navigation, Pagination} from 'swiper';
 
+const swiperSlideData = [
+  {
+    imgSrc: '/Images/HeroCarouselImage/group1.png',
+    href: 'https://youtu.be/9yvBUORc-0s',
+  },
+  {
+    imgSrc: '/Images/HeroCarouselImage/group2.png',
+    href: 'https://pages.razorpay.com/orbitalmechanics',
+  },
+  {
+    imgSrc: '/Images/HeroCarouselImage/group3.png',
+    href: 'https://youtu.be/NCrA8CjO_tU',
+  },
+  {
+    imgSrc: '/Images/HeroCarouselImage/group5.png',
+    href: 'https://youtu.be/x4ZpD2HYvfw',
+  },
+];
+
 const Hero = () => {
   return (
     <div className="my-8">
@@ -17,40 +36,19 @@ const Hero = () => {
           disableOnInteraction: false,
         }}
       >
-        <SwiperSlide>
-          <img
-            src="/Images/HeroCarouselImage/group4.png"
-            className="m-auto"
-            onClick={() =>
-              (window.location.href = 'https://forms.gle/fUpkLwvUNgNBLD8y9')}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="/Images/HeroCarouselImage/group1.png"
-            className="m-auto"
-            onClick={() =>
-              (window.location.href =
-                ' https://unstop.com/o/bg9OVwf?lb=vBuPjqb')}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="/Images/HeroCarouselImage/group2.png"
-            className="m-auto"
-            onClick={() =>
-              (window.location.href =
-                ' https://pages.razorpay.com/orbitalmechanics')}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="/Images/HeroCarouselImage/group3.png"
-            className="m-auto"
-            onClick={() =>
-              (window.location.href = 'https://youtu.be/NCrA8CjO_tU')}
-          />
-        </SwiperSlide>
+        {swiperSlideData.map ((item, i) => {
+          return (
+            <SwiperSlide key={i}>
+              <img
+                src={item.imgSrc}
+                className="m-auto"
+                onClick={() =>
+                  (window.location.href = `${item.href}`)}
+              />
+            </SwiperSlide>
+          );
+        })}
+
       </Swiper>
     </div>
   );
