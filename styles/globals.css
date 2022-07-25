@@ -22,6 +22,14 @@
         font-family: "sweet-sans-pro-light";
         src: url('/sweet-sans-pro/SweetSansProLight.woff') format('woff')
     }
+    @font-face {
+        font-family: "bank-gothic";
+        src: url('/Bank Gothic/Bank Gothic Light Regular.woff') format('woff')
+    }
+    @font-face {
+        font-family: "Europa_Gro";
+        src: url('/Europa_Gro_Nr_2_SH_Bold_Cond.woff') format('woff')
+    }
 }
 
 .swiper-button-prev,
