@@ -17,6 +17,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import {useEffect} from 'react';
 
 const buttonText = [
   {
@@ -61,13 +62,22 @@ const event = () => {
   const handleClose = () => {
     setOpen (false);
   };
-  const task1handle = () => {
-    handleClickOpen ();
-  };
-
   const handleClickOpen = () => {
     setOpen (true);
   };
+
+  const agreeHandler = () => {
+    setAgree (true);
+    handleClose ();
+  };
+
+  useEffect (
+    () => {
+      console.log ('name changed to' + name);
+    },
+    [agree]
+  );
+
   return (
     <div className="bg-[#000] overflow-x-auto">
       <Head>
@@ -106,7 +116,7 @@ const event = () => {
               </div>
 
             </div>
-            <div className="hidden md:blobk">
+            <div className="hidden md:block">
               <img src="/Images/events/spaceshutle.svg" />
             </div>
           </div>
@@ -168,42 +178,54 @@ const event = () => {
                 <div className="text-white bg-gradient-to-r from-[#0019F9] to-[#660068] px-4 max-w-fit py-3 rounded-[17px]">
                   Task-1
                 </div>
-                <h1 className="font-bank_gothic md:text-[30px] text-[16px] text-white leading-tight hidden">
-                  Kingshuk Sarkar
+                <h1 className="font-bank_gothic md:text-[30px] text-[16px] text-white leading-tight">
+                  {agree && name}
                 </h1>
               </div>
               <div className="flex md:flex-row flex-col justify-evenly pt-8 space-y-4 md:space-y-0">
-                <h1 className="text-white md:text-right md:text-[30px] text-[16px] flex md:items-start items-center gap-4">
-                  <FaTelegramPlane className="text-white" /> Name :
+                <h1 className="text-white md:text-right md:text-[30px] text-[16px] flex items-center gap-4 h-fit">
+                  <FaTelegramPlane className="text-white" /><span>Name :</span>
                 </h1>
                 <div className="space-y-6 md:w-[35vw] ">
                   <input
-                    onChange={e => setName (e.target.name)}
+                    onChange={e => setName (e.target.value)}
                     type="text"
                     placeholder="Please Enter Your Name"
                     className="bg-transparent border border-zinc-400 w-full text-white placeholder:text-zinc-500 px-4 py-3 focus:outline-hidden rounded-md"
                   />
                   <div className="space-y-6">
-                    <div className="flex justify-between items-center space-x-12">
+                    <div className="flex justify-between items-center">
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaYoutube className="text-[#FF0000] text-4xl" />
-                      <button className="w-[10rem] text-white bg-gradient-to-r from-[#FF0000] to-[#BD009F] px-4 py-2 rounded-[17px]">
-                        SUBSCRIBE
-                      </button>
+                      <div className="flex justify-center items-center space-x-3">
+                        <button className="w-[10rem] text-white bg-gradient-to-r from-[#FF0000] to-[#BD009F] px-4 py-2 rounded-[17px]">
+                          SUBSCRIBE
+                        </button>
+                        {agree &&
+                          <img src="/greentick.svg" className="pl-3 w-8" />}
+                      </div>
                     </div>
                     <div className="flex justify-between items-center">
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaLinkedin className="text-[#0A66C2] text-4xl" />
-                      <button className="w-[10rem] text-white bg-gradient-to-r from-[#000AFF] to-[#06A5FF] px-4 py-2 rounded-[17px]">
-                        FOLLOW
-                      </button>
+                      <div className="flex justify-center items-center space-x-3">
+                        <button className="w-[10rem] text-white bg-gradient-to-r from-[#000AFF] to-[#06A5FF] px-4 py-2 rounded-[17px]">
+                          FOLLOW
+                        </button>
+                        {agree &&
+                          <img src="/greentick.svg" className="pl-3 w-8" />}
+                      </div>
                     </div>
                     <div className="flex justify-between items-center">
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaDiscord className="text-[#5865F2] text-4xl" />
-                      <button className=" w-[10rem] text-white bg-gradient-to-r from-[#4541FF] to-[#BD00FF] px-4 py-2 rounded-[17px]">
-                        JOIN
-                      </button>
+                      <div className="flex justify-center items-center space-x-3">
+                        <button className=" w-[10rem] text-white bg-gradient-to-r from-[#4541FF] to-[#BD00FF] px-4 py-2 rounded-[17px]">
+                          JOIN
+                        </button>
+                        {agree &&
+                          <img src="/greentick.svg" className="pl-3 w-8" />}
+                      </div>
                     </div>
                     <div className="flex justify-between items-center">
                       <FaTelegramPlane className="text-white text-4xl" />
@@ -211,17 +233,21 @@ const event = () => {
                         src="/Images/icons/instagram.svg"
                         className="w-[30px]"
                       />
-                      <button className="w-[10rem] text-white bg-gradient-to-r from-[#F80077] to-[#F80000] px-4 py-2 rounded-[17px]">
-                        FOLLOW
-                      </button>
+                      <div className="flex justify-center items-center space-x-3">
+                        <button className="w-[10rem] text-white bg-gradient-to-r from-[#F80077] to-[#F80000] px-4 py-2 rounded-[17px]">
+                          FOLLOW
+                        </button>
+                        {agree &&
+                          <img src="/greentick.svg" className="pl-3 w-8" />}
+                      </div>
                     </div>
                   </div>
                   <div className="text-center">
                     <button
-                      className="text-white border border-white px-6 py-3 rounded-[18px]"
-                      onClick={task1handle}
+                      className={`text-white border border-white px-6 py-3 rounded-[18px] ${agree && 'bg-[#10CE00] border-0'}`}
+                      onClick={handleClickOpen}
                     >
-                      Confirm
+                      {agree ? 'Confirmed' : 'confirm'}
                     </button>
                   </div>
                 </div>
@@ -264,13 +290,7 @@ const event = () => {
           >
             Disagree
           </button>
-          <button
-            onClick={() => {
-              setAgree (true);
-              handleClose ();
-            }}
-            autoFocus
-          >
+          <button onClick={agreeHandler} autoFocus>
             Agree
           </button>
         </DialogActions>

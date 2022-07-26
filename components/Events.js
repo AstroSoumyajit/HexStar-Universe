@@ -3,9 +3,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {GrPrevious} from 'react-icons/gr';
 import {GrNext} from 'react-icons/gr';
 import Link from 'next/link';
-import AnimatedNumber from 'react-animated-number';
 import {useState, useEffect} from 'react';
-// import prettyBytes from 'pretty-bytes';
 import CountUp from 'react-countup';
 
 import 'swiper/css';
@@ -28,9 +26,10 @@ const Events = () => {
   }, []);
   return (
     <div className="box-border" id="events">
-      <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#00FFF0] text-transparent text-lg">
+      <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#00FFF0] text-transparent text-lg hidden md:block">
         Events
       </h1>
+      <img src="/eventHeading.png" className='md:hidden'/>
       <div className="py-8">
         <Swiper
           slidesPerView={1}
@@ -43,17 +42,17 @@ const Events = () => {
         >
           <SwiperSlide>
             <Link href=" https://unstop.com">
-              <img src="/Images/Events/frame1.png" className="m-auto" />
+              <img src="/Images/EventComponent/frame1.png" className="m-auto" />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
             <Link href="https://unstop.com/workshop/asteroid-search-campaign-30-hex-star-universe-335553">
-              <img src="/Images/Events/frame2.png" className="m-auto" />
+              <img src="/Images/EventComponent/frame2.png" className="m-auto" />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
             <Link href="https://unstop.com/quiz/cosmo-quiz-20-hex-star-universe-327402">
-              <img src="/Images/Events/frame3.png" className="m-auto" />
+              <img src="/Images/EventComponent/frame3.png" className="m-auto" />
             </Link>
           </SwiperSlide>
         </Swiper>
@@ -61,27 +60,27 @@ const Events = () => {
       {showCounter &&
         <div className="flex flex-col md:flex-row justify-around my-12 text-3xl font-sweet_sans_pro md:space-y-0 space-y-12">
           <div className="flex flex-col items-center space-y-2">
-            <img src="Images/Events/icon1.svg" className=" shadow-md" />
+            <img src="Images/EventComponent/icon1.svg" className=" shadow-md" />
             <div className="flex items-center justify-center text-white shadow-md">
-              <CountUp start={0} end={2500} /><span>+</span>
+              <CountUp start={0} end={2500} duration={5}/><span>+</span>
             </div>
             <h1 className="text-white text-[18px] shadow-md">
               Students OutReach
             </h1>
           </div>
           <div className="flex flex-col items-center space-y-2">
-            <img src="Images/Events/icon2.svg" />
+            <img src="Images/EventComponent/icon2.svg" />
             <div className="flex items-center justify-center text-white">
-              <CountUp start={0} end={20} /><span>+</span>
+              <CountUp start={0} end={20} duration={5}/><span>+</span>
             </div>
             <h1 className="text-white text-[18px]">
               MasterClass
             </h1>
           </div>
           <div className="flex flex-col items-center space-y-2">
-            <img src="Images/Events/icon3.svg" />
+            <img src="Images/EventComponent/icon3.svg" />
             <div className="flex items-center justify-center text-white">
-              <CountUp start={0} end={30} />
+              <CountUp start={0} end={30} duration={5}/>
               <span>+</span>
             </div>
             <h1 className="text-white text-[18px]">
