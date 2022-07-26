@@ -54,8 +54,8 @@ const buttonText = [
   },
 ];
 
-const event = () => {
-  const [open, setOpen] = React.useState (false);
+const Event = () => {
+  const [open, setOpen] = useState (false);
   const [name, setName] = useState ('');
   const [agree, setAgree] = useState (false);
 
@@ -299,4 +299,4 @@ const event = () => {
   );
 };
 
-export default event;
+export default Event;
