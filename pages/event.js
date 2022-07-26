@@ -99,19 +99,23 @@ const Event = () => {
                 Scientist. Build your knowledge around Rocketry, Space science
                 and lot more with a community that is a hub for the Space Tech experts & enthusiasts.
               </h1>
-              <div className="w-full text-center flex flex-col space-y-4">
+              <div className="w-full text-center flex flex-col space-y-4 items-center">
                 <div>
-                  <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[11px] px-4 py-3  rounded-[17px]">
-                    Apply for 100% FREE Preimium <br /> Access
-                  </button>
+                  <div className="relative">
+                    <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[11px] px-4 py-3  rounded-[17px] relative z-20">
+                      Apply for 100% FREE Preimium <br /> Access
+                    </button>
+                    <div className="bg-gradient-to-r from-[#0019F9] to-[#660068] absolute inset-0 blur-md rounded-[17px]" />
+                  </div>
                 </div>
-                <span className="text-white font-bank_gothic text-[16px]">
+                <span className="text-white font-bank_gothic text-[16px] md:hidden">
                   OR
                 </span>
-                <div>
-                  <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[16px] px-4 py-3  rounded-[17px]">
+                <div className='relative max-w-fit md:hidden'>
+                  <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[16px] px-4 py-3  rounded-[17px] z-20 relative">
                     Register Now
                   </button>
+                  <div className="bg-gradient-to-r from-[#0019F9] to-[#660068] absolute inset-0 blur-md rounded-[17px]" />
                 </div>
               </div>
 
@@ -199,7 +203,7 @@ const Event = () => {
                       <FaYoutube className="text-[#FF0000] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
                         <button className="w-[10rem] text-white bg-gradient-to-r from-[#FF0000] to-[#BD009F] px-4 py-2 rounded-[17px]">
-                          SUBSCRIBE
+                          {agree ? 'SUBSCRIBED' : 'SUBSCRIBE'}
                         </button>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
@@ -210,7 +214,7 @@ const Event = () => {
                       <FaLinkedin className="text-[#0A66C2] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
                         <button className="w-[10rem] text-white bg-gradient-to-r from-[#000AFF] to-[#06A5FF] px-4 py-2 rounded-[17px]">
-                          FOLLOW
+                        {agree ? 'FOLLOWED' : 'FOLLOW'}
                         </button>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
@@ -221,7 +225,7 @@ const Event = () => {
                       <FaDiscord className="text-[#5865F2] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
                         <button className=" w-[10rem] text-white bg-gradient-to-r from-[#4541FF] to-[#BD00FF] px-4 py-2 rounded-[17px]">
-                          JOIN
+                        {agree ? 'JOINED' : 'JOIN'}
                         </button>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
@@ -235,7 +239,7 @@ const Event = () => {
                       />
                       <div className="flex justify-center items-center space-x-3">
                         <button className="w-[10rem] text-white bg-gradient-to-r from-[#F80077] to-[#F80000] px-4 py-2 rounded-[17px]">
-                          FOLLOW
+                        {agree ? 'FOLLOWED' : 'FOLLOW'}
                         </button>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}

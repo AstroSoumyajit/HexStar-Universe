@@ -11,6 +11,7 @@ import {webinarData} from '../dummydb';
 import {useRouter} from 'next/router';
 import Head from 'next/head';
 import BoostButton from '../components/BoostButton';
+import Link from 'next/link';
 
 export default function Home () {
   const route = useRouter ().pathname;
@@ -25,6 +26,9 @@ export default function Home () {
       <Navbar path={route} />
       <div className="md:ml-16 md:px-12 px-8">
         <Hero />
+        <Link  href='/event'>
+        <img src="/scholarship.png" className='w-full cursor-pointer'/>
+        </Link>
         <Webinars webinarData={webinarData} title="Webinars" />
         <MasterClass />
         <Events />
