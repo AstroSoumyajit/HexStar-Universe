@@ -36,7 +36,7 @@ const MasterClass = () => {
       <img src="/masterclassHeading.png" className="md:hidden" />
       <div className='w-full flex items-center justify-between'>
           <button
-            className='mr-4 text-[#fff] rounded-full'
+            className='mr-1 text-[#fff] rounded-full'
             onClick={() => {
               if (mySwiper) mySwiper.slidePrev()
             }}
@@ -90,7 +90,7 @@ const MasterClass = () => {
         })}
           </Swiper>
           <button
-            className='mr-4 text-[#fff] rounded-full'
+            className='mr-1 text-[#fff] rounded-full'
             onClick={() => {
               if (mySwiper) mySwiper.slideNext()
             }}

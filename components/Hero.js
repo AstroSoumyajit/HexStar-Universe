@@ -7,7 +7,7 @@ import {Autoplay, Navigation, Pagination} from 'swiper';
 const swiperSlideData = [
   {
     imgSrc: '/Images/HeroCarouselImage/group6.png',
-    href: 'https://youtu.be/x4ZpD2HYvfw',
+    href: 'https://rzp.io/l/RocketryMasterclass',
   },
   {
     imgSrc: '/Images/HeroCarouselImage/group1.png',

@@ -24,7 +24,7 @@ export default function Home () {
       </Head>
       <SideNav path={route} />
       <Navbar path={route} />
-      <div className="md:ml-16 md:px-12 px-8">
+      <div className="md:ml-16 md:px-12 px-4">
         <Hero />
         <Link  href='/event'>
         <img src="/scholarship.png" className='w-full cursor-pointer'/>

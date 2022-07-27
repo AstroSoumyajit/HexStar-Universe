@@ -18,6 +18,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import {useEffect} from 'react';
+import Link from 'next/link';
 
 const buttonText = [
   {
@@ -88,7 +89,11 @@ const Event = () => {
       <Navbar />
       <div className="max-w-[1280px] mx-auto font-sweet_sans_pro z-40">
         <div className="md:ml-16 md:px-12 px-8">
-          <div className="grid md:grid-cols-4 items-center justify-items-center py-8">
+          <div className="grid md:grid-cols-4 items-center justify-items-center py-8 relative z-20">
+            <img
+              src="/spaceshuttle.png"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden -z-20"
+            />
             <div className="col-span-3 space-y-12">
               <h1 className="font-bank_gothic md:text-[40px] text-[24px] text-center md:text-left text-white leading-tight">
                 Kickstart your Rocket Scientist
@@ -101,20 +106,24 @@ const Event = () => {
               </h1>
               <div className="w-full text-center flex flex-col space-y-4 items-center">
                 <div>
-                  <div className="relative">
-                    <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[11px] px-4 py-3  rounded-[17px] relative z-20">
-                      Apply for 100% FREE Preimium <br /> Access
-                    </button>
-                    <div className="bg-gradient-to-r from-[#0019F9] to-[#660068] absolute inset-0 blur-md rounded-[17px]" />
-                  </div>
+                  <Link href="#task1">
+                    <div className="relative">
+                      <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[11px] px-4 py-3  rounded-[17px] relative z-20">
+                        Apply for 100% FREE Preimium <br /> Access
+                      </button>
+                      <div className="bg-gradient-to-r from-[#0019F9] to-[#660068] absolute inset-0 blur-md rounded-[17px]" />
+                    </div>
+                  </Link>
                 </div>
                 <span className="text-white font-bank_gothic text-[16px] md:hidden">
                   OR
                 </span>
-                <div className='relative max-w-fit md:hidden'>
-                  <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[16px] px-4 py-3  rounded-[17px] z-20 relative">
-                    Register Now
-                  </button>
+                <div className="relative max-w-fit md:hidden">
+                  <Link href="https://rzp.io/l/RocketryMasterclass">
+                    <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[16px] px-4 py-3  rounded-[17px] z-20 relative">
+                      Register Now
+                    </button>
+                  </Link>
                   <div className="bg-gradient-to-r from-[#0019F9] to-[#660068] absolute inset-0 blur-md rounded-[17px]" />
                 </div>
               </div>
@@ -177,7 +186,7 @@ const Event = () => {
           </div>
 
           <div className="py-16 space-y-8">
-            <div>
+            <div id="task1">
               <div className="flex justify-between items-center">
                 <div className="text-white bg-gradient-to-r from-[#0019F9] to-[#660068] px-4 max-w-fit py-3 rounded-[17px]">
                   Task-1
@@ -202,9 +211,11 @@ const Event = () => {
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaYoutube className="text-[#FF0000] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
+                      <Link href="https://www.youtube.com/channel/UCxiuN3r_ibdAfHqlBBKuTwQ">
                         <button className="w-[10rem] text-white bg-gradient-to-r from-[#FF0000] to-[#BD009F] px-4 py-2 rounded-[17px]">
                           {agree ? 'SUBSCRIBED' : 'SUBSCRIBE'}
                         </button>
+                      </Link>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
                       </div>
@@ -213,9 +224,11 @@ const Event = () => {
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaLinkedin className="text-[#0A66C2] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
+                      <Link href="https://www.linkedin.com/company/hex-star-universe/">
                         <button className="w-[10rem] text-white bg-gradient-to-r from-[#000AFF] to-[#06A5FF] px-4 py-2 rounded-[17px]">
-                        {agree ? 'FOLLOWED' : 'FOLLOW'}
+                          {agree ? 'FOLLOWED' : 'FOLLOW'}
                         </button>
+                      </Link>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
                       </div>
@@ -224,9 +237,11 @@ const Event = () => {
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaDiscord className="text-[#5865F2] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
+                      <Link href="https://discord.com/invite/XxuJMhAMaD">
                         <button className=" w-[10rem] text-white bg-gradient-to-r from-[#4541FF] to-[#BD00FF] px-4 py-2 rounded-[17px]">
-                        {agree ? 'JOINED' : 'JOIN'}
+                          {agree ? 'JOINED' : 'JOIN'}
                         </button>
+                      </Link>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
                       </div>
@@ -238,9 +253,11 @@ const Event = () => {
                         className="w-[30px]"
                       />
                       <div className="flex justify-center items-center space-x-3">
+                      <Link href="https://www.instagram.com/hexstar_universe/">
                         <button className="w-[10rem] text-white bg-gradient-to-r from-[#F80077] to-[#F80000] px-4 py-2 rounded-[17px]">
-                        {agree ? 'FOLLOWED' : 'FOLLOW'}
+                          {agree ? 'FOLLOWED' : 'FOLLOW'}
                         </button>
+                      </Link>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
                       </div>
