@@ -59,6 +59,7 @@ const Event = () => {
   const [open, setOpen] = useState (false);
   const [name, setName] = useState ('');
   const [agree, setAgree] = useState (false);
+  const [task1complete, setTask1complete] = useState (false);
 
   const handleClose = () => {
     setOpen (false);
@@ -69,6 +70,7 @@ const Event = () => {
 
   const agreeHandler = () => {
     setAgree (true);
+    setTask1complete(true)
     handleClose ();
   };
 
@@ -151,9 +153,11 @@ const Event = () => {
             </div>
           </div>
           <div className="py-8 space-y-8 w-full text-center">
-            <button className="px-6 py-3 rounded-[13px] font-semibold text-[#688794] border border-[#00B2FF]">
-              Become a Partner
-            </button>
+            <Link href="https://forms.gle/yYderqjbBGQSswAa8">
+              <button className="px-6 py-3 rounded-[13px] font-semibold text-[#688794] border border-[#00B2FF]">
+                Become a Partner
+              </button>
+            </Link>
           </div>
           <div className="grid md:grid-cols-2 md:py-16 justify-center items-center relative bg-background bg-no-repeat bg-right">
             <h1 className="font-Europa_Gro text-white md:text-[70px] text-[25px] text-center space-y-8 md:space-y-0">
@@ -211,11 +215,11 @@ const Event = () => {
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaYoutube className="text-[#FF0000] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
-                      <Link href="https://www.youtube.com/channel/UCxiuN3r_ibdAfHqlBBKuTwQ">
-                        <button className="w-[10rem] text-white bg-gradient-to-r from-[#FF0000] to-[#BD009F] px-4 py-2 rounded-[17px]">
-                          {agree ? 'SUBSCRIBED' : 'SUBSCRIBE'}
-                        </button>
-                      </Link>
+                        <Link href="https://www.youtube.com/channel/UCxiuN3r_ibdAfHqlBBKuTwQ">
+                          <button className="w-[10rem] text-white bg-gradient-to-r from-[#FF0000] to-[#BD009F] px-4 py-2 rounded-[17px]">
+                            {agree ? 'SUBSCRIBED' : 'SUBSCRIBE'}
+                          </button>
+                        </Link>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
                       </div>
@@ -224,11 +228,11 @@ const Event = () => {
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaLinkedin className="text-[#0A66C2] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
-                      <Link href="https://www.linkedin.com/company/hex-star-universe/">
-                        <button className="w-[10rem] text-white bg-gradient-to-r from-[#000AFF] to-[#06A5FF] px-4 py-2 rounded-[17px]">
-                          {agree ? 'FOLLOWED' : 'FOLLOW'}
-                        </button>
-                      </Link>
+                        <Link href="https://www.linkedin.com/company/hex-star-universe/">
+                          <button className="w-[10rem] text-white bg-gradient-to-r from-[#000AFF] to-[#06A5FF] px-4 py-2 rounded-[17px]">
+                            {agree ? 'FOLLOWED' : 'FOLLOW'}
+                          </button>
+                        </Link>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
                       </div>
@@ -237,11 +241,11 @@ const Event = () => {
                       <FaTelegramPlane className="text-white text-4xl" />
                       <FaDiscord className="text-[#5865F2] text-4xl" />
                       <div className="flex justify-center items-center space-x-3">
-                      <Link href="https://discord.com/invite/XxuJMhAMaD">
-                        <button className=" w-[10rem] text-white bg-gradient-to-r from-[#4541FF] to-[#BD00FF] px-4 py-2 rounded-[17px]">
-                          {agree ? 'JOINED' : 'JOIN'}
-                        </button>
-                      </Link>
+                        <Link href="https://discord.com/invite/XxuJMhAMaD">
+                          <button className=" w-[10rem] text-white bg-gradient-to-r from-[#4541FF] to-[#BD00FF] px-4 py-2 rounded-[17px]">
+                            {agree ? 'JOINED' : 'JOIN'}
+                          </button>
+                        </Link>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
                       </div>
@@ -253,11 +257,11 @@ const Event = () => {
                         className="w-[30px]"
                       />
                       <div className="flex justify-center items-center space-x-3">
-                      <Link href="https://www.instagram.com/hexstar_universe/">
-                        <button className="w-[10rem] text-white bg-gradient-to-r from-[#F80077] to-[#F80000] px-4 py-2 rounded-[17px]">
-                          {agree ? 'FOLLOWED' : 'FOLLOW'}
-                        </button>
-                      </Link>
+                        <Link href="https://www.instagram.com/hexstar_universe/">
+                          <button className="w-[10rem] text-white bg-gradient-to-r from-[#F80077] to-[#F80000] px-4 py-2 rounded-[17px]">
+                            {agree ? 'FOLLOWED' : 'FOLLOW'}
+                          </button>
+                        </Link>
                         {agree &&
                           <img src="/greentick.svg" className="pl-3 w-8" />}
                       </div>
@@ -280,8 +284,14 @@ const Event = () => {
               </div>
               <img
                 src="/Images/events/available.png"
-                className="ml-16 w-3/4 md:w-fit"
+                className={`ml-16 w-3/4 md:w-fit ${task1complete && 'hidden'}`}
               />
+                <div className="relative py-12 text-center" onClick={()=> agree ? window.location.href = 'https://forms.gle/Vxv8gp7MmGSM3ZKN7' : setTask1complete(false) }>
+                  <button className="bg-gradient-to-r from-[#0019F9] to-[#660068] text-white md:text-[23px] text-[11px] px-4 py-3  rounded-[17px] relative z-20">
+                    Click to enter Task -2
+                  </button>
+                  <div className="bg-gradient-to-r from-[#0019F9] to-[#660068] absolute inset-0 blur-md rounded-[17px] max-w-fit" />
+                </div>
             </div>
           </div>
           <Footer />
