@@ -10,14 +10,14 @@ import { useState } from 'react';
 
 const MasterClassData = [
   {
-    image: '/Images/masterclass/image1.png',
-    link: 'https://pages.razorpay.com/orbitalmechanics',
-    color: 'bg-[#312DFF]'
-  },
-  {
     image: '/Images/masterclass/image2.png',
     link: 'https://unstop.com/workshop/asteroid-search-campaign-30-hex-star-universe-335553',
     color: 'bg-[#9E00FF]'
+  },
+  {
+    image: '/Images/masterclass/image1.png',
+    link: 'https://pages.razorpay.com/orbitalmechanics',
+    color: 'bg-[#312DFF]'
   },
   {
     image: '/Images/masterclass/image3.png',

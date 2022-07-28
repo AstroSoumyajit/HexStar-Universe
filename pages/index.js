@@ -27,7 +27,7 @@ export default function Home () {
       <div className="md:ml-16 md:px-12 px-4">
         <Hero />
         <Link  href='/event'>
-        <img src="/scholarship.png" className='w-full cursor-pointer'/>
+        <img src="/scholarship.png" className='cursor-pointer mx-auto'/>
         </Link>
         <Webinars webinarData={webinarData} title="Webinars" />
         <MasterClass />
