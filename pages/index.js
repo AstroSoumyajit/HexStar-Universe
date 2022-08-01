@@ -56,7 +56,7 @@ export default function Home () {
         className="relative"
       >
         <div className="focus:outline-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className=" rounded-lg bg-gradient-to-tl from-[#14003a] to-[#320090] relative">
+          <div className="rounded-lg bg-gradient-to-tl from-[#14003a] to-[#320090] relative">
             <div className="px-4 py-4 flex flex-col justify-center space-y-6 sm:w-[500px] w-[80vw]">
               <div className="flex justify-between">
                 <h1 className="bg-[#00C2FF] font-bold rounded-md px-4 py-2 -rotate-3 font-Europa_Gro max-w-fit text-2xl">
@@ -81,9 +81,8 @@ export default function Home () {
                   </span>
                 </h1>
               </div>
-              <div className="flex items-center space-x-8">
+              <div className="flex items-center space-x-4">
                 <FaCalendarAlt className="text-3xl text-white" />
-                {' '}
                 <h1 className="text-xl font-bold text-white ">20-22 AUGUST</h1>
               </div>
               <h1 className="text-2xl italic font-sweet_sans_pro font-bold text-white leading-tight">
@@ -107,8 +106,9 @@ export default function Home () {
             </div>
             <img
               src="/rocket.png"
-              className="absolute bottom-0 right-0 w-[50%]"
+              className="absolute bottom-0 right-0 w-[50%] rounded-br-lg"
             />
+            <div className='absolute bg-[#320090] inset-0 blur-xl rounded-md -z-10'></div>
           </div>
         </div>
       </Modal>
