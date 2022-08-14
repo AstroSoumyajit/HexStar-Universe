@@ -1,7 +1,15 @@
 export const webinarData = [
   {
+    key: 14,
+    linkEmbed: 'https://youtu.be/bkM3rlEADK0', 
+    title: 'To Infinity and Beyond',
+    thumbnail: 'Images/Webinars/image/image14.png',
+    speaker: '-Gabe Gabrielle',
+    speakerImage: 'Images/Webinars/person/person14.png',
+  },
+  {
     key: 12,
-    linkEmbed: 'https://www.youtube.com/embed/Ffj6FBeiIng',  //need to be changes
+    linkEmbed: 'https://www.youtube.com/embed/Ffj6FBeiIng', 
     title: 'Moon Mania in Monsoon',
     thumbnail: 'Images/Webinars/image/image12.png',
     speaker: '-Dr. Patick Dasgupta',

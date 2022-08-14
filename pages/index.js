@@ -90,12 +90,12 @@ export default function Home () {
               </h1>
               <div className="relative w-fit">
                 <button
-                  className="bg-[#00C2FF] text-black font-sweet_sans_pro font-bold italic md:text-lg text-[11px] px-3 py-2 rounded-full relative z-20"
+                  className="bg-[#00C2FF] text-black font-sweet_sans_pro font-bold italic md:text-lg text-[11px] px-3 py-2 rounded-full relative z-20 "
                   onClick={handleOpen2}
                 >
                   REGISTER NOW
                 </button>
-                <div className="bg-[#00C2FF] absolute inset-0 blur-md rounded-full" />
+                <div className="bg-[#00C2FF] absolute inset-0 blur-md rounded-full  animate-pulse" />
               </div>
               <div className="relative max-w-fit">
                 <h1 className="font-sweet_sans_pro italic font-bold md:text-xl text-base text-white ">
