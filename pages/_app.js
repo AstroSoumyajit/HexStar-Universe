@@ -1,5 +1,4 @@
 import '../styles/globals.css';
-import LoadingScreen from '../components/LoadingScreen';
 import {useState, useEffect} from 'react';
 import Zoom from 'react-reveal/Zoom';
 
