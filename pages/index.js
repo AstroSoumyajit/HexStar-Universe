@@ -15,20 +15,48 @@ import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {AiOutlineCloseCircle} from 'react-icons/ai';
 import {FaCalendarAlt} from 'react-icons/fa';
+import Lottie from 'react-lottie';
+import * as animation from './animation.json';
 
 export default function Home () {
-  const [open, setOpen] = useState (true);
+  const [open, setOpen] = useState (false);
   const [open2, setOpen2] = useState (false);
   const handleOpen2 = () => setOpen2 (true);
   const handleClose = () => setOpen (false);
   const handleClose2 = () => setOpen2 (false);
+  const [showanimation, setShowanimation] = useState (true);
   const route = useRouter ().pathname;
   console.log (route);
+
+  useEffect (() => {
+    setShowanimation(true)
+    setTimeout (() => {
+      setShowanimation (false);
+    }, 1500);
+  });
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
   return (
-    <div className="bg-[#000] overflow-x-auto">
+    <div className="bg-[#000] overflow-x-auto ">
+    <div className='absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6'>
+      <Lottie
+        options={defaultOptions}
+        // height={1000}
+        // width={1000}
+        isStopped={showanimation}
+        // isPaused={this.state.isPaused}
+      />
+    </div>
       <Head>
         <title>HexStar Universe</title>
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
@@ -108,7 +136,7 @@ export default function Home () {
               src="/rocket.png"
               className="absolute bottom-0 right-0 w-[50%] rounded-br-lg"
             />
-            <div className='absolute bg-[#320090] inset-0 blur-xl rounded-md -z-10'></div>
+            <div className="absolute bg-[#320090] inset-0 blur-xl rounded-md -z-10" />
           </div>
         </div>
       </Modal>
