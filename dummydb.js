@@ -1,7 +1,7 @@
 export const webinarData = [
   {
     key: 14,
-    linkEmbed: 'https://youtu.be/bkM3rlEADK0', 
+    linkEmbed: 'https://youtube.com/embed/bkM3rlEADK0', 
     title: 'To Infinity and Beyond',
     thumbnail: 'Images/Webinars/image/image14.png',
     speaker: '-Gabe Gabrielle',

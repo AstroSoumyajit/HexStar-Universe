@@ -7,7 +7,7 @@ import {Autoplay, Navigation, Pagination} from 'swiper';
 const swiperSlideData = [
   {
     imgSrc: '/Images/HeroCarouselImage/group7.png',
-    href: '#',
+    href: 'https://youtu.be/hoh2Qa51qFU',
   },
   {
     imgSrc: '/Images/HeroCarouselImage/group6.png',
