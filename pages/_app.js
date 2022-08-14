@@ -18,10 +18,10 @@ function MyApp({Component, pageProps}) {
         ? <h1 className="h-screen w-screen bg-black flex justify-center items-center">
             <div className='flex flex-col justify-center items-center space-y-4'>
               <img
-                src="/images/logosmall.svg"
+                src="/Images/logosmall.svg"
                 className="animate-bounce h-24 w-24"
               />
-              <Zoom><img src="/images/logoname.svg" className='w-36'/></Zoom>
+              <Zoom><img src="/Images/logoname.svg" className='w-36'/></Zoom>
             </div>
           </h1>
         : <Component {...pageProps} />}
