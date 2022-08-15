@@ -29,17 +29,19 @@ export default function Home () {
   const handleClose2 = () => setOpen2 (false);
   const [showanimation, setShowanimation] = useState (true);
   const route = useRouter ().pathname;
-  console.log (route);
+  // console.log (route);
 
   useEffect (() => {
-    setShowanimation(true)
+    console.log("Function is called")
+    setShowanimation (true);
     setTimeout (() => {
       setShowanimation (false);
     }, 1500);
-  });
+  }, []);
+  console.log(showanimation)
 
   const defaultOptions = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: animation,
     rendererSettings: {
@@ -48,15 +50,16 @@ export default function Home () {
   };
   return (
     <div className="bg-[#000] overflow-x-auto ">
-    <div className='absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6'>
-      <Lottie
-        options={defaultOptions}
-        // height={1000}
-        // width={1000}
-        isStopped={showanimation}
-        // isPaused={this.state.isPaused}
-      />
-    </div>
+      <div className={`absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6 ${showanimation === false && 'hidden'}`}>
+        <Lottie
+          options={defaultOptions}
+          // height={1000}
+          // width={1000}
+          isStopped={showanimation}
+          isPaused={showanimation}
+          onClick={() => conosle.log ('Disabled')}
+        />
+      </div>
       <Head>
         <title>HexStar Universe</title>
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
