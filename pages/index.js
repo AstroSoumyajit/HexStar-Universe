@@ -22,7 +22,7 @@ import Lottie from 'react-lottie';
 import * as animation from './animation.json';
 
 export default function Home () {
-  const [open, setOpen] = useState (false);
+  const [open, setOpen] = useState (true);
   const [open2, setOpen2] = useState (false);
   const handleOpen2 = () => setOpen2 (true);
   const handleClose = () => setOpen (false);
@@ -51,14 +51,14 @@ export default function Home () {
   return (
     <div className="bg-[#000] overflow-x-auto ">
       <div className={`absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6 ${showanimation === false && 'hidden'}`}>
-        <Lottie
+        {/* <Lottie
           options={defaultOptions}
           // height={1000}
           // width={1000}
           isStopped={showanimation}
           isPaused={showanimation}
           onClick={() => conosle.log ('Disabled')}
-        />
+        /> */}
       </div>
       <Head>
         <title>HexStar Universe</title>
