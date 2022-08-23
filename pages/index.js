@@ -156,6 +156,9 @@ export default function Home () {
                 <div className="bg-[#FD1C50] absolute inset-0 blur-md rounded-full  animate-pulse" />
               </div>
             </div>
+            <div className='absolute md:top-8 top-2 right-8 md:right-16' onClick={handleClose}>
+              <AiOutlineCloseCircle className='text-white md:text-3xl text-2xl'/>
+            </div>
           </div>
         </div>
       </Modal>
