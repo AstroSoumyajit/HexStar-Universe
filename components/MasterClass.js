@@ -15,6 +15,11 @@ const MasterClassData = [
     color: 'bg-[#9E00FF]'
   },
   {
+    image: '/Images/masterclass/image4.png',
+    link: 'https://rzp.io/l/DeepSkyImgProcessing',
+    color: 'bg-[#04DD00]'
+  },
+  {
     image: '/Images/masterclass/image1.png',
     link: 'https://pages.razorpay.com/orbitalmechanics',
     color: 'bg-[#312DFF]'
