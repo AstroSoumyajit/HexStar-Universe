@@ -145,7 +145,7 @@ export default function Home () {
           </div> */}
           <div className="flex flex-col justify-center space-y-6 sm:w-[500px] w-[80vw] relative">
             <img src="/astroimage.png" />
-            <div className="absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute sm:top-3/4 top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2">
               <div className="relative w-fit">
                 <button
                   className="bg-[#FD1C50] text-black font-sweet_sans_pro font-bold italic md:text-lg text-[11px] px-3 py-2 rounded-full relative z-20 "
