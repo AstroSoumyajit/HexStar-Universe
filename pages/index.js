@@ -32,13 +32,13 @@ export default function Home () {
   // console.log (route);
 
   useEffect (() => {
-    console.log("Function is called")
+    console.log ('Function is called');
     setShowanimation (true);
     setTimeout (() => {
       setShowanimation (false);
     }, 1500);
   }, []);
-  console.log(showanimation)
+  console.log (showanimation);
 
   const defaultOptions = {
     loop: false,
@@ -50,7 +50,9 @@ export default function Home () {
   };
   return (
     <div className="bg-[#000] overflow-x-auto ">
-      <div className={`absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6 ${showanimation === false && 'hidden'}`}>
+      <div
+        className={`absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6 ${showanimation === false && 'hidden'}`}
+      >
         {/* <Lottie
           options={defaultOptions}
           // height={1000}
@@ -87,8 +89,8 @@ export default function Home () {
         className="relative"
       >
         <div className="focus:outline-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="rounded-lg bg-gradient-to-tl from-[#14003a] to-[#320090] relative">
-            <div className="px-4 py-4 flex flex-col justify-center space-y-6 sm:w-[500px] w-[80vw]">
+          {/* <div className="rounded-lg bg-gradient-to-tl from-[#14003a] to-[#320090] relative">
+            <div className="px-4 py-4 ">
               <div className="flex justify-between">
                 <h1 className="bg-[#00C2FF] font-bold rounded-md px-4 py-2 -rotate-3 font-Europa_Gro max-w-fit text-2xl">
                   First Time in INDIA
@@ -140,6 +142,20 @@ export default function Home () {
               className="absolute bottom-0 right-0 w-[50%] rounded-br-lg"
             />
             <div className="absolute bg-[#320090] inset-0 blur-xl rounded-md -z-10" />
+          </div> */}
+          <div className="flex flex-col justify-center space-y-6 sm:w-[500px] w-[80vw] relative">
+            <img src="/astroimage.png" />
+            <div className="absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="relative w-fit">
+                <button
+                  className="bg-[#FD1C50] text-black font-sweet_sans_pro font-bold italic md:text-lg text-[11px] px-3 py-2 rounded-full relative z-20 "
+                  onClick={handleOpen2}
+                >
+                  REGISTER NOW
+                </button>
+                <div className="bg-[#FD1C50] absolute inset-0 blur-md rounded-full  animate-pulse" />
+              </div>
+            </div>
           </div>
         </div>
       </Modal>
@@ -150,11 +166,11 @@ export default function Home () {
         aria-describedby="modal-modal-description"
       >
         <div className="focus:outline-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black md:p-8 p-4 rounded-xl">
-          <div className="flex flex-col justify-center md:space-y-8 space-y-4 child:px-4 child:py-3 child:rounded-md child:bg-[#320090] md:child:text-2xl child:text-lg child:font-sweet_sans_pro child:text-white child:italic child:text-center child:font-bold child:cursor-pointer">
-            <Link href="https://rzp.io/l/RocketryMasterclass">
+          <div className="flex flex-col justify-center md:space-y-8 space-y-4 child:px-4 child:py-3 child:rounded-md child:bg-[#D004A3] md:child:text-2xl child:text-lg child:font-sweet_sans_pro child:text-white child:italic child:text-center child:font-bold child:cursor-pointer">
+            <Link href="https://rzp.io/l/DeepSkyImgProcessing">
               <h1>INDIA</h1>
             </Link>
-            <Link href="https://pages.razorpay.com/RocketryInternational">
+            <Link href="https://rzp.io/l/DeepskyImgInternational">
               <h1>OUTSIDE INDIA</h1>
             </Link>
           </div>
