@@ -1,52 +1,47 @@
-import React from 'react';
-import {useRouter} from 'next/router';
-import SideNav from '../components/SideNav';
-import Navbar from '../components/Navbar';
-import {webinarData} from '../dummydb';
-import Webinars from '../components/Webinars';
-import {useState} from 'react';
-import BoostButton from '../components/BoostButton';
-import {BsWhatsapp, BsLinkedin, BsTwitter} from 'react-icons/bs';
+import React from "react";
+import { useRouter } from "next/router";
+import SideNav from "../components/SideNav";
+import Navbar from "../components/Navbar";
+import { webinarData } from "../dummydb";
+import Webinars from "../components/Webinars";
+import { useState } from "react";
+import BoostButton from "../components/BoostButton";
+import { BsWhatsapp, BsLinkedin, BsTwitter } from "react-icons/bs";
 import {
   LinkedinShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from 'react-share';
-import Head from 'next/head';
+} from "react-share";
+import Head from "next/head";
 
-const VideoOpen = ({webinarData}) => {
-  const router = useRouter ();
+const VideoOpen = ({ webinarData }) => {
+  const router = useRouter();
   const title = router.query.videoId;
 
-  const webinar = webinarData.find (obj => obj.title === title);
-  const [shareLinkState, setshareLinkState] = useState ('');
+  const webinar = webinarData.find((obj) => obj.title === title);
+  const [shareLinkState, setshareLinkState] = useState("");
 
-  function youtube_parser (url) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match (regExp);
-    return match && match[7].length == 11 ? match[7] : false;
-  }
-  const shareLink = 'https://www.youtube.com/watch?v='.concat (
-    youtube_parser (webinar.linkEmbed)
-  );
+  const shareLink = "https://www.youtube.com/watch?v=".concat(webinar.videoID);
 
-  const [open, setOpen] = React.useState (false);
+  console.log( webinar, shareLink);
+
+  const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
-    setOpen (true);
+    setOpen(true);
   };
 
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
-    setOpen (false);
+    setOpen(false);
   };
 
   return (
     <div className="bg-[#000000] overflow-x-hidden">
-    <Head>
+      <Head>
         <title>HexStar Universe</title>
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
       </Head>
@@ -68,9 +63,12 @@ const VideoOpen = ({webinarData}) => {
             />
             <div className=" space-y-8">
               <div className="flex md:flex-row flex-col  items-center justify-start md:space-x-4 space-y-4 md:space-y-0">
-                <h1 className="md:text-md rounded-lg bg-[#2C2E40] border border-[#5B5B5B] px-6 py-3">
+                <h1
+                  className="md:text-md rounded-lg bg-[#2C2E40] border border-[#5B5B5B] px-6 py-3 noselect"
+                  onDoubleClick={() => {navigator.clipboard.writeText(shareLink); alert("Link copied")}}
+                >
                   {shareLink.length > 30
-                    ? shareLink.substring (0, 25).concat ('...')
+                    ? shareLink.substring(0, 25).concat("...")
                     : shareLink}
                 </h1>
                 <div className="flex space-x-2">
@@ -93,7 +91,6 @@ const VideoOpen = ({webinarData}) => {
                     </span>
                   </TwitterShareButton>
                 </div>
-
               </div>
               <hr className="h-1 text-[#383838]" />
               <div className="flex flex-start items-center space-x-8">
@@ -112,12 +109,12 @@ const VideoOpen = ({webinarData}) => {
         </div>
         <Webinars webinarData={webinarData} title="Previous Webinars" />
       </div>
-      <div className='text-center w-full md:ml-16 md:px-12 px-8'>
+      <div className="text-center w-full md:ml-16 md:px-12 px-8">
         <img
           src="/Images/icons/back.svg"
           alt="back"
-          onClick={() => router.back ()}
-          className="m-auto w-20 cursor-pointer" 
+          onClick={() => router.back()}
+          className="m-auto w-20 cursor-pointer"
         />
       </div>
       <BoostButton />
@@ -127,10 +124,10 @@ const VideoOpen = ({webinarData}) => {
 
 export default VideoOpen;
 
-export async function getStaticPaths () {
-  const paths = webinarData.map (data => {
+export async function getStaticPaths() {
+  const paths = webinarData.map((data) => {
     return {
-      params: {videoId: `${data.title}`},
+      params: { videoId: `${data.title}` },
     };
   });
   return {
@@ -139,7 +136,7 @@ export async function getStaticPaths () {
   };
 }
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   return {
     props: {
       webinarData,
