@@ -1,57 +1,60 @@
-import CitizenScience from '../components/CitizenScience';
-import Collaborators from '../components/Collaborators';
-import Events from '../components/Events';
-import Footer from '../components/Footer';
-import Hero from '../components/Hero';
-import MasterClass from '../components/MasterClass';
-import Navbar from '../components/Navbar';
-import SideNav from '../components/SideNav';
-import Webinars from '../components/Webinars';
-import {webinarData} from '../dummydb';
-import {useRouter} from 'next/router';
-import Head from 'next/head';
-import BoostButton from '../components/BoostButton';
-import Link from 'next/link';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import {useEffect, useState} from 'react';
-import {AiOutlineCloseCircle} from 'react-icons/ai';
-import {FaCalendarAlt} from 'react-icons/fa';
-import Lottie from 'react-lottie';
-import * as animation from './animation.json';
+import CitizenScience from "../components/CitizenScience";
+import Collaborators from "../components/Collaborators";
+import Events from "../components/Events";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import MasterClass from "../components/MasterClass";
+import Navbar from "../components/Navbar";
+import SideNav from "../components/SideNav";
+import Webinars from "../components/Webinars";
+import { webinarData } from "../dummydb";
+import { webinarData2 } from "../dummydb2";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import BoostButton from "../components/BoostButton";
+import Link from "next/link";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import { useEffect, useState } from "react";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { FaCalendarAlt } from "react-icons/fa";
+import Lottie from "react-lottie";
+import * as animation from "./animation.json";
 
-export default function Home () {
-  const [open, setOpen] = useState (true);
-  const [open2, setOpen2] = useState (false);
-  const handleOpen2 = () => setOpen2 (true);
-  const handleClose = () => setOpen (false);
-  const handleClose2 = () => setOpen2 (false);
-  const [showanimation, setShowanimation] = useState (true);
-  const route = useRouter ().pathname;
+export default function Home() {
+  const [open, setOpen] = useState(true);
+  const [open2, setOpen2] = useState(false);
+  const handleOpen2 = () => setOpen2(true);
+  const handleClose = () => setOpen(false);
+  const handleClose2 = () => setOpen2(false);
+  const [showanimation, setShowanimation] = useState(true);
+  const route = useRouter().pathname;
   // console.log (route);
 
-  useEffect (() => {
-    console.log ('Function is called');
-    setShowanimation (true);
-    setTimeout (() => {
-      setShowanimation (false);
+  useEffect(() => {
+    console.log("Function is called");
+    setShowanimation(true);
+    setTimeout(() => {
+      setShowanimation(false);
     }, 1500);
   }, []);
-  console.log (showanimation);
+  console.log(showanimation);
 
   const defaultOptions = {
     loop: false,
     autoplay: true,
     animationData: animation,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
+      preserveAspectRatio: "xMidYMid slice",
     },
   };
   return (
     <div className="bg-[#000] overflow-x-auto ">
       <div
-        className={`absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6 ${showanimation === false && 'hidden'}`}
+        className={`absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6 ${
+          showanimation === false && "hidden"
+        }`}
       >
         {/* <Lottie
           options={defaultOptions}
@@ -68,12 +71,16 @@ export default function Home () {
       </Head>
       <SideNav path={route} />
       <Navbar path={route} />
+      <Hero />
       <div className="md:ml-16 md:px-12 px-4">
-        <Hero />
         <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
         </Link>
-        <Webinars webinarData={webinarData} title="Webinars" />
+        <Webinars
+          webinarData={webinarData}
+          title="Webinars"
+          webinarData2={webinarData2}
+        />
         <MasterClass />
         <Events />
         <CitizenScience />
@@ -156,8 +163,11 @@ export default function Home () {
                 <div className="bg-[#FD1C50] absolute inset-0 blur-md rounded-full  animate-pulse" />
               </div>
             </div>
-            <div className='absolute md:top-8 top-2 right-8 md:right-16' onClick={handleClose}>
-              <AiOutlineCloseCircle className='text-white md:text-3xl text-2xl'/>
+            <div
+              className="absolute md:top-8 top-2 right-8 md:right-16"
+              onClick={handleClose}
+            >
+              <AiOutlineCloseCircle className="text-white md:text-3xl text-2xl" />
             </div>
           </div>
         </div>

@@ -34,7 +34,7 @@ const swiperSlideData = [
 const Hero = () => {
   return (
     <div className="my-8">
-      <Swiper
+      {/* <Swiper
         // navigation={true}
         pagination={true}
         modules={[Autoplay, Pagination]}
@@ -57,7 +57,10 @@ const Hero = () => {
           );
         })}
 
-      </Swiper>
+      </Swiper> */}
+      <div>
+        <img src="heroimage2.png" className='mx-auto w-9/12'/>
+      </div>
     </div>
   );
 };
