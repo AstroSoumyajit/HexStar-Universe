@@ -3,39 +3,41 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: "gilroy";
-        src: url('/gilroy/Gilroy-Font/Gilroy-Medium.woff') format('woff')
-    }
+  @font-face {
+    font-family: "gilroy";
+    src: url('/gilroy/Gilroy-Font/Gilroy-Medium.woff') format('woff')
+  }
 
-    @font-face {
-        font-family: "cascade";
-        src: url('/cascade/Cascade.woff') format('woff')
-    }
+  @font-face {
+    font-family: "cascade";
+    src: url('/cascade/Cascade.woff') format('woff')
+  }
 
-    @font-face {
-        font-family: "sweet-sans-pro";
-        src: url('/sweet-sans-pro/SweetSansProMedium.woff') format('woff')
-    }
+  @font-face {
+    font-family: "sweet-sans-pro";
+    src: url('/sweet-sans-pro/SweetSansProMedium.woff') format('woff')
+  }
 
-    @font-face {
-        font-family: "sweet-sans-pro-light";
-        src: url('/sweet-sans-pro/SweetSansProLight.woff') format('woff')
-    }
-    @font-face {
-        font-family: "bank-gothic";
-        src: url('/Bank Gothic/Bank Gothic Light Regular.woff') format('woff')
-    }
-    @font-face {
-        font-family: "Europa_Gro";
-        src: url('/Europa_Gro_Nr_2_SH_Bold_Cond.woff') format('woff')
-    }
+  @font-face {
+    font-family: "sweet-sans-pro-light";
+    src: url('/sweet-sans-pro/SweetSansProLight.woff') format('woff')
+  }
+
+  @font-face {
+    font-family: "bank-gothic";
+    src: url('/Bank Gothic/Bank Gothic Light Regular.woff') format('woff')
+  }
+
+  @font-face {
+    font-family: "Europa_Gro";
+    src: url('/Europa_Gro_Nr_2_SH_Bold_Cond.woff') format('woff')
+  }
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-    color: white !important;
-    font-size: 20px !important;
+  color: white !important;
+  font-size: 20px !important;
 }
 
 .homeSwiperSliderCards .swiper-button-next,
@@ -115,11 +117,29 @@
 }
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+
+.hoverInnerClass .hoverOuterClass:hover {
+  display: block;
+}
+
+.hoverInnerClass {
+  display: none;
+}
+
+.hoverOuterClass:hover{
+  
 }

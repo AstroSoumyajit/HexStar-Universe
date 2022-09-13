@@ -59,7 +59,7 @@ const Hero = () => {
 
       </Swiper> */}
       <div>
-        <img src="heroimage2.png" className='mx-auto w-9/12'/>
+        <img src="heroimage2.png" className='mx-auto w-full'/>
       </div>
     </div>
   );

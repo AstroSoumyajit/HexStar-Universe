@@ -105,7 +105,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
       </div>
       {english && (
         <div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 m-auto md:gap-8 gap-12 align-items-center">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 m-auto md:gap-8 gap-12">
             {!allWebinars
               ? webinarData.slice(0, 6).map((data) => {
                   return (
