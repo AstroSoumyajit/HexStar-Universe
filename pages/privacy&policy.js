@@ -68,7 +68,7 @@ const PrivacyandPolicy = () => {
             processors are independent from Hex-Star Universe and have their own
             privacy policies. For additional information about how your payment
             information is processed and stored, we recommend that you review
-            the applicable payment protection service's privacy policy.
+            the applicable payment protection service&apos;s privacy policy.
           </h1>
         </section>
         <section className="space-y-2">
@@ -114,7 +114,7 @@ const PrivacyandPolicy = () => {
             prevent, detect, investigate, and take measures against criminal
             activity, fraud, misuse of or damage to our Platform or network or
             our contents and other threats and violations to Hex-Star Universe
-            or a third party's rights.
+            or a third party&apos;s rights.
           </h1>
           <h1>
             We may also share your personal information in the following ways:
@@ -158,10 +158,10 @@ const PrivacyandPolicy = () => {
           <ul className="list-disc pl-4">
             <li>
               comply with applicable laws, regulations, court orders, government
-              and law enforcement agencies’ requests;
+              and law enforcement agencies&apos; requests;
             </li>
             <li>
-              protect and defend Hex-Star Universe’s or a third party's rights
+              protect and defend Hex-Star Universe&apos;s or a third party's rights
               and property, or the safety of Teachable, our users, our
               employees, or others; or
             </li>
