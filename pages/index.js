@@ -23,7 +23,7 @@ import Lottie from "react-lottie";
 import * as animation from "./animation.json";
 
 export default function Home() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const handleOpen2 = () => setOpen2(true);
   const handleClose = () => setOpen(false);
@@ -73,9 +73,9 @@ export default function Home() {
       <Navbar path={route} />
       <Hero />
       <div className="md:ml-16 md:px-12 px-4">
-        <Link href="https://rzp.io/l/DeepSkyImgProcessing">
+        {/* <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
-        </Link>
+        </Link> */}
         <Webinars
           webinarData={webinarData}
           title="Webinars"

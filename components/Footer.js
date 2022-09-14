@@ -1,38 +1,38 @@
-import React from 'react';
-import Link from 'next/link';
-import {FaDiscord} from 'react-icons/fa';
-import {FaTwitter} from 'react-icons/fa';
-import {BsFacebook} from 'react-icons/bs';
-import {BsInstagram} from 'react-icons/bs';
-import {IoLogoWhatsapp} from 'react-icons/io';
-import {MdEmail} from 'react-icons/md';
+import React from "react";
+import Link from "next/link";
+import { FaDiscord } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { BsFacebook } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
   const footerItem = [
     {
-      key: 'Home',
-      name: 'Home',
-      link: '/',
+      key: "Home",
+      name: "Home",
+      link: "/",
     },
     {
-      key: 'Webinars',
-      name: 'Webinars',
-      link: '#webinars',
+      key: "Webinars",
+      name: "Webinars",
+      link: "#webinars",
     },
     {
-      key: 'Masterclass',
-      name: 'Masterclass',
-      link: '#masterclass',
+      key: "Masterclass",
+      name: "Masterclass",
+      link: "#masterclass",
     },
     {
-      key: 'Events',
-      name: 'Events',
-      link: '#events',
+      key: "Events",
+      name: "Events",
+      link: "#events",
     },
     {
-      key: 'Citizen Science',
-      name: 'Citizen Science',
-      link: '#citizenscience',
+      key: "Citizen Science",
+      name: "Citizen Science",
+      link: "#citizenscience",
     },
   ];
   return (
@@ -40,7 +40,7 @@ const Footer = () => {
       <div className="flex flex-col items-center h-full space-y-12 my-24">
         <img src="/Images/logo.svg" />
         <div className="flex md:flex-row flex-col items-center justify-center md:space-x-8 md:space-y-0 space-y-8">
-          {footerItem.map (item => {
+          {footerItem.map((item) => {
             return (
               <Link href={item.link} key={item.key}>
                 <a
@@ -61,7 +61,6 @@ const Footer = () => {
           </Link>
           <Link href=" https://twitter.com/hexstaruniverse">
             <a>
-
               <FaTwitter />
             </a>
           </Link>
@@ -91,7 +90,15 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="text-center relative bottom-0 text-white py-4">
+      <div className="text-center relative bottom-0 text-white py-4 space-y-4">
+        <footer className="text-center flex justify-center items-center space-x-4">
+          <Link href="/aboutus">About Us</Link> <span>|</span>
+          <Link href="/privacy&policy">Privacy & Policy</Link>
+          <span>|</span>
+          <Link href="/terms&condition">Terms & Conditions</Link>
+          <span>|</span>
+          <Link href="/refundPolicy">Refund Policy</Link>
+        </footer>
         <footer className="text-center">
           Copyright © 2022 Hex-Star Universe - All Rights Reserved
         </footer>

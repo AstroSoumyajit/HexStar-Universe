@@ -26,7 +26,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
           className={`${english && "border-2 border-white"} p-1 rounded-full`}
         >
           <button
-            className="md:w-36 w-28 focus:outline-none bg-gradient-to-r from-[#FF00F5] to-[#0038FF] px-4 py-2 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
+            className="md:w-36 w-28 focus:outline-none bg-gradient-to-r from-[#FF00F5] to-[#0038FF] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
             onClick={() => {
               setEnglish(true);
               setBengali(false);
@@ -42,7 +42,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
           className={`${bengali && "border-2 border-white"} p-1 rounded-full`}
         >
           <button
-            className="w-36 focus:outline-none bg-gradient-to-r from-[#2CDE00] to-[#0038FF] px-4 py-2 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
+            className="w-36 focus:outline-none bg-gradient-to-r from-[#2CDE00] to-[#0038FF] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
             onClick={() => {
               setEnglish(false);
               setBengali(true);
@@ -58,7 +58,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
           className={`${hindi && "border-2 border-white"} p-1 rounded-full`}
         >
           <button
-            className="w-36 focus:outline-none bg-gradient-to-r from-[#FF00B8] to-[#F8C100] px-4 py-2 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider "
+            className="w-36 focus:outline-none bg-gradient-to-r from-[#FF00B8] to-[#F8C100] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider "
             onClick={() => {
               setEnglish(false);
               setBengali(false);
@@ -74,7 +74,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
           className={`${tamil && "border-2 border-white"} p-1 rounded-full`}
         >
           <button
-            className="w-36 focus:outline-none bg-gradient-to-r from-[#0038FF] to-[#FF00F5] px-4 py-2 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
+            className="w-36 focus:outline-none bg-gradient-to-r from-[#0038FF] to-[#FF00F5] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
             onClick={() => {
               setEnglish(false);
               setBengali(false);
@@ -90,7 +90,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
           className={`${telegu && "border-2 border-white"} p-1 rounded-full`}
         >
           <button
-            className="w-36 focus:outline-none bg-gradient-to-r from-[#2400FF] to-[#87a0f3] px-4 py-2 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
+            className="w-36 focus:outline-none bg-gradient-to-r from-[#2400FF] to-[#87a0f3] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
             onClick={() => {
               setEnglish(false);
               setBengali(false);

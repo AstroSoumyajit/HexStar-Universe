@@ -27,7 +27,7 @@ const WebinarsCard = ({ image, title, speakerImage, speaker }) => {
         </div>
         <Link href={`/${title}`}>
           <button className="bg-gradient-to-r from-[#000AFF] to-[#DB00FF] w-full py-1.5 text-white font-sweet_sans_pro rounded-md invisible group-hover:visible">
-            Watch Sream
+            Watch Stream
           </button>
         </Link>
       </div>
@@ -44,9 +44,11 @@ const WebinarsCard = ({ image, title, speakerImage, speaker }) => {
               {speaker}
             </h1>
           </section>
-          <button className="bg-[#2D2D2D] text-white rounded-md px-3 py-1 w-fit text-xs sm:text-base font-medium">
-            watch
-          </button>
+          <Link href={`/${title}`}>
+            <button className="bg-[#2D2D2D] text-white rounded-md px-3 py-1 w-fit text-xs sm:text-base font-medium">
+              watch
+            </button>
+          </Link>
         </section>
         <hr className="border-[#242424] border col-span-5 my-2" />
       </div>
