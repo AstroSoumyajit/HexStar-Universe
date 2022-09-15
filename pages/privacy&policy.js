@@ -161,7 +161,7 @@ const PrivacyandPolicy = () => {
               and law enforcement agencies&apos; requests;
             </li>
             <li>
-              protect and defend Hex-Star Universe&apos;s or a third party's rights
+              protect and defend Hex-Star Universe&apos;s or a third party&apos;s rights
               and property, or the safety of Teachable, our users, our
               employees, or others; or
             </li>
