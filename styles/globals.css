@@ -147,3 +147,9 @@
   50%  { transform: translate(0, 15px); }
   100%   { transform: translate(0, -0px); }   
 }
+
+.mySwiper{
+  width: 100%;
+  height: fit-content;
+  z-index: -1000;
+}
