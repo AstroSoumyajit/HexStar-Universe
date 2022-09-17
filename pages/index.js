@@ -71,8 +71,8 @@ export default function Home() {
       </Head>
       <SideNav path={route} />
       <Navbar path={route} />
-      <Hero />
       <div className="md:ml-16 md:px-12 px-4">
+        <Hero />
         {/* <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
         </Link> */}

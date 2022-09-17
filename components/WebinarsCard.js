@@ -32,9 +32,9 @@ const WebinarsCard = ({ image, title, speakerImage, speaker }) => {
         </Link>
       </div>
 
-      <div className="md:hidden grid grid-cols-5 gap-4">
-        <img src={image} className="col-span-3 h-full object-cover" />
-        <section className="flex flex-col space-y-2 sm:space-y-4 col-span-2">
+      <div className="md:hidden grid grid-cols-7 gap-4">
+        <img src={image} className="col-span-4 h-full object-contain" />
+        <section className="flex flex-col space-y-2 sm:space-y-4 col-span-3">
           <h1 className="text-white font-sweet_sans_pro sm:text-xl text-sm font-medium">
             {title}
           </h1>
