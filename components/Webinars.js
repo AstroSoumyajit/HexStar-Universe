@@ -170,13 +170,13 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
         </div>
       )}
       {
-        hindi && <div className="min-h-[50vh] text-white flex justify-center items-center md:text-3xl lg:text-4xl xl:text-6xl text-2xl font-semibold"> <h1>Comming Soon...</h1></div>
+        hindi && <div className=" text-white  font-semibold"> <h1 className="lg:text-6xl md:text-4xl text-2xl min-h-[50vh] flex justify-center items-center">Comming Soon...</h1></div>
       }
       {
-        tamil && <div className="min-h-[50vh] text-white flex justify-center items-center md:text-3xl lg:text-4xl xl:text-6xl text-2xl font-semibold"> <h1>Comming Soon...</h1></div>
+        tamil && <div className=" text-white  font-semibold"> <h1 className="lg:text-6xl md:text-4xl text-2xl min-h-[50vh] flex justify-center items-center">Comming Soon...</h1></div>
       }
       {
-        telegu && <div className="min-h-[50vh] text-white flex justify-center items-center md:text-3xl lg:text-4xl xl:text-6xl text-2xl font-semibold"> <h1>Comming Soon...</h1></div>
+        telegu && <div className=" text-white  font-semibold"> <h1 className="lg:text-6xl md:text-4xl text-2xl min-h-[50vh] flex justify-center items-center">Comming Soon...</h1></div>
       }
     </div>
   );

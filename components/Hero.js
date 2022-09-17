@@ -166,7 +166,7 @@ const Hero = () => {
               />
               <img
                 src="Images/Webinars/english/person/person2.png"
-                className="absolute top-1/3 md:left-16 left-0 floating md:w-16 w-8"
+                className="absolute top-1/3 md:left-12 left-0 floating md:w-16 w-8"
               />
               <img
                 src="Images/Webinars/english/person/person9.png"
@@ -178,7 +178,7 @@ const Hero = () => {
               />
               <img
                 src="/floatingIcon/floatingIcon2.png"
-                className="absolute top-1/3 md:right-16 right-0 floating md:w-16 w-8"
+                className="absolute top-1/3 md:right-12 right-0 floating md:w-16 w-8"
               />
               <img
                 src="Images/Webinars/english/person/person13.png"
