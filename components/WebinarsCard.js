@@ -50,7 +50,7 @@ const WebinarsCard = ({ image, title, speakerImage, speaker }) => {
             </button>
           </Link>
         </section>
-        <hr className="border-[#242424] border col-span-5 my-2" />
+        <hr className="border-[#242424] border col-span-7 my-2" />
       </div>
     </div>
   );
