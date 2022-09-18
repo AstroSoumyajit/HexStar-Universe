@@ -51,7 +51,7 @@ const Hero = () => {
           <div className="w-full">
             <div className="w-full  relative mx-auto sm:hidden">
 
-              <img src="heroimage2screen.png" className="mx-auto" />
+              <img src="heroImage2screen.png" className="mx-auto" />
               <Link href="https://youtube.com/channel/UC0eZvfZEmgUldSAzAAv5ysA">
                 <button className="bg-gradient-to-r from-[#FF3D00] to-[#FFE600]  md:px-4 px-2 md:py-2 py-1 xl:w-[20rem] lg:w-[15rem] md:w-[10rem] w-[8rem] md:text-lg text-xs text-white font-sweet_sans_pro rounded-md text-center absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-[60%]">
                   Watch Now
@@ -114,7 +114,7 @@ const Hero = () => {
         <SwiperSlide key={"2"} className="mySwiper">
           <div className="w-full">
             <div className="w-full relative mx-auto sm:hidden">
-              <img src="heroimage1screen.png" className="mx-auto" />
+              <img src="heroImage1screen.png" className="mx-auto" />
               <Link href="https://forms.gle/tu41XvnDkXRK1Hgv7">
                 <button className="bg-gradient-to-r from-[#2400FF] to-[#00D1FF]  md:px-4 px-2 md:py-2 py-1 xl:w-[20rem] lg:w-[15rem] w-[10rem] md:text-lg text-xs text-white font-sweet_sans_pro rounded-md text-center absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-[65%]">
                   Get Started for free
