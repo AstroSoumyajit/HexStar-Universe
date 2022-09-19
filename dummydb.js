@@ -1,5 +1,32 @@
 export const webinarData = [
   {
+    key: 18,
+    linkEmbed: "https://youtube.com/embed/RhZrf5iBVTo",
+    title: "Exoplanet Exploration and Aerodymics of Aerofoil",
+    thumbnail: "Images/Webinars/english/image/image18.png",
+    speaker: "-Golsar Akash",
+    speakerImage: "Images/Webinars/english/person/person18.png",
+    videoID: "RhZrf5iBVTo ",
+  },
+  {
+    key: 17,
+    linkEmbed: "https://youtu.be/nz5XXhrked4",
+    title: "CFD of Rocket Nozzles",
+    thumbnail: "Images/Webinars/english/image/image17.png",
+    speaker: "-Nivedha Govindarajan",
+    speakerImage: "Images/Webinars/english/person/person17.png",
+    videoID: "nz5XXhrked4",
+  },
+  {
+    key: 16,
+    linkEmbed: "https://youtu.be/oYM3EFKGhtI",
+    title: "Nuclear physics and it’s role on Mordern Civilization",
+    thumbnail: "Images/Webinars/english/image/image16.png",
+    speaker: "-Dr. Pretam Kumar Das",
+    speakerImage: "Images/Webinars/english/person/person16.png",
+    videoID: "oYM3EFKGhtI",
+  },
+  {
     key: 15,
     linkEmbed: "https://youtube.com/embed/IXqzrwr7sZg ",
     title: "Women in STEM and Space, Space Architecture",
