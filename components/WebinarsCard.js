@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 
-const WebinarsCard = ({ image, title, speakerImage, speaker }) => {
+const WebinarsCard = ({ image, title, speakerImage, speaker, route }) => {
+  console.log(route)
   return (
     <div className="">
       <div className="space-y-4 hidden md:block w-fit hover:bg-[#161616] overflow-hidden hover:scale-110 duration-200 hover:p-4 rounded-xl group">
@@ -25,7 +26,7 @@ const WebinarsCard = ({ image, title, speakerImage, speaker }) => {
             </h1>
           </div>
         </div>
-        <Link href={`/${title}`}>
+        <Link href={`/${route}/${title}`}>
           <button className="bg-gradient-to-r from-[#000AFF] to-[#DB00FF] w-full py-1.5 text-white font-sweet_sans_pro rounded-md invisible group-hover:visible">
             Watch Stream
           </button>
@@ -44,7 +45,7 @@ const WebinarsCard = ({ image, title, speakerImage, speaker }) => {
               {speaker}
             </h1>
           </section>
-          <Link href={`/${title}`}>
+          <Link href={`/${route}/${title}`}>
             <button className="bg-[#2D2D2D] text-white rounded-md px-3 py-1 w-fit text-xs sm:text-base font-medium">
               watch
             </button>

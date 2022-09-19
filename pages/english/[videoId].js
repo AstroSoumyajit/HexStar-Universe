@@ -1,11 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
-import SideNav from "../components/SideNav";
-import Navbar from "../components/Navbar";
-import { webinarData } from "../dummydb";
-import Webinars from "../components/Webinars";
+import SideNav from "../../components/SideNav";
+import Navbar from "../../components/Navbar";
+import { webinarData } from "../../dummydb";
+import { webinarData2 } from "../../dummydb2";
+import Webinars from "../../components/Webinars";
 import { useState } from "react";
-import BoostButton from "../components/BoostButton";
+import BoostButton from "../../components/BoostButton";
 import { BsWhatsapp, BsLinkedin, BsTwitter } from "react-icons/bs";
 import {
   LinkedinShareButton,
@@ -23,7 +24,7 @@ const VideoOpen = ({ webinarData }) => {
 
   const shareLink = "https://www.youtube.com/watch?v=".concat(webinar.videoID);
 
-  console.log( webinar, shareLink);
+  console.log(webinar, shareLink);
 
   const [open, setOpen] = React.useState(false);
 
@@ -65,7 +66,10 @@ const VideoOpen = ({ webinarData }) => {
               <div className="flex md:flex-row flex-col  items-center justify-start md:space-x-4 space-y-4 md:space-y-0">
                 <h1
                   className="md:text-md rounded-lg bg-[#2C2E40] border border-[#5B5B5B] px-6 py-3 noselect"
-                  onDoubleClick={() => {navigator.clipboard.writeText(shareLink); alert("Link copied")}}
+                  onDoubleClick={() => {
+                    navigator.clipboard.writeText(shareLink);
+                    alert("Link copied");
+                  }}
                 >
                   {shareLink.length > 30
                     ? shareLink.substring(0, 25).concat("...")
@@ -130,6 +134,7 @@ export async function getStaticPaths() {
       params: { videoId: `${data.title}` },
     };
   });
+  
   return {
     paths,
     fallback: false,

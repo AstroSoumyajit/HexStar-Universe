@@ -115,6 +115,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
                       title={data.title}
                       speaker={data.speaker}
                       speakerImage={data.speakerImage}
+                      route={"english"}
                     />
                   );
                 })
@@ -126,6 +127,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
                       title={data.title}
                       speaker={data.speaker}
                       speakerImage={data.speakerImage}
+                      route={"english"}
                     />
                   );
                 })}
@@ -164,6 +166,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
                 title={data.title}
                 speaker={data.speaker}
                 speakerImage={data.speakerImage}
+                route={"bengali"}
               />
             );
           })}
