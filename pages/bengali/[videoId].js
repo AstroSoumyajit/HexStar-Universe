@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import SideNav from "../../components/SideNav";
 import Navbar from "../../components/Navbar";
-import { webinarData2 } from "../../dummydb2";
+import { webinarData } from "../../dummydb";
 import Webinars from "../../components/Webinars";
 import { useState } from "react";
 import BoostButton from "../../components/BoostButton";
@@ -14,16 +14,14 @@ import {
 } from "react-share";
 import Head from "next/head";
 
-const VideoOpen = ({ webinarData2 }) => {
+const VideoOpen = ({ bengaliWebinar }) => {
   const router = useRouter();
   const title = router.query.videoId;
 
-  const webinar = webinarData2.find((obj) => obj.title === title);
+  const webinar = bengaliWebinar.find((obj) => obj.title === title);
   const [shareLinkState, setshareLinkState] = useState("");
 
   const shareLink = "https://www.youtube.com/watch?v=".concat(webinar.videoID);
-
-  console.log(webinar, shareLink);
 
   const [open, setOpen] = React.useState(false);
 
@@ -35,7 +33,6 @@ const VideoOpen = ({ webinarData2 }) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
@@ -110,7 +107,7 @@ const VideoOpen = ({ webinarData2 }) => {
             </div>
           </div>
         </div>
-        <Webinars webinarData={webinarData2} title="Previous Webinars" />
+        <Webinars title="Previous Webinars" />
       </div>
       <div className="text-center w-full md:ml-16 md:px-12 px-8">
         <img
@@ -128,7 +125,8 @@ const VideoOpen = ({ webinarData2 }) => {
 export default VideoOpen;
 
 export async function getStaticPaths() {
-  const paths = webinarData2.map((data) => {
+  const bengaliWebinar = webinarData.filter(data=> data.language == "bengali")
+  const paths = bengaliWebinar.map((data) => {
     return {
       params: { videoId: `${data.title}` },
     };
@@ -141,9 +139,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps() {
+  const bengaliWebinar = webinarData.filter(data=> data.language == "bengali")
   return {
     props: {
-      webinarData2,
+      bengaliWebinar,
     },
   };
 }

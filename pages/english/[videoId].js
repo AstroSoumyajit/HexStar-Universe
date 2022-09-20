@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import SideNav from "../../components/SideNav";
 import Navbar from "../../components/Navbar";
 import { webinarData } from "../../dummydb";
-import { webinarData2 } from "../../dummydb2";
 import Webinars from "../../components/Webinars";
 import { useState } from "react";
 import BoostButton from "../../components/BoostButton";
@@ -15,7 +14,7 @@ import {
 } from "react-share";
 import Head from "next/head";
 
-const VideoOpen = ({ webinarData }) => {
+const VideoOpen = ({ englishWebinar }) => {
   const router = useRouter();
   const title = router.query.videoId;
 
@@ -23,8 +22,6 @@ const VideoOpen = ({ webinarData }) => {
   const [shareLinkState, setshareLinkState] = useState("");
 
   const shareLink = "https://www.youtube.com/watch?v=".concat(webinar.videoID);
-
-  console.log(webinar, shareLink);
 
   const [open, setOpen] = React.useState(false);
 
@@ -111,7 +108,7 @@ const VideoOpen = ({ webinarData }) => {
             </div>
           </div>
         </div>
-        <Webinars webinarData={webinarData} title="Previous Webinars" />
+        <Webinars title="Previous Webinars" />
       </div>
       <div className="text-center w-full md:ml-16 md:px-12 px-8">
         <img
@@ -129,7 +126,8 @@ const VideoOpen = ({ webinarData }) => {
 export default VideoOpen;
 
 export async function getStaticPaths() {
-  const paths = webinarData.map((data) => {
+  const englishWebinar = webinarData.filter(data=> data.language == "english")
+  const paths = englishWebinar.map((data) => {
     return {
       params: { videoId: `${data.title}` },
     };
@@ -142,9 +140,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps() {
+  const englishWebinar = webinarData.filter(data=> data.language == "english")
   return {
     props: {
-      webinarData,
+      englishWebinar,
     },
   };
 }

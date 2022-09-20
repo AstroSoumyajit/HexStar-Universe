@@ -34,8 +34,8 @@ const PrivacyandPolicy = () => {
           <h1>
             Hex-Star Universe reserves the right to postpone/cancel the course,
             change the structure of the course or change the list of speakers.
-            If Hex-Star Universe cancels the entire course, we&apos;ll refund 100% of
-            the course fees to the Subscriber.
+            If Hex-Star Universe cancels the entire course, we&apos;ll refund
+            100% of the course fees to the Subscriber.
           </h1>
           <h1>
             Once the program begins, we will initiate no refund if the course
@@ -71,7 +71,7 @@ const PrivacyandPolicy = () => {
       </div>
       <div className="my-4">
         <div className="p-2 rounded-full bg-white w-fit mx-auto cursor-pointer">
-          <Link href="/">
+          <Link href="/#footer">
             <MdOutlineArrowBack className="text-4xl" />
           </Link>
         </div>

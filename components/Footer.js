@@ -36,8 +36,8 @@ const Footer = () => {
     },
   ];
   return (
-    <div className=" ">
-      <div className="flex flex-col items-center h-full space-y-12 my-24">
+    <div className="">
+      <div className="flex flex-col items-center h-full space-y-12 my-24" id="footer">
         <img src="/Images/logo.svg" />
         <div className="flex md:flex-row flex-col items-center justify-center md:space-x-8 md:space-y-0 space-y-8">
           {footerItem.map((item) => {

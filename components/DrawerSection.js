@@ -20,7 +20,7 @@ const DrawerSection = ({path}) => {
       if (filtered.length === 0) {
         alert ('data nor found');
       } else {
-        window.location.href = `/${filtered[0].title}`;
+        window.location.href = `/${filtered[0].language}/${filtered[0].title}`;
       }
     }
   }

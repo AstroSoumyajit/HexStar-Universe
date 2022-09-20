@@ -5,14 +5,21 @@ import DrawerSection from "./DrawerSection";
 import { useState } from "react";
 import { border } from "@mui/system";
 // import {webinarData} from '../dummydb';
+import { webinarData } from "../dummydb";
 
-const Webinars = ({ webinarData, title, webinarData2 }) => {
+const Webinars = ({ title }) => {
   const [allWebinars, setAllWebinars] = React.useState(false);
   const [english, setEnglish] = React.useState(true);
   const [bengali, setBengali] = React.useState(false);
   const [hindi, setHindi] = React.useState(false);
   const [tamil, setTamil] = React.useState(false);
   const [telegu, setTelegu] = React.useState(false);
+
+  const englishWebinar = webinarData.filter(data=> data.language == "english")
+  const bengaliWebinar = webinarData.filter(data=> data.language == "bengali")
+
+  console.log(englishWebinar)
+  
   // console.log(webinarData)
   return (
     <div className="my-8" id="webinars">
@@ -107,7 +114,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
         <div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 m-auto md:gap-8 gap-12">
             {!allWebinars
-              ? webinarData.slice(0, 6).map((data) => {
+              ? englishWebinar.slice(0, 6).map((data) => {
                   return (
                     <WebinarsCard
                       key={data.key}
@@ -119,7 +126,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
                     />
                   );
                 })
-              : webinarData.map((data) => {
+              : englishWebinar.map((data) => {
                   return (
                     <WebinarsCard
                       key={data.key}
@@ -158,7 +165,7 @@ const Webinars = ({ webinarData, title, webinarData2 }) => {
       )}
       {bengali && (
         <div className="my-8 min-h-[50vh]">
-          {webinarData2.map((data) => {
+          {bengaliWebinar.map((data) => {
             return (
               <WebinarsCard
                 key={data.key}

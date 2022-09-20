@@ -26,7 +26,7 @@ const PrivacyandPolicy = () => {
       </div>
       <div className="my-4">
         <div className="p-2 rounded-full bg-white w-fit mx-auto cursor-pointer">
-          <Link href="/">
+          <Link href="/#footer">
             <MdOutlineArrowBack className="text-4xl" />
           </Link>
         </div>

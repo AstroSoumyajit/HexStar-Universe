@@ -20,7 +20,6 @@ const Events = () => {
   useEffect (() => {
     window.addEventListener ('scroll', () => {
       const windowHeight = window.pageYOffset;
-      console.log (windowHeight);
       if (windowHeight >= 2800) {
         setShowCounter (true);
       }

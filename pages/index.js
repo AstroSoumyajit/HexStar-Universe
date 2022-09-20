@@ -39,7 +39,6 @@ export default function Home() {
       setShowanimation(false);
     }, 1500);
   }, []);
-  console.log(showanimation);
 
   const defaultOptions = {
     loop: false,
@@ -77,9 +76,7 @@ export default function Home() {
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
         </Link> */}
         <Webinars
-          webinarData={webinarData}
           title="Webinars"
-          webinarData2={webinarData2}
         />
         <MasterClass />
         <Events />
