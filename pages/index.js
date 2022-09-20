@@ -7,14 +7,11 @@ import MasterClass from "../components/MasterClass";
 import Navbar from "../components/Navbar";
 import SideNav from "../components/SideNav";
 import Webinars from "../components/Webinars";
-import { webinarData } from "../dummydb";
-import { webinarData2 } from "../dummydb2";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import BoostButton from "../components/BoostButton";
 import Link from "next/link";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+
 import Modal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
