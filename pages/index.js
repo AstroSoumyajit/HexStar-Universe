@@ -20,7 +20,7 @@ import Lottie from "react-lottie";
 import * as animation from "./animation.json";
 
 export default function Home() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [open2, setOpen2] = useState(false);
   const handleOpen2 = () => setOpen2(true);
   const handleClose = () => setOpen(false);
@@ -72,9 +72,7 @@ export default function Home() {
         {/* <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
         </Link> */}
-        <Webinars
-          title="Webinars"
-        />
+        <Webinars title="Webinars" />
         <MasterClass />
         <Events />
         <CitizenScience />
@@ -145,20 +143,19 @@ export default function Home() {
             <div className="absolute bg-[#320090] inset-0 blur-xl rounded-md -z-10" />
           </div> */}
           <div className="flex flex-col justify-center space-y-6 sm:w-[500px] w-[80vw] relative">
-            <img src="/astroimage.png" />
-            <div className="absolute sm:top-3/4 top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <img src="/rocketdesignChallange.png" />
+            <div className="absolute top-3/4  left-1/4 -translate-x-1/2 -translate-y-1/2">
               <div className="relative w-fit">
-                <button
-                  className="bg-[#FD1C50] text-black font-sweet_sans_pro font-bold italic md:text-lg text-[11px] px-3 py-2 rounded-full relative z-20 "
-                  onClick={handleOpen2}
-                >
-                  REGISTER NOW
-                </button>
-                <div className="bg-[#FD1C50] absolute inset-0 blur-md rounded-full  animate-pulse" />
+                <Link href="https://pages.razorpay.com/VRDC2K22">
+                  <button className="bg-[#00D1FF] text-black font-sweet_sans_pro font-bold italic sm:text-base text-xs px-3 py-2 rounded-full relative z-20 ">
+                    REGISTER NOW
+                  </button>
+                </Link>
+                <div className="bg-[#00D1FF] absolute inset-0 blur-md rounded-full animate-pulse" />
               </div>
             </div>
             <div
-              className="absolute md:top-8 top-2 right-8 md:right-16"
+              className="absolute top-0 right-6 cursor-pointer"
               onClick={handleClose}
             >
               <AiOutlineCloseCircle className="text-white md:text-3xl text-2xl" />
@@ -166,7 +163,7 @@ export default function Home() {
           </div>
         </div>
       </Modal>
-      <Modal
+      {/* <Modal
         open={open2}
         onClose={handleClose2}
         aria-labelledby="modal-modal-title"
@@ -182,7 +179,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }

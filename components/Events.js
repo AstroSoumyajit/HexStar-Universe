@@ -53,17 +53,17 @@ const Events = () => {
         >
           <SwiperSlide>
             <Link href=" https://unstop.com">
-              <img src="/Images/EventComponent/frame1.png" className="m-auto" />
+              <img src="/Images/EventComponent/frame5.png" className="m-auto" />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
             <Link href="https://unstop.com/workshop/asteroid-search-campaign-30-hex-star-universe-335553">
-              <img src="/Images/EventComponent/frame2.png" className="m-auto" />
+              <img src="/Images/EventComponent/frame4.png" className="m-auto" />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
             <Link href="https://unstop.com/quiz/cosmo-quiz-20-hex-star-universe-327402">
-              <img src="/Images/EventComponent/frame3.png" className="m-auto" />
+              <img src="/Images/EventComponent/frame1.png" className="m-auto" />
             </Link>
           </SwiperSlide>
         </Swiper>

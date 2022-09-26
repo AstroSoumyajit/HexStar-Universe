@@ -37,8 +37,6 @@ const Hero = () => {
   return (
     <div className="my-8">
       <Swiper
-        // navigation={true}
-        pagination={true}
         effect={"fade"}
         modules={[Autoplay, Pagination, EffectFade]}
         className="mySwiper child:cursor-pointer"
