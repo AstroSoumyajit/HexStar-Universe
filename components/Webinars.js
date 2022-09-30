@@ -31,11 +31,11 @@ const Webinars = ({ title }) => {
     <div className="my-8" id="webinars">
       <div className="hidden md:block">
         <div className="flex w-full items-center">
-          <img src="/webinars.png" className="mr-8" />
+          <img src="/Webinars.png" className="mr-8" />
           <hr className="border-[#363636] border-2 w-full" />
         </div>
       </div>
-      <img src="/webinarsHeading.png"/>
+      <img src="/webinarsHeading.png" className="md:hidden"/>
 
       <div className="pb-6">
         <button
