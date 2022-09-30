@@ -18,6 +18,8 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaCalendarAlt } from "react-icons/fa";
 import Lottie from "react-lottie";
 import * as animation from "./animation.json";
+import WSW from "../components/WSW";
+import Mentor from "../components/Mentor";
 
 export default function Home() {
   const [open, setOpen] = useState(true);
@@ -69,11 +71,13 @@ export default function Home() {
       <Navbar path={route} />
       <div className="md:ml-16 md:px-12 px-4">
         <Hero />
+        <WSW/>
         {/* <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
         </Link> */}
         <Webinars title="Webinars" />
         <MasterClass />
+        <Mentor/>
         <Events />
         <CitizenScience />
         <Collaborators />
