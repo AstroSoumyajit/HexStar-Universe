@@ -138,9 +138,9 @@ const Webinars = ({ title }) => {
 
       {english && (
         <div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 m-auto md:gap-8 gap-12">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 m-auto md:gap-8 gap-12">
             {!allWebinars
-              ? englishWebinar.slice(0, 6).map((data) => {
+              ? englishWebinar.slice(0, 8).map((data) => {
                   return (
                     <WebinarsCard
                       key={data.key}
@@ -177,7 +177,7 @@ const Webinars = ({ title }) => {
             <button
               className={`${
                 !allWebinars && "hidden"
-              } text-white bg-gradient-to-b from-[#9E00FF] via-[#8F00FF] to-[#130EFF] rounded-full px-4 py-[3px] font-sweet_sans_pro text-xl`}
+              } text-white  rounded-full px-4 py-2 font-sweet_sans_pro border border-white text-xl mx-auto`}
               onClick={() => setAllWebinars(false)}
             >
               Less
