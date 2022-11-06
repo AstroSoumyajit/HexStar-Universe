@@ -11,24 +11,42 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import BoostButton from "../components/BoostButton";
 import Link from "next/link";
-
+import { FcGoogle } from "react-icons/fc";
+import { BsGithub } from "react-icons/bs";
 import Modal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import { FaCalendarAlt } from "react-icons/fa";
+import {
+  AiOutlineCloseCircle,
+  AiFillEye,
+  AiFillEyeInvisible,
+} from "react-icons/ai";
 import Lottie from "react-lottie";
 import * as animation from "./animation.json";
 import WSW from "../components/WSW";
 import Mentor from "../components/Mentor";
 
 export default function Home() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(true);
   const handleOpen2 = () => setOpen2(true);
+  const handleOpen3 = () => setOpen2(true);
   const handleClose = () => setOpen(false);
   const handleClose2 = () => setOpen2(false);
+  const handleClose3 = () => setOpen3(false);
   const [showanimation, setShowanimation] = useState(true);
   const route = useRouter().pathname;
+  const [values, setValues] = useState({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
+
+  let year = new Date().getFullYear();
+  const range = (min, max) =>
+    [...Array(max - min + 1).keys()].map((i) => i + min);
   // console.log (route);
 
   useEffect(() => {
@@ -46,6 +64,17 @@ export default function Home() {
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = () => {
+    event.preventDefault();
   };
   return (
     <div className="bg-[#000] overflow-x-auto ">
@@ -71,13 +100,13 @@ export default function Home() {
       <Navbar path={route} />
       <div className="md:ml-16 md:px-12 px-4">
         <Hero />
-        <WSW/>
+        <WSW />
         {/* <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
         </Link> */}
         <Webinars title="Webinars" />
         <MasterClass />
-        <Mentor/>
+        <Mentor />
         <Events />
         <CitizenScience />
         <Collaborators />
@@ -163,6 +192,106 @@ export default function Home() {
               onClick={handleClose}
             >
               <AiOutlineCloseCircle className="text-white md:text-3xl text-2xl" />
+            </div>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        open={open3}
+        onClose={handleClose3}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div className="absolute outline-0 top-1/2  left-1/2  -translate-x-1/2 -translate-y-1/2 ">
+          <div className="w-[70vw] h-[60vh] grid-cols-2 grid justify-items-center place-items-center ">
+            <div className="backdrop-blur-md bg-[#171717]/30 bg-white h-full w-full rounded-t-l-xl rounded-b-l-xl rounded-tl-3xl rounded-bl-3xl flex justify-center">
+              <form className="font-gilroy flex flex-col justify-center space-y-4 w-1/2">
+                <input
+                  type="text"
+                  placeholder="Enter your Name"
+                  className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white"
+                />
+                {/* <input type="text" placeholder="Enter your Email Address" className="bg-transparent border border-white rounded-xl px-2 py-1.5"/> */}
+                <input
+                  type="text"
+                  placeholder="Enter your Name"
+                  className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white"
+                />
+                <section className="flex justify-between space-x-4">
+                  <select className="px-1.5 py-1.5 rounded-md bg-transparent border-white border child:bg-black child:text-white text-white scrollbar-thumb-gray-900 scrollbar-thin">
+                    <option selected disabled>
+                      D
+                    </option>
+                    {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => {
+                      return <option>{date}</option>;
+                    })}
+                  </select>
+                  <select className="px-1.5 py-1.5 rounded-md bg-transparent border-white border text-white child:bg-black child:text-white scrollbar-thumb-gray-900 scrollbar-thin">
+                    <option selected disabled>
+                      M
+                    </option>
+                    {Array.from({ length: 12 }, (_, i) => i + 1).map((date) => {
+                      return <option>{date}</option>;
+                    })}
+                  </select>
+                  <select className="px-1.5 py-1.5 rounded-md bg-transparent border-white border child:bg-black child:text-white text-white scrollbar-thumb-gray-900 scrollbar-thin">
+                    <option selected disabled>
+                      YY
+                    </option>
+                    {range(year - 50, year)
+                      .reverse()
+                      .map((date) => {
+                        return <option>{date}</option>;
+                      })}
+                  </select>
+                </section>
+
+                {/* need to build */}
+                <section className="relative">
+                  <input
+                    type="password"
+                    className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full"
+                    placeholder="Enter your password"
+                  />
+                  <AiFillEye className="text-[#777777] absolute top-1.5 right-1.5 text-2xl cursor-pointer" />
+                </section>
+
+                <button className="bg-[#777777] py-1.5 rounded-xl text-white hover:bg-[#424242]">
+                  Create Account
+                </button>
+                <div className="relative flex py-2 items-center">
+                  <div className="flex-grow border-t border-[#ffffff]" />
+                  <span className="flex-shrink mx-4">
+                    <Link href=" https://www.zooniverse.org/">
+                      <button className="text-white">Or</button>
+                    </Link>
+                  </span>
+                  <div className="flex-grow border-t border-[#ffffff]" />
+                </div>
+                <button className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full flex justify-center items-center">
+                  <FcGoogle className="text-2xl mr-4" />
+                  Log in With Google
+                </button>
+                <button className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full flex justify-center items-center">
+                  <BsGithub className="text-2xl mr-4" />
+                  Log in With Github
+                </button>
+              </form>
+            </div>
+            <div className="bg-[#171717] h-full font-gilroy flex flex-col justify-center p-8 rounded-tr-3xl rounded-br-3xl">
+              <section className="flex flex-col text-white space-y-12 ">
+                <div className="space-y-6 ">
+                  <h1 className="text-5xl">
+                    Welcome to
+                    <br /> our Community
+                  </h1>
+                  <h1>
+                    Make your career on Space science and technology by the
+                    mentorship of top engineer and scientists of the world.
+                  </h1>
+                </div>
+                <img src="/persons.png" className="w-fit" />
+              </section>
             </div>
           </div>
         </div>

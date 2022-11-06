@@ -40,6 +40,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('tailwind-scrollbar'),
     require('tailwind-scrollbar-hide'),
     function({addVariant}) {
       addVariant ('child', '& > *');
