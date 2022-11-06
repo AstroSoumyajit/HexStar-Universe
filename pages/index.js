@@ -10,20 +10,13 @@ import Webinars from "../components/Webinars";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import BoostButton from "../components/BoostButton";
-import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { BsGithub } from "react-icons/bs";
 import Modal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
-import {
-  AiOutlineCloseCircle,
-  AiFillEye,
-  AiFillEyeInvisible,
-} from "react-icons/ai";
 import Lottie from "react-lottie";
 import * as animation from "./animation.json";
 import WSW from "../components/WSW";
 import Mentor from "../components/Mentor";
+import LoginForm from "../components/LoginForm";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -43,11 +36,9 @@ export default function Home() {
     weightRange: "",
     showPassword: false,
   });
-
-  let year = new Date().getFullYear();
-  const range = (min, max) =>
-    [...Array(max - min + 1).keys()].map((i) => i + min);
   // console.log (route);
+
+  // setTimeout(()=>setOpen3(true), 5000)
 
   useEffect(() => {
     console.log("Function is called");
@@ -66,16 +57,6 @@ export default function Home() {
     },
   };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = () => {
-    event.preventDefault();
-  };
   return (
     <div className="bg-[#000] overflow-x-auto ">
       <div
@@ -113,7 +94,7 @@ export default function Home() {
         <Footer />
         <BoostButton />
       </div>
-      <Modal
+      {/* <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -121,7 +102,7 @@ export default function Home() {
         className="relative"
       >
         <div className="focus:outline-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          {/* <div className="rounded-lg bg-gradient-to-tl from-[#14003a] to-[#320090] relative">
+          <div className="rounded-lg bg-gradient-to-tl from-[#14003a] to-[#320090] relative">
             <div className="px-4 py-4 ">
               <div className="flex justify-between">
                 <h1 className="bg-[#00C2FF] font-bold rounded-md px-4 py-2 -rotate-3 font-Europa_Gro max-w-fit text-2xl">
@@ -174,7 +155,7 @@ export default function Home() {
               className="absolute bottom-0 right-0 w-[50%] rounded-br-lg"
             />
             <div className="absolute bg-[#320090] inset-0 blur-xl rounded-md -z-10" />
-          </div> */}
+          </div>
           <div className="flex flex-col justify-center space-y-6 sm:w-[500px] w-[80vw] relative">
             <img src="/rocketdesignChallange.png" />
             <div className="absolute top-3/4  left-1/4 -translate-x-1/2 -translate-y-1/2">
@@ -195,91 +176,23 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
       <Modal
         open={open3}
         onClose={handleClose3}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="absolute outline-0 top-1/2  left-1/2  -translate-x-1/2 -translate-y-1/2 ">
-          <div className="w-[70vw] h-[60vh] grid-cols-2 grid justify-items-center place-items-center ">
-            <div className="backdrop-blur-md bg-[#171717]/30 bg-white h-full w-full rounded-t-l-xl rounded-b-l-xl rounded-tl-3xl rounded-bl-3xl flex justify-center">
-              <form className="font-gilroy flex flex-col justify-center space-y-4 w-1/2">
-                <input
-                  type="text"
-                  placeholder="Enter your Name"
-                  className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white"
-                />
-                {/* <input type="text" placeholder="Enter your Email Address" className="bg-transparent border border-white rounded-xl px-2 py-1.5"/> */}
-                <input
-                  type="text"
-                  placeholder="Enter your Name"
-                  className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white"
-                />
-                <section className="flex justify-between space-x-4">
-                  <select className="px-1.5 py-1.5 rounded-md bg-transparent border-white border child:bg-black child:text-white text-white scrollbar-thumb-gray-900 scrollbar-thin">
-                    <option selected disabled>
-                      D
-                    </option>
-                    {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => {
-                      return <option>{date}</option>;
-                    })}
-                  </select>
-                  <select className="px-1.5 py-1.5 rounded-md bg-transparent border-white border text-white child:bg-black child:text-white scrollbar-thumb-gray-900 scrollbar-thin">
-                    <option selected disabled>
-                      M
-                    </option>
-                    {Array.from({ length: 12 }, (_, i) => i + 1).map((date) => {
-                      return <option>{date}</option>;
-                    })}
-                  </select>
-                  <select className="px-1.5 py-1.5 rounded-md bg-transparent border-white border child:bg-black child:text-white text-white scrollbar-thumb-gray-900 scrollbar-thin">
-                    <option selected disabled>
-                      YY
-                    </option>
-                    {range(year - 50, year)
-                      .reverse()
-                      .map((date) => {
-                        return <option>{date}</option>;
-                      })}
-                  </select>
-                </section>
-
-                {/* need to build */}
-                <section className="relative">
-                  <input
-                    type="password"
-                    className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full"
-                    placeholder="Enter your password"
-                  />
-                  <AiFillEye className="text-[#777777] absolute top-1.5 right-1.5 text-2xl cursor-pointer" />
-                </section>
-
-                <button className="bg-[#777777] py-1.5 rounded-xl text-white hover:bg-[#424242]">
-                  Create Account
-                </button>
-                <div className="relative flex py-2 items-center">
-                  <div className="flex-grow border-t border-[#ffffff]" />
-                  <span className="flex-shrink mx-4">
-                    <Link href=" https://www.zooniverse.org/">
-                      <button className="text-white">Or</button>
-                    </Link>
-                  </span>
-                  <div className="flex-grow border-t border-[#ffffff]" />
-                </div>
-                <button className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full flex justify-center items-center">
-                  <FcGoogle className="text-2xl mr-4" />
-                  Log in With Google
-                </button>
-                <button className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full flex justify-center items-center">
-                  <BsGithub className="text-2xl mr-4" />
-                  Log in With Github
-                </button>
-              </form>
+        <div className="absolute outline-0 top-1/2  left-1/2  -translate-x-1/2 -translate-y-1/2 font-gilroy">
+          <div className="w-[60vw] h-[65vh] grid-cols-2 grid justify-items-center place-items-center backdrop-blur-md bg-[#171717]/30 relative">
+          <img src='/Arrow.png' className="absolute z-10 bottom-32 hidden lg:block w-[10rem]"/>
+            <div className="rounded-t-l-xl rounded-b-l-xl rounded-tl-3xl rounded-bl-3xl  w-full">
+              <LoginForm/>
             </div>
-            <div className="bg-[#171717] h-full font-gilroy flex flex-col justify-center p-8 rounded-tr-3xl rounded-br-3xl">
-              <section className="flex flex-col text-white space-y-12 ">
+            <div className="bg-[#171717] h-full font-gilroy flex flex-col justify-center p-8 rounded-tr-3xl rounded-br-3xl relative">
+            <img src='/ellipse.png' className="absolute top-0"/>
+            <img src='/planet.png' className="absolute bottom-1 right-1"/>
+              <section className="flex flex-col text-white space-y-12 z-50">
                 <div className="space-y-6 ">
                   <h1 className="text-5xl">
                     Welcome to
@@ -290,7 +203,10 @@ export default function Home() {
                     mentorship of top engineer and scientists of the world.
                   </h1>
                 </div>
+                <section className="flex justify-start items-center space-x-4">
                 <img src="/persons.png" className="w-fit" />
+                <h1>5K+ space enthusiast</h1>
+                </section>
               </section>
             </div>
           </div>
