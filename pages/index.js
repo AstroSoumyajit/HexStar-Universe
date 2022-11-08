@@ -21,7 +21,7 @@ import LoginForm from "../components/LoginForm";
 export default function Home() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(true);
+  const [open3, setOpen3] = useState(false);
   const handleOpen2 = () => setOpen2(true);
   const handleOpen3 = () => setOpen2(true);
   const handleClose = () => setOpen(false);
@@ -29,24 +29,29 @@ export default function Home() {
   const handleClose3 = () => setOpen3(false);
   const [showanimation, setShowanimation] = useState(true);
   const route = useRouter().pathname;
-  const [values, setValues] = useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false,
-  });
+  const router = useRouter();
   // console.log (route);
 
-  // setTimeout(()=>setOpen3(true), 5000)
+  // const [login_modal_shown, setLogin_modal_shown] = useState(false);
 
   useEffect(() => {
-    console.log("Function is called");
-    setShowanimation(true);
-    setTimeout(() => {
-      setShowanimation(false);
-    }, 1500);
-  }, []);
+    if (window.sessionStorage.getItem("modal_shown")) {
+      console.log("found");
+    } else {
+      setTimeout(() => {
+        setOpen3(true);
+      }, 10000);
+      sessionStorage.setItem("modal_shown", true);
+    }
+  }, [router.isReady]);
+
+  // useEffect(() => {
+  //   console.log("Function is called");
+  //   setShowanimation(true);
+  //   setTimeout(() => {
+  //     setShowanimation(false);
+  //   }, 1500);
+  // }, []);
 
   const defaultOptions = {
     loop: false,
@@ -185,13 +190,16 @@ export default function Home() {
       >
         <div className="absolute outline-0 top-1/2  left-1/2  -translate-x-1/2 -translate-y-1/2 font-gilroy">
           <div className="w-[60vw] h-[65vh] grid-cols-2 grid justify-items-center place-items-center backdrop-blur-md bg-[#171717]/30 relative">
-          <img src='/Arrow.png' className="absolute z-10 bottom-32 hidden lg:block w-[10rem]"/>
+            <img
+              src="/Arrow.png"
+              className="absolute z-10 bottom-32 hidden lg:block w-[10rem]"
+            />
             <div className="rounded-t-l-xl rounded-b-l-xl rounded-tl-3xl rounded-bl-3xl  w-full">
-              <LoginForm/>
+              <LoginForm />
             </div>
             <div className="bg-[#171717] h-full font-gilroy flex flex-col justify-center p-8 rounded-tr-3xl rounded-br-3xl relative">
-            <img src='/ellipse.png' className="absolute top-0"/>
-            <img src='/planet.png' className="absolute bottom-1 right-1"/>
+              <img src="/ellipse.png" className="absolute top-0" />
+              <img src="/planet.png" className="absolute bottom-1 right-1" />
               <section className="flex flex-col text-white space-y-12 z-50">
                 <div className="space-y-6 ">
                   <h1 className="text-5xl">
@@ -204,8 +212,8 @@ export default function Home() {
                   </h1>
                 </div>
                 <section className="flex justify-start items-center space-x-4">
-                <img src="/persons.png" className="w-fit" />
-                <h1>5K+ space enthusiast</h1>
+                  <img src="/persons.png" className="w-fit" />
+                  <h1>5K+ space enthusiast</h1>
                 </section>
               </section>
             </div>

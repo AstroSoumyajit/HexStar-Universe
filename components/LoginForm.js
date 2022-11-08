@@ -39,7 +39,7 @@ const LoginForm = () => {
         DOB:`${date}/${month}/${year}`
     }
 
-    console.log(userdata)
+    // console.log(userdata)
   };
 
   const ref = useRef(null);

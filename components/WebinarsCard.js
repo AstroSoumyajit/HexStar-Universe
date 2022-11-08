@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const WebinarsCard = ({ image, title, speakerImage, speaker, route }) => {
-  console.log(route)
+  // console.log(route)
   return (
     <div className="">
       <div className="space-y-4 hidden md:block w-fit hover:bg-[#161616] overflow-hidden hover:scale-110 duration-200 hover:p-4 rounded-xl group">
