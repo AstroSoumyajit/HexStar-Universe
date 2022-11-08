@@ -17,6 +17,7 @@ import * as animation from "./animation.json";
 import WSW from "../components/WSW";
 import Mentor from "../components/Mentor";
 import LoginForm from "../components/LoginForm";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -30,6 +31,10 @@ export default function Home() {
   const [showanimation, setShowanimation] = useState(true);
   const route = useRouter().pathname;
   const router = useRouter();
+
+  const {data:session} = useSession()
+
+  console.log(session)
   // console.log (route);
 
   // const [login_modal_shown, setLogin_modal_shown] = useState(false);
@@ -38,10 +43,11 @@ export default function Home() {
     if (window.sessionStorage.getItem("modal_shown")) {
       console.log("found");
     } else {
-      setTimeout(() => {
-        setOpen3(true);
-      }, 10000);
-      sessionStorage.setItem("modal_shown", true);
+      // setTimeout(() => {
+      //   setOpen3(true);
+      // }, 10000);
+      setOpen3(true)
+      // sessionStorage.setItem("modal_shown", true);
     }
   }, [router.isReady]);
 

@@ -6,8 +6,10 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const LoginForm = () => {
+  const { data: session } = useSession();
   const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -33,11 +35,11 @@ const LoginForm = () => {
 
   const SubmitUserData = () => {
     const userdata = {
-        name: name,
-        email:email,
-        password:password,
-        DOB:`${date}/${month}/${year}`
-    }
+      name: name,
+      email: email,
+      password: password,
+      DOB: `${date}/${month}/${year}`,
+    };
 
     // console.log(userdata)
   };
@@ -156,7 +158,10 @@ const LoginForm = () => {
         </span>
         <div className="flex-grow border-t border-[#ffffff]" />
       </div>
-      <button className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full flex justify-center items-center">
+      <button
+        className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full flex justify-center items-center"
+        onClick={() => signIn()}
+      >
         <FcGoogle className="text-2xl mr-4" />
         Sign up With Google
       </button>
