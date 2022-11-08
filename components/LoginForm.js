@@ -79,8 +79,8 @@ const LoginForm = () => {
           <option selected disabled>
             D
           </option>
-          {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => {
-            return <option>{date}</option>;
+          {Array.from({ length: 31 }, (_, i) => i + 1).map((date, i) => {
+            return <option key={i}>{date}</option>;
           })}
         </select>
         <select
@@ -90,8 +90,8 @@ const LoginForm = () => {
           <option selected disabled>
             M
           </option>
-          {Array.from({ length: 12 }, (_, i) => i + 1).map((date) => {
-            return <option>{date}</option>;
+          {Array.from({ length: 12 }, (_, i) => i + 1).map((date, i) => {
+            return <option key={i}>{date}</option>;
           })}
         </select>
         <select
@@ -103,8 +103,8 @@ const LoginForm = () => {
           </option>
           {range(year - 50, year - 10)
             .reverse()
-            .map((date) => {
-              return <option>{date}</option>;
+            .map((date, i) => {
+              return <option key={i}>{date}</option>;
             })}
         </select>
       </section>
