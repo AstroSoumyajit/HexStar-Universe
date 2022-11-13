@@ -77,32 +77,47 @@ const Events = () => {
         </button>
       </div>
       {showCounter &&
-        <div className="flex flex-col md:flex-row justify-around my-12 text-3xl font-sweet_sans_pro md:space-y-0 space-y-12">
+        <div className="flex flex-col md:flex-row justify-around py-14 text-3xl font-sweet_sans_pro md:space-y-0 space-y-12 bg-[#171717] rounded-md">
           <div className="flex flex-col items-center space-y-2">
-            <img src="Images/EventComponent/icon1.svg" className=" shadow-md" />
-            <div className="flex items-center justify-center text-white shadow-md">
-              <CountUp start={0} end={2500} duration={5} /><span>+</span>
+            {/* <img src="Images/EventComponent/icon1.svg" className=" shadow-md" /> */}
+            <div className="flex items-center justify-center text-white shadow-md font-gilroy font-bold text-4xl relative pb-4">
+              <CountUp start={0} end={25} duration={5} /><span>K+</span>
+              <img src='/border.png' className='absolute bottom-0 '/>
+              
             </div>
-            <h1 className="text-white text-[18px] shadow-md">
+            <h1 className="text-white text-[18px] shadow-md font-gilroy">
               Students OutReach
             </h1>
           </div>
           <div className="flex flex-col items-center space-y-2">
-            <img src="Images/EventComponent/icon2.svg" />
-            <div className="flex items-center justify-center text-white">
+            {/* <img src="Images/EventComponent/icon2.svg" /> */}
+            <div className="flex items-center justify-center text-white font-gilroy font-bold text-4xl relative pb-1">
               <CountUp start={0} end={20} duration={5} /><span>+</span>
+              <img src='/border.png' className='absolute bottom-0 '/>
             </div>
-            <h1 className="text-white text-[18px]">
+            <h1 className="text-white text-[18px] font-gilroy">
               MasterClass
             </h1>
           </div>
           <div className="flex flex-col items-center space-y-2">
-            <img src="Images/EventComponent/icon3.svg" />
-            <div className="flex items-center justify-center text-white">
-              <CountUp start={0} end={30} duration={5} />
+            {/* <img src="Images/EventComponent/icon3.svg" /> */}
+            <div className="flex items-center justify-center text-white font-gilroy font-bold text-4xl relative pb-1">
+              <CountUp start={0} end={100} duration={5} />
               <span>+</span>
+              <img src='/border.png' className='absolute bottom-0 '/>
             </div>
-            <h1 className="text-white text-[18px]">
+            <h1 className="text-white text-[18px] font-gilroy">
+              Space Talks
+            </h1>
+          </div>
+          <div className="flex flex-col items-center space-y-2">
+            {/* <img src="Images/EventComponent/icon3.svg" /> */}
+            <div className="flex items-center justify-center text-white font-gilroy font-bold text-4xl relative pb-1">
+              <CountUp start={0} end={80} duration={5} />
+              <span>+</span>
+              <img src='/border.png' className='absolute bottom-0 '/>
+            </div>
+            <h1 className="text-white text-[18px] font-gilroy">
               Events
             </h1>
           </div>

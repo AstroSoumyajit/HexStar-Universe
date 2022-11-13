@@ -80,7 +80,7 @@ const MasterClass = () => {
             return (
               <SwiperSlide key={i}>
                 <div className="flex flex-col items-center space-y-4">
-                  <img src={data.image} className="" />
+                  <img src={data.image} className="max-w-[18rem]" />
                 </div>
               </SwiperSlide>
             );

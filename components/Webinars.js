@@ -24,7 +24,7 @@ const Webinars = ({ title }) => {
     (data) => data.language == "bengali"
   );
 
-  console.log(englishWebinar);
+  // console.log(englishWebinar);
 
   // console.log(webinarData)
   return (

@@ -8,9 +8,24 @@ import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
 import { useState } from "react";
 import { webinarData } from "../dummydb";
+import { useSession } from "next-auth/react";
+import NavbarAvatarDropDown from "./NavbarAvatarDropdown";
+import { ModalUpdateContext, useOpen } from "../context/LoginModalContext";
+import { useContext } from "react";
+import { useEffect } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../database/firebase";
+import { useRouter } from "next/router";
 
 const Navbar = ({ active, path }) => {
   const [searchInput, setSearchInput] = useState("");
+  const [userData, setuserData] = useState(null);
+  const setOpenChange = useContext(ModalUpdateContext);
+  const modalState = useOpen();
+  // console.log(session);
+  const router = useRouter();
+
+  const { data: session } = useSession();
 
   function handleSearch() {
     if (searchInput === "") {
@@ -28,6 +43,31 @@ const Navbar = ({ active, path }) => {
       }
     }
   }
+
+  const getUserData = async () => {
+    const docRef = doc(
+      db,
+      "users",
+      `${window.sessionStorage.getItem("userId")}`
+    );
+
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setuserData(docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
+  };
+
+  useEffect(() => {
+    if (window.sessionStorage.getItem("userId")) {
+      getUserData();
+    }
+  }, [router.isReady]);
+
+  console.log(userData)
+
   return (
     <div className="w-full z-50">
       <div className="md:h-24 h-16 bg-[#000000] border border-[#1E1E1E] flex flex-row justify-between items-center md:ml-16 md:px-8 px-4 space-x-4">
@@ -106,6 +146,23 @@ const Navbar = ({ active, path }) => {
                   Apply as Mentor
                 </a>
               </Link>
+            </div>
+            <div>
+              {!session && !userData ? (
+                <button
+                  className="text-white   bg-zinc-700 rounded-full px-4 py-1.5 font-sweet_sans_pro border-zinc-400 border-2"
+                  onClick={() => {
+                    setOpenChange();
+                  }}
+                >
+                  Sign In
+                </button>
+              ) : (
+                <NavbarAvatarDropDown
+                  img={session?.user?.image || `/Images/user.jpg`}
+                  name={session?.user?.name || userData.name}
+                />
+              )}
             </div>
           </div>
         </div>

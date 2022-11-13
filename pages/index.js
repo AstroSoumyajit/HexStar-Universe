@@ -16,40 +16,69 @@ import Lottie from "react-lottie";
 import * as animation from "./animation.json";
 import WSW from "../components/WSW";
 import Mentor from "../components/Mentor";
-import LoginForm from "../components/LoginForm";
-import { useSession } from "next-auth/react";
+import { getProviders, signIn, useSession } from "next-auth/react";
+import { ModalUpdateContext, useOpen } from "../context/LoginModalContext";
+import { useContext } from "react";
+import LoginModalDesign from "../components/LoginModalDesign";
+import { useRef } from "react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { BsGithub } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
+import Link from "next/link";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../database/firebase";
 
-export default function Home() {
+export default function Home({ providers }) {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
+  const modalState = useOpen();
   const handleOpen2 = () => setOpen2(true);
   const handleOpen3 = () => setOpen2(true);
   const handleClose = () => setOpen(false);
   const handleClose2 = () => setOpen2(false);
-  const handleClose3 = () => setOpen3(false);
+  const setModalChnage = useContext(ModalUpdateContext);
+  const { data: session } = useSession();
+  const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [date, setDate] = useState("");
+  const [month, setMonth] = useState("");
+  const [byear, setByear] = useState("");
+
   const [showanimation, setShowanimation] = useState(true);
   const route = useRouter().pathname;
   const router = useRouter();
 
-  const {data:session} = useSession()
-
-  console.log(session)
-  // console.log (route);
-
-  // const [login_modal_shown, setLogin_modal_shown] = useState(false);
+  const ref = useRef(null);
 
   useEffect(() => {
     if (window.sessionStorage.getItem("modal_shown")) {
       console.log("found");
     } else {
-      // setTimeout(() => {
-      //   setOpen3(true);
-      // }, 10000);
-      setOpen3(true)
-      // sessionStorage.setItem("modal_shown", true);
+      setModalChnage();
+      sessionStorage.setItem("modal_shown", true);
     }
   }, [router.isReady]);
+
+  const handleCreateAccount = () => {
+    if (
+      name === "" ||
+      email === "" ||
+      password === "" ||
+      date === "" ||
+      month === "" ||
+      byear === ""
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  let year = new Date().getFullYear();
+  const range = (min, max) =>
+    [...Array(max - min + 1).keys()].map((i) => i + min);
 
   // useEffect(() => {
   //   console.log("Function is called");
@@ -59,6 +88,22 @@ export default function Home() {
   //   }, 1500);
   // }, []);
 
+  const SubmitUserData = async () => {
+    const id = Date.now();
+    const docRef = await setDoc(doc(db, "users", `${Date.now()}`), {
+      id: id,
+      name: name,
+      email: email,
+      DOB: `${date}/${month}/${year}`,
+      password: password,
+    });
+
+    setModalChnage();
+    window.sessionStorage.setItem("user_id", id);
+
+    router.push('/usercheck')
+  };
+
   const defaultOptions = {
     loop: false,
     autoplay: true,
@@ -67,6 +112,10 @@ export default function Home() {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
+  useEffect(() => {
+    console.log(modalState);
+  }, [modalState]);
 
   return (
     <div className="bg-[#000] overflow-x-auto ">
@@ -96,6 +145,7 @@ export default function Home() {
         {/* <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
         </Link> */}
+
         <Webinars title="Webinars" />
         <MasterClass />
         <Mentor />
@@ -105,92 +155,10 @@ export default function Home() {
         <Footer />
         <BoostButton />
       </div>
-      {/* <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        className="relative"
-      >
-        <div className="focus:outline-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="rounded-lg bg-gradient-to-tl from-[#14003a] to-[#320090] relative">
-            <div className="px-4 py-4 ">
-              <div className="flex justify-between">
-                <h1 className="bg-[#00C2FF] font-bold rounded-md px-4 py-2 -rotate-3 font-Europa_Gro max-w-fit text-2xl">
-                  First Time in INDIA
-                </h1>
-                <AiOutlineCloseCircle
-                  className="text-4xl text-white cursor-pointer"
-                  onClick={handleClose}
-                />
-              </div>
-              <div className="text-white leading-tight">
-                <h1 className="font-sweet_sans_pro font-bold italic text-2xl">
-                  LEARN ROCKETRY FROM ISRO ROCKET SCIENTIST
-                </h1>
-                <h1 className="sm:text-xl font-light">
-                  Three days MasterClass on Rocketry by
-                </h1>
-                <h1 className="sm:text-xl font-light w-3/4">
-                  Prof.R.R.Elavgovan
-                  <span className="sm:text-base text-sm font-light">
-                    (Former ISRO Scientist & Core team member of GSLV MK-1)
-                  </span>
-                </h1>
-              </div>
-              <div className="flex items-center space-x-4">
-                <FaCalendarAlt className="text-3xl text-white" />
-                <h1 className="text-xl font-bold text-white ">20-22 AUGUST</h1>
-              </div>
-              <h1 className="text-2xl italic font-sweet_sans_pro font-bold text-white leading-tight">
-                LIMITED <br /> SLOTS!!!
-              </h1>
-              <div className="relative w-fit">
-                <button
-                  className="bg-[#00C2FF] text-black font-sweet_sans_pro font-bold italic md:text-lg text-[11px] px-3 py-2 rounded-full relative z-20 "
-                  onClick={handleOpen2}
-                >
-                  REGISTER NOW
-                </button>
-                <div className="bg-[#00C2FF] absolute inset-0 blur-md rounded-full  animate-pulse" />
-              </div>
-              <div className="relative max-w-fit">
-                <h1 className="font-sweet_sans_pro italic font-bold md:text-xl text-base text-white ">
-                  Only at 250 INR
-                </h1>
-                <div className="absolute bg-white inset-0 blur-3xl" />
-              </div>
-            </div>
-            <img
-              src="/rocket.png"
-              className="absolute bottom-0 right-0 w-[50%] rounded-br-lg"
-            />
-            <div className="absolute bg-[#320090] inset-0 blur-xl rounded-md -z-10" />
-          </div>
-          <div className="flex flex-col justify-center space-y-6 sm:w-[500px] w-[80vw] relative">
-            <img src="/rocketdesignChallange.png" />
-            <div className="absolute top-3/4  left-1/4 -translate-x-1/2 -translate-y-1/2">
-              <div className="relative w-fit">
-                <Link href="https://pages.razorpay.com/VRDC2K22">
-                  <button className="bg-[#00D1FF] text-black font-sweet_sans_pro font-bold italic sm:text-base text-xs px-3 py-2 rounded-full relative z-20 ">
-                    REGISTER NOW
-                  </button>
-                </Link>
-                <div className="bg-[#00D1FF] absolute inset-0 blur-md rounded-full animate-pulse" />
-              </div>
-            </div>
-            <div
-              className="absolute top-0 right-6 cursor-pointer"
-              onClick={handleClose}
-            >
-              <AiOutlineCloseCircle className="text-white md:text-3xl text-2xl" />
-            </div>
-          </div>
-        </div>
-      </Modal> */}
+
       <Modal
-        open={open3}
-        onClose={handleClose3}
+        open={modalState}
+        onClose={setModalChnage}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -201,48 +169,142 @@ export default function Home() {
               className="absolute z-10 bottom-32 hidden lg:block w-[10rem]"
             />
             <div className="rounded-t-l-xl rounded-b-l-xl rounded-tl-3xl rounded-bl-3xl  w-full">
-              <LoginForm />
-            </div>
-            <div className="bg-[#171717] h-full font-gilroy flex flex-col justify-center p-8 rounded-tr-3xl rounded-br-3xl relative">
-              <img src="/ellipse.png" className="absolute top-0" />
-              <img src="/planet.png" className="absolute bottom-1 right-1" />
-              <section className="flex flex-col text-white space-y-12 z-50">
-                <div className="space-y-6 ">
-                  <h1 className="text-5xl">
-                    Welcome to
-                    <br /> our Community
-                  </h1>
-                  <h1>
-                    Make your career on Space science and technology by the
-                    mentorship of top engineer and scientists of the world.
-                  </h1>
-                </div>
-                <section className="flex justify-start items-center space-x-4">
-                  <img src="/persons.png" className="w-fit" />
-                  <h1>5K+ space enthusiast</h1>
+              <form className="font-gilroy flex flex-col justify-center space-y-4 w-[80%] md:w-[70%] lg:w-[50%] mx-auto text-white select-none">
+                <h1 className="text-xl">Sign Up</h1>
+                <input
+                  type="text"
+                  placeholder="Enter your Name"
+                  className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white"
+                  onChange={(e) => setName(e.target.value)}
+                />
+                {/* <input type="text" placeholder="Enter your Email Address" className="bg-transparent border border-white rounded-xl px-2 py-1.5"/> */}
+                <input
+                  type="text"
+                  placeholder="Enter your Email"
+                  className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <section className="flex justify-between space-x-4">
+                  <select
+                    className="px-1.5 py-1.5 rounded-md bg-transparent border-white border child:bg-black child:text-white text-white scrollbar-thumb-gray-900 scrollbar-thin"
+                    onChange={(e) => setDate(e.target.value)}
+                  >
+                    <option selected disabled>
+                      D
+                    </option>
+                    {Array.from({ length: 31 }, (_, i) => i + 1).map(
+                      (date, i) => {
+                        return <option key={i}>{date}</option>;
+                      }
+                    )}
+                  </select>
+                  <select
+                    className="px-1.5 py-1.5 rounded-md bg-transparent border-white border text-white child:bg-black child:text-white scrollbar-thumb-gray-900 scrollbar-thin"
+                    onChange={(e) => setMonth(e.target.value)}
+                  >
+                    <option selected disabled>
+                      M
+                    </option>
+                    {Array.from({ length: 12 }, (_, i) => i + 1).map(
+                      (date, i) => {
+                        return <option key={i}>{date}</option>;
+                      }
+                    )}
+                  </select>
+                  <select
+                    className="px-1.5 py-1.5 rounded-md bg-transparent border-white border child:bg-black child:text-white text-white scrollbar-thumb-gray-900 scrollbar-thin"
+                    onChange={(e) => setByear(e.target.value)}
+                  >
+                    <option selected disabled>
+                      YY
+                    </option>
+                    {range(year - 50, year - 10)
+                      .reverse()
+                      .map((date, i) => {
+                        return <option key={i}>{date}</option>;
+                      })}
+                  </select>
                 </section>
-              </section>
+                <section className="relative">
+                  <input
+                    // ref={ref}
+                    id="password_input"
+                    type={showPassword ? "text" : "password"}
+                    className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full pr-8"
+                    placeholder="Enter your password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  {showPassword ? (
+                    <AiFillEye
+                      className="text-[#777777] absolute top-1.5 right-1.5 text-2xl cursor-pointer"
+                      onClick={() => setShowPassword(!showPassword)}
+                    />
+                  ) : (
+                    <AiFillEyeInvisible
+                      className="text-[#777777] absolute top-1.5 right-1.5 text-2xl cursor-pointer"
+                      onClick={() => setShowPassword(!showPassword)}
+                    />
+                  )}
+                  {/* <AiFillEye className="text-[#777777] absolute top-1.5 right-1.5 text-2xl cursor-pointer" /> */}
+                </section>
+                {handleCreateAccount() ? (
+                  <span
+                    className="bg-[#777777] py-1.5 rounded-xl text-white hover:bg-[#424242] text-center"
+                    onClick={SubmitUserData}
+                  >
+                    Create Account
+                  </span>
+                ) : (
+                  <span className="bg-[#777777] py-1.5 rounded-xl text-white  text-center opacity-50 cursor-not-allowed">
+                    Create Account
+                  </span>
+                )}
+                <div className="relative flex py-2 items-center">
+                  <div className="flex-grow border-t border-[#ffffff]" />
+                  <span className="flex-shrink mx-4">
+                    <button className="text-white">Or</button>
+                  </span>
+                  <div className="flex-grow border-t border-[#ffffff]" />
+                </div>
+                <span
+                  className="cursor-pointer bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full flex justify-center items-center"
+                  onClick={() => {
+                    signIn("google", { callbackUrl: "/usercheck" });
+                  }}
+                >
+                  <FcGoogle className="text-2xl mr-4" />
+                  Sign up With Google
+                </span>
+                <span
+                  className="cursor-pointer bg-transparent border border-white rounded-xl px-2 py-1.5 text-white w-full flex justify-center items-center"
+                  onClick={() => {
+                    signIn("github", { callbackUrl: "/usercheck" });
+                  }}
+                >
+                  <BsGithub className="text-2xl mr-4" />
+                  Sign up With Github
+                </span>
+                <h1 className="text-center">
+                  Already have an account ?{" "}
+                  <b>
+                    <Link href="#">Log in</Link>
+                  </b>
+                </h1>
+              </form>
             </div>
+            <LoginModalDesign />
           </div>
         </div>
       </Modal>
-      {/* <Modal
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div className="focus:outline-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black md:p-8 p-4 rounded-xl">
-          <div className="flex flex-col justify-center md:space-y-8 space-y-4 child:px-4 child:py-3 child:rounded-md child:bg-[#D004A3] md:child:text-2xl child:text-lg child:font-sweet_sans_pro child:text-white child:italic child:text-center child:font-bold child:cursor-pointer">
-            <Link href="https://rzp.io/l/DeepSkyImgProcessing">
-              <h1>INDIA</h1>
-            </Link>
-            <Link href="https://rzp.io/l/DeepskyImgInternational">
-              <h1>OUTSIDE INDIA</h1>
-            </Link>
-          </div>
-        </div>
-      </Modal> */}
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const providers = await getProviders();
+  return {
+    props: {
+      providers,
+    },
+  };
 }
