@@ -1,25 +1,23 @@
 import React, { useContext, useState } from "react";
 import { createContext } from "react";
 
-const LoginContext = createContext();
-export const LoginContextUpdate = createContext();
+const defaultValues = {
+  userData: null,
+  setIsAdmin: () => {},
+};
+
+const LoginContext = createContext(defaultValues);
 
 export function useLogin() {
   return useContext(LoginContext);
 }
 
-export function LoginProvider({ children }){
-    const [userData, setUserData] = useState(null)
+export function LoginProvider({ children }) {
+  const [userData, setUserData] = useState(defaultValues.userData);
 
-    function updateUserData({userData}) {
-        setUserData(userData);
-      }
-
-    return (
-        <LoginContext.Provider value={userData}>
-            <LoginContextUpdate.Provider value={updateUserData}>
-            {children}
-            </LoginContextUpdate.Provider>
-        </LoginContext.Provider>
-    )
+  return (
+    <LoginContext.Provider value={{ userData, setUserData }}>
+      {children}
+    </LoginContext.Provider>
+  );
 }

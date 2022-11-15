@@ -27,15 +27,14 @@ import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../database/firebase";
+import { useLogin } from "../context/LoginContext";
 
 export default function Home({ providers }) {
+  const [LoginModal, setLoginModal] = useState(false);
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const modalState = useOpen();
-  const handleOpen2 = () => setOpen2(true);
-  const handleOpen3 = () => setOpen2(true);
-  const handleClose = () => setOpen(false);
-  const handleClose2 = () => setOpen2(false);
+  const { userData, setUserData } = useLogin();
   const setModalChnage = useContext(ModalUpdateContext);
   const { data: session } = useSession();
   const [showPassword, setShowPassword] = useState(false);
@@ -56,8 +55,11 @@ export default function Home({ providers }) {
     if (window.sessionStorage.getItem("modal_shown")) {
       console.log("found");
     } else {
-      setModalChnage();
-      sessionStorage.setItem("modal_shown", true);
+      setInterval(() => {
+        sessionStorage.setItem("modal_shown", true);
+        conosle.log("called");
+        setModalChnage();
+      }, 5000);
     }
   }, [router.isReady]);
 
@@ -89,19 +91,22 @@ export default function Home({ providers }) {
   // }, []);
 
   const SubmitUserData = async () => {
-    const id = Date.now();
-    const docRef = await setDoc(doc(db, "users", `${Date.now()}`), {
+    const id = name.substr(0, indexof(" ")) + Date.now();
+    const docRef = await setDoc(doc(db, "users", `${id}`), {
       id: id,
       name: name,
       email: email,
       DOB: `${date}/${month}/${year}`,
       password: password,
     });
+    setUserData({
+      id: id,
+      name: name,
+      email: email,
+      DOB: `${date}/${month}/${year}`,
+    });
 
     setModalChnage();
-    window.sessionStorage.setItem("user_id", id);
-
-    router.push('/usercheck')
   };
 
   const defaultOptions = {
@@ -112,10 +117,6 @@ export default function Home({ providers }) {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-
-  useEffect(() => {
-    console.log(modalState);
-  }, [modalState]);
 
   return (
     <div className="bg-[#000] overflow-x-auto ">
@@ -163,18 +164,24 @@ export default function Home({ providers }) {
         aria-describedby="modal-modal-description"
       >
         <div className="absolute outline-0 top-1/2  left-1/2  -translate-x-1/2 -translate-y-1/2 font-gilroy">
-          <div className="w-[60vw] h-[65vh] grid-cols-2 grid justify-items-center place-items-center backdrop-blur-md bg-[#171717]/30 relative">
+          <div className="md:w-[60vw] w-[80vw] h-[65vh] md:grid-cols-2 grid-cols-1 grid justify-items-center place-items-center backdrop-blur-md bg-[#171717]/30 relative">
             <img
               src="/Arrow.png"
               className="absolute z-10 bottom-32 hidden lg:block w-[10rem]"
             />
             <div className="rounded-t-l-xl rounded-b-l-xl rounded-tl-3xl rounded-bl-3xl  w-full">
               <form className="font-gilroy flex flex-col justify-center space-y-4 w-[80%] md:w-[70%] lg:w-[50%] mx-auto text-white select-none">
-                <h1 className="text-xl">Sign Up</h1>
+                {LoginModal ? (
+                  <h1 className="text-xl">Log In</h1>
+                ) : (
+                  <h1 className="text-xl">Sign Up</h1>
+                )}
                 <input
                   type="text"
                   placeholder="Enter your Name"
-                  className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white"
+                  className={`bg-transparent border border-white rounded-xl px-2 py-1.5 text-white ${
+                    LoginModal && "hidden"
+                  }`}
                   onChange={(e) => setName(e.target.value)}
                 />
                 {/* <input type="text" placeholder="Enter your Email Address" className="bg-transparent border border-white rounded-xl px-2 py-1.5"/> */}
@@ -184,7 +191,11 @@ export default function Home({ providers }) {
                   className="bg-transparent border border-white rounded-xl px-2 py-1.5 text-white"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <section className="flex justify-between space-x-4">
+                <section
+                  className={`flex justify-between space-x-4 ${
+                    LoginModal && "hidden"
+                  }`}
+                >
                   <select
                     className="px-1.5 py-1.5 rounded-md bg-transparent border-white border child:bg-black child:text-white text-white scrollbar-thumb-gray-900 scrollbar-thin"
                     onChange={(e) => setDate(e.target.value)}
@@ -247,7 +258,14 @@ export default function Home({ providers }) {
                   )}
                   {/* <AiFillEye className="text-[#777777] absolute top-1.5 right-1.5 text-2xl cursor-pointer" /> */}
                 </section>
-                {handleCreateAccount() ? (
+                {LoginModal ? (
+                  <span
+                    className="bg-[#777777] py-1.5 rounded-xl text-white hover:bg-[#424242] text-center"
+                    onClick={SubmitUserData}
+                  >
+                    Log in
+                  </span>
+                ) : handleCreateAccount() ? (
                   <span
                     className="bg-[#777777] py-1.5 rounded-xl text-white hover:bg-[#424242] text-center"
                     onClick={SubmitUserData}
@@ -259,6 +277,7 @@ export default function Home({ providers }) {
                     Create Account
                   </span>
                 )}
+
                 <div className="relative flex py-2 items-center">
                   <div className="flex-grow border-t border-[#ffffff]" />
                   <span className="flex-shrink mx-4">
@@ -284,15 +303,25 @@ export default function Home({ providers }) {
                   <BsGithub className="text-2xl mr-4" />
                   Sign up With Github
                 </span>
-                <h1 className="text-center">
-                  Already have an account ?{" "}
-                  <b>
-                    <Link href="#">Log in</Link>
-                  </b>
-                </h1>
+                {LoginModal ? (
+                  <h1 className="text-center">
+                    Don't have an account?
+                    <b>
+                      <span onClick={() => setLoginModal(false)}> Sign Up</span>
+                    </b>
+                  </h1>
+                ) : (
+                  <h1 className="text-center">
+                    Already have an account ?
+                    <b>
+                      <span onClick={() => setLoginModal(true)}> Log in</span>
+                    </b>
+                  </h1>
+                )}
               </form>
             </div>
-            <LoginModalDesign />
+
+            <LoginModalDesign Login={LoginModal} />
           </div>
         </div>
       </Modal>

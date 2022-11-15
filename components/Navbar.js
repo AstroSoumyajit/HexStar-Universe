@@ -16,14 +16,14 @@ import { useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../database/firebase";
 import { useRouter } from "next/router";
+import { useLogin } from "../context/LoginContext";
 
 const Navbar = ({ active, path }) => {
   const [searchInput, setSearchInput] = useState("");
-  const [userData, setuserData] = useState(null);
+  // const [userData, setuserData] = useState(null);
+  const {userData} = useLogin()
   const setOpenChange = useContext(ModalUpdateContext);
-  const modalState = useOpen();
-  // console.log(session);
-  const router = useRouter();
+
 
   const { data: session } = useSession();
 
@@ -60,13 +60,8 @@ const Navbar = ({ active, path }) => {
     }
   };
 
-  useEffect(() => {
-    if (window.sessionStorage.getItem("userId")) {
-      getUserData();
-    }
-  }, [router.isReady]);
-
   console.log(userData)
+
 
   return (
     <div className="w-full z-50">

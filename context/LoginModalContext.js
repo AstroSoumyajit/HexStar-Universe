@@ -8,7 +8,7 @@ export function useOpen() {
 }
 
 export function ModalProvider({ children }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   function toggleModal() {
     setOpen((openModal) => !openModal);

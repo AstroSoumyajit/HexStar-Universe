@@ -5,9 +5,13 @@ import { Avatar, IconButton } from "@mui/material";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
+import { useLogin } from "../context/LoginContext";
+import { useSession } from "next-auth/react";
 
 const NavbarAvatarDropDown = ({ img, name }) => {
+  const { data: session } = useSession();
   const [anchorEl, setAnchorEl] = useState(null);
+  const { userData, setUserData } = useLogin();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -56,9 +60,8 @@ const NavbarAvatarDropDown = ({ img, name }) => {
           {/* <MenuItem onClick={handleClose} className=" font-nunito">Your Projects</MenuItem> */}
           <MenuItem
             onClick={() => {
+              session ? signOut() : setUserData(null);
               handleClose();
-              signOut();
-              window.sessionStorage.removeItem("userId");
             }}
             className=" font-nunito"
           >
