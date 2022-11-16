@@ -1,8 +1,12 @@
 import React from "react";
+import { useContext } from "react";
+import { useSigninMobile } from "../context/SignUpModalMobileContext";
+import { useLogin } from "../context/LoginContext";
 
-const LoginModalDesign = ({ Login }) => {
-  return (
-    <div className="bg-[#171717] h-full font-gilroy  p-8 rounded-tr-3xl rounded-br-3xl relative hidden md:block">
+const LoginModalDesign = ({ Login , setLoginModal}) => {
+  const {signInMobile, setSignInModalMobile} =  useSigninMobile()
+  return  (
+    <div className={`md:bg-[#171717] h-full font-gilroy  p-8 rounded-tr-3xl rounded-br-3xl relative md:block `}>
       <img src="/ellipse.png" className="absolute top-0" />
       <img src="/planet.png" className="absolute bottom-1 right-1" />
       <div className="flex flex-col justify-center pt-28">
@@ -28,6 +32,10 @@ const LoginModalDesign = ({ Login }) => {
             </section>
           )}
         </section>
+        <div className="border border-white w-fit text-xl mx-auto rounded-lg h-10 flex justify-between items-center mt-8 md:hidden z-10">
+          <span className="text-black border bg-white rounded-lg  py-1 text-center  px-6  cursor-pointer" onClick={()=> setLoginModal(false)}>Sign Up</span>
+          <span className="text-white rounded-lg py-1 text-center  px-6 cursor-pointer z-10 hover:bg-[#4949496b]" onClick={()=> setLoginModal(true)}>Log In</span>
+        </div>
       </div>
     </div>
   );

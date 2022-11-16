@@ -4,7 +4,7 @@ import { FaDiscord } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
-import { IoLogoWhatsapp } from "react-icons/io";
+import { IoLogoWhatsapp, IoIosArrowDroprightCircle } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
@@ -37,68 +37,96 @@ const Footer = () => {
   ];
   return (
     <div className="">
-      <div className="flex flex-col items-center h-full space-y-12 my-24" id="footer">
+      <div className="space-y-12 my-24" id="footer">
         <img src="/Images/logo.svg" />
-        <div className="flex md:flex-row flex-col items-center justify-center md:space-x-8 md:space-y-0 space-y-8">
-          {footerItem.map((item) => {
-            return (
-              <Link href={item.link} key={item.key}>
-                <a
-                  className="text-white font-sweet_sans_pro text-center w-full"
-                  key={item.key}
-                >
-                  {item.name}
-                </a>
+        <div className="grid grid-cols-5">
+          <section className="col-span-2 space-y-8">
+            <h1 className="text-base font-gilroy text-white">
+              Get updates on new programs, workshops, the latest developments,
+              and community activities, straight to your inbox.
+            </h1>
+
+            <div className="w-[18rem] ">
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="Enter Your Email"
+                  className="bg-white font-gilroy rounded-full pl-2 pr-12 focus:outline-none py-2 w-full "
+                />
+                <IoIosArrowDroprightCircle className="absolute text-5xl -right-1 -top-1" />
+              </div>
+              <div className="flex justify-between text-white text-3xl my-8 child:cursor-pointer">
+                <Link href=" https://discord.gg/XxuJMhAMaD">
+                  <a>
+                    <FaDiscord />
+                  </a>
+                </Link>
+                <Link href=" https://twitter.com/hexstaruniverse">
+                  <a>
+                    <FaTwitter />
+                  </a>
+                </Link>
+                <Link href="https://instagram.com/hexstar_universe?igshid=YmMyMTA2M2Y=">
+                  <a>
+                    <BsInstagram />
+                  </a>
+                </Link>
+                <Link href="https://www.facebook.com/HexStarUniverse">
+                  <a>
+                    <BsFacebook />
+                  </a>
+                </Link>
+              </div>
+            </div>
+          </section>
+          <section className="col-span-3 flex justify-around">
+            <div className="font-gilroy text-white text-xl flex flex-col space-y-8">
+              <Link href="/">
+                <a>Home</a>
               </Link>
-            );
-          })}
-        </div>
-        <div className="flex flex-row space-x-8 text-white text-3xl my-8 child:cursor-pointer">
-          <Link href=" https://discord.gg/XxuJMhAMaD">
-            <a>
-              <FaDiscord />
-            </a>
-          </Link>
-          <Link href=" https://twitter.com/hexstaruniverse">
-            <a>
-              <FaTwitter />
-            </a>
-          </Link>
-          <Link href="https://instagram.com/hexstar_universe?igshid=YmMyMTA2M2Y=">
-            <a>
-              <BsInstagram />
-            </a>
-          </Link>
-          <Link href="https://www.facebook.com/HexStarUniverse">
-            <a>
-              <BsFacebook />
-            </a>
-          </Link>
-        </div>
-        <div className="flex flex-col space-y-4 items-center">
-          <h1 className="text-white font-sweet_sans_pro items-center text-lg">
-            Contact Us
-          </h1>
-          <div className="flex flex-row text-white text-3xl space-x-8">
-            <Link href="https://wa.me/%2B918910123832?text=Hi%20Hex-Star%20Universe">
-              <IoLogoWhatsapp />
-            </Link>
-            <Link href="mailto:hexstaruniverse@gmail.com">
-              <MdEmail />
-            </Link>
-          </div>
+              <Link href="/webinars">
+                <a>Webinars</a>
+              </Link>
+              <Link href="/masterclass">
+                <a>Masterclass</a>
+              </Link>
+              <Link href="/events">
+                <a>Events</a>
+              </Link>
+              <Link href="/citizen Science">
+                <a>Citizen Science</a>
+              </Link>
+            </div>
+            <div className="font-gilroy text-white text-xl flex flex-col space-y-8">
+              <Link href="/aboutus">
+                <a>About Us</a>
+              </Link>
+              <Link href="/privacy&policy">
+                <a>Privacy & Policy</a>
+              </Link>
+              <Link href="/terms&condition">
+                <a>Terms & Condition</a>
+              </Link>
+              <Link href="/refundPolicy">
+                <a>Refund Policy</a>
+              </Link>
+            </div>
+            <div className="font-gilroy text-white text-xl flex flex-col space-y-8">
+              <Link href="/aboutus">
+                <a>Community</a>
+              </Link>
+              <Link href="/privacy&policy">
+                <a>Apply as Member</a>
+              </Link>
+              <Link href="/terms&condition">
+                <a>Feedback</a>
+              </Link>
+            </div>
+          </section>
         </div>
       </div>
 
-      <div className="text-center relative bottom-0 text-white py-4 space-y-4">
-        <footer className="text-center flex justify-center items-center space-x-4">
-          <Link href="/aboutus">About Us</Link> <span>|</span>
-          <Link href="/privacy&policy">Privacy & Policy</Link>
-          <span>|</span>
-          <Link href="/terms&condition">Terms & Conditions</Link>
-          <span>|</span>
-          <Link href="/refundPolicy">Refund Policy</Link>
-        </footer>
+      <div className="text-center relative bottom-0 text-white py-4 space-y-4 text-xl">
         <footer className="text-center">
           Copyright © 2022 Hex-Star Universe - All Rights Reserved
         </footer>

@@ -38,6 +38,7 @@ import { useLogin } from "../context/LoginContext";
 
 export default function Home({ providers }) {
   const [LoginModal, setLoginModal] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const modalState = useOpen();
@@ -65,7 +66,6 @@ export default function Home({ providers }) {
     } else {
       setInterval(() => {
         sessionStorage.setItem("modal_shown", true);
-        conosle.log("called");
         setModalChnage();
       }, 5000);
     }
@@ -136,7 +136,7 @@ export default function Home({ providers }) {
       setUserArr(temp);
     });
 
-    console.log(UserArr)
+    console.log(UserArr);
 
     if (UserArr.length === 0) {
       alert("User not found");
@@ -212,10 +212,19 @@ export default function Home({ providers }) {
           <div className="md:w-[60vw] w-[80vw] h-[65vh] md:grid-cols-2 grid-cols-1 grid justify-items-center place-items-center backdrop-blur-md bg-[#171717]/30 relative">
             <img
               src="/Arrow.png"
-              className="absolute z-10 bottom-32 hidden lg:block w-[10rem]"
+              className="absolute z-10 bottom-32 hidden md:block w-[10rem]"
             />
-            <div className="rounded-t-l-xl rounded-b-l-xl rounded-tl-3xl rounded-bl-3xl  w-full">
-              <form className="font-gilroy flex flex-col justify-center space-y-4 w-[80%] md:w-[70%] lg:w-[50%] mx-auto text-white select-none">
+            <div
+              className={`rounded-t-l-xl rounded-b-l-xl rounded-tl-3xl rounded-bl-3xl  ${
+                showWelcome && "hidden md:block"
+              }`}
+            >
+              <form className="font-gilroy flex flex-col justify-center space-y-4 w-full   mx-auto text-white select-none ">
+                <img
+                  src="/backarrow.png"
+                  className="w-6 absolute top-4 left-6 cursor-pointer md:hidden"
+                  onClick={() => setShowWelcome(true)}
+                />
                 {LoginModal ? (
                   <h1 className="text-xl">Log In</h1>
                 ) : (
@@ -372,7 +381,58 @@ export default function Home({ providers }) {
               </form>
             </div>
 
-            <LoginModalDesign Login={LoginModal} />
+            <div
+              className={`md:bg-[#171717] h-full font-gilroy  p-8 rounded-tr-3xl rounded-br-3xl relative  ${
+                showWelcome ? "block" : "hidden"
+              }`}
+            >
+              <img src="/ellipse.png" className="absolute top-0" />
+              <img src="/planet.png" className="absolute bottom-1 right-1" />
+              <div className="flex flex-col justify-center pt-28">
+                <section className="flex flex-col text-white space-y-12 z-50">
+                  <div className="space-y-6 ">
+                    {LoginModal ? (
+                      <h1 className="text-5xl">Welcome to Back !</h1>
+                    ) : (
+                      <h1 className="text-5xl">
+                        Welcome to
+                        <br /> our Community
+                      </h1>
+                    )}
+                    <h1>
+                      Make your career on Space science and technology by the
+                      mentorship of top engineer and scientists of the world.
+                    </h1>
+                  </div>
+                  {!LoginModal && (
+                    <section className="flex justify-start items-center space-x-4">
+                      <img src="/persons.png" className="w-fit" />
+                      <h1>5K+ space enthusiast</h1>
+                    </section>
+                  )}
+                </section>
+                <div className="border border-white w-fit text-xl mx-auto rounded-lg h-10 flex justify-between items-center mt-8 md:hidden z-10 divide-x-2">
+                  <span
+                    className="  text-white rounded-tl-lg rounded-bl-lg py-1 text-center  px-6  cursor-pointer hover:text-black hover:bg-white hover:rounded-lg"
+                    onClick={() => {
+                      setShowWelcome(false);
+                      setLoginModal(false);
+                    }}
+                  >
+                    Sign Up
+                  </span>
+                  <span
+                    className=" text-white rounded-tl-lg rounded-bl-lg py-1 text-center  px-6  cursor-pointer hover:text-black hover:bg-white hover:rounded-lg"
+                    onClick={() => {
+                      setShowWelcome(false);
+                      setLoginModal(true);
+                    }}
+                  >
+                    Log In
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Modal>
