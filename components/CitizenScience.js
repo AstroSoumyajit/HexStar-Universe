@@ -43,10 +43,13 @@ const CitizenScience = () => {
   return (
     <div>
       <div className="" id='citizenscience'>
-        <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[rgba(0, 0, 0, 0.96)] text-transparent text-lg">
+      <div className="flex w-full items-center justify-between">
+        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
           CITIZEN SCIENCE
         </h1>
-        <div className="font-sweet_sans_pro text-lg text-white grid md:grid-cols-2 grid-cols-1 gap-y-8 aligh-items-center py-8">
+        <hr className="border-[#363636] border-2 w-[80%]" />
+      </div>
+        <div className="font-sweet_sans_pro text-xl text-white grid md:grid-cols-2 grid-cols-1 gap-y-8 aligh-items-center py-8">
           {data.map (item => {
             return (
               <Link href={item.link} key={item.key}>

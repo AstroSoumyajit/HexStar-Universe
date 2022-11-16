@@ -60,8 +60,6 @@ const Navbar = ({ active, path }) => {
     }
   };
 
-  console.log(userData)
-
 
   return (
     <div className="w-full z-50">

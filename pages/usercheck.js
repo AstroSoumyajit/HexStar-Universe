@@ -21,7 +21,7 @@ const Usercheck = () => {
       if (userDocSnap.exists()) {
       } else {
         await setDoc(doc(db, "users", userId), {
-          uid: userId,
+          id: userId,
           name: session?.user?.name,
           image: session?.user?.image,
           email: session?.user?.email,

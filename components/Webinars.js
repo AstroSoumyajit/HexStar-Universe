@@ -30,10 +30,12 @@ const Webinars = ({ title }) => {
   return (
     <div className="my-8" id="webinars">
       <div className="hidden md:block">
-        <div className="flex w-full items-center">
-          <img src="/Webinars.png" className="mr-8" />
-          <hr className="border-[#363636] border-2 w-full" />
-        </div>
+      <div className="flex w-full items-center">
+      <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
+          Webinars
+        </h1>
+        <hr className="border-[#363636] border-2  hidden md:block w-[80%]" />
+      </div>
       </div>
       <img src="/webinarsHeading.png" className="md:hidden"/>
 

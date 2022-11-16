@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper";
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 
 const WSW = () => {
   const Usw = [
@@ -34,22 +37,24 @@ const WSW = () => {
       link: "https://rzp.io/l/RocketryMasterclass",
     },
   ];
-  const [mySwiper, setMySwiper] = useState(null)
+  const [mySwiper, setMySwiper] = useState(null);
   return (
     <div>
       <div className="flex w-full items-center">
-        <img src="/headingWSW.png" className="md:mr-8 w-[12rem] md:w-fit mr-4" />
-        <hr className="border-[#363636] border-2 w-full" />
+        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
+          WSW
+        </h1>
+        <hr className="border-[#363636] border-2  hidden md:block w-[80%]" />
       </div>
       <div className="py-8 w-full flex items-center justify-between">
-      <button
-            className='mr-1 text-[#fff] rounded-full'
-            onClick={() => {
-              if (mySwiper) mySwiper.slidePrev()
-            }}
-          >
-            <IoIosArrowDropleftCircle size={30} />
-          </button>
+        <button
+          className="mr-1 text-[#fff] rounded-full"
+          onClick={() => {
+            if (mySwiper) mySwiper.slidePrev();
+          }}
+        >
+          <IoIosArrowDropleftCircle size={30} />
+        </button>
         <Swiper
           onInit={(ev) => setMySwiper(ev)}
           slidesPerView={2}
@@ -89,13 +94,13 @@ const WSW = () => {
           })}
         </Swiper>
         <button
-            className='mr-1 text-[#fff] rounded-full'
-            onClick={() => {
-              if (mySwiper) mySwiper.slideNext()
-            }}
-          >
-            <IoIosArrowDroprightCircle size={30} />
-          </button>
+          className="mr-1 text-[#fff] rounded-full"
+          onClick={() => {
+            if (mySwiper) mySwiper.slideNext();
+          }}
+        >
+          <IoIosArrowDroprightCircle size={30} />
+        </button>
       </div>
     </div>
   );

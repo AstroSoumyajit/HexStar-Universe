@@ -25,7 +25,14 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "../database/firebase";
 import { useLogin } from "../context/LoginContext";
 
@@ -44,6 +51,7 @@ export default function Home({ providers }) {
   const [date, setDate] = useState("");
   const [month, setMonth] = useState("");
   const [byear, setByear] = useState("");
+  const [UserArr, setUserArr] = useState([]);
 
   const [showanimation, setShowanimation] = useState(true);
   const route = useRouter().pathname;
@@ -78,6 +86,14 @@ export default function Home({ providers }) {
     }
   };
 
+  const checkLoginForm = () => {
+    if (email === "" || password === "") {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   let year = new Date().getFullYear();
   const range = (min, max) =>
     [...Array(max - min + 1).keys()].map((i) => i + min);
@@ -91,7 +107,7 @@ export default function Home({ providers }) {
   // }, []);
 
   const SubmitUserData = async () => {
-    const id = name.substr(0, indexof(" ")) + Date.now();
+    const id = Date.now();
     const docRef = await setDoc(doc(db, "users", `${id}`), {
       id: id,
       name: name,
@@ -107,6 +123,35 @@ export default function Home({ providers }) {
     });
 
     setModalChnage();
+  };
+
+  const Login = async () => {
+    const q = query(collection(db, "users"), where("email", "==", `${email}`));
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      let temp = UserArr;
+      temp.push(doc.data());
+      setUserArr(temp);
+    });
+
+    console.log(UserArr)
+
+    if (UserArr.length === 0) {
+      alert("User not found");
+    } else {
+      let authUser = UserArr.find((user) => user.password === password);
+
+      if (authUser) {
+        setUserData(authUser);
+      } else {
+        alert("Password Invalid");
+      }
+    }
+
+    setModalChnage();
+    setUserArr([]);
   };
 
   const defaultOptions = {
@@ -259,12 +304,18 @@ export default function Home({ providers }) {
                   {/* <AiFillEye className="text-[#777777] absolute top-1.5 right-1.5 text-2xl cursor-pointer" /> */}
                 </section>
                 {LoginModal ? (
-                  <span
-                    className="bg-[#777777] py-1.5 rounded-xl text-white hover:bg-[#424242] text-center"
-                    onClick={SubmitUserData}
-                  >
-                    Log in
-                  </span>
+                  checkLoginForm() ? (
+                    <span
+                      className="bg-[#777777] py-1.5 rounded-xl text-white hover:bg-[#424242] text-center"
+                      onClick={Login}
+                    >
+                      Log in
+                    </span>
+                  ) : (
+                    <span className="bg-[#777777] py-1.5 rounded-xl text-white  text-center opacity-50 cursor-not-allowed">
+                      Log in
+                    </span>
+                  )
                 ) : handleCreateAccount() ? (
                   <span
                     className="bg-[#777777] py-1.5 rounded-xl text-white hover:bg-[#424242] text-center"

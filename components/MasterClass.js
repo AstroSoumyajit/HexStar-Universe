@@ -32,9 +32,11 @@ const MasterClass = () => {
   return (
     <div className="space-y-4" id="masterclass">
       <div className="hidden md:block">
-        <div className="flex w-full items-center ">
-          <img src="/Masterclass.png" className="mr-8" />
-          <hr className="border-[#363636] border-2 w-full" />
+        <div className="flex w-full items-center">
+          <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
+            Masterclass
+          </h1>
+          <hr className="border-[#363636] border-2  hidden md:block w-[80%]" />
         </div>
       </div>
 

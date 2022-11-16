@@ -27,8 +27,10 @@ const Mentor = () => {
   return (
     <div className="space-y-8">
       <div className="flex w-full items-center">
-        <img src="/mentorHeading.png" className="mr-8 lg:w-[30rem] w-[20rem]" />
-        <hr className="border-[#363636] border-2 w-full hidden md:block" />
+      <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
+          Mentor & Instructor
+        </h1>
+        <hr className="border-[#363636] border-2  hidden md:block w-[80%]" />
       </div>
       <div className="w-full flex items-center justify-between">
         <button

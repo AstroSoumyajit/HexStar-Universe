@@ -78,7 +78,7 @@ const Collaborators = () => {
           slidesPerGroup={1}
           loop={true}
           loopFillGroupWithBlank={true}
-          autoplay={{ delay: 3000 }}
+          autoplay={{ delay: 5000 }}
           pagination={{
             clickable: true,
           }}
