@@ -365,7 +365,7 @@ export default function Home({ providers }) {
                 </span>
                 {LoginModal ? (
                   <h1 className="text-center">
-                    Don't have an account?
+                    Don&apos;t have an account?
                     <b>
                       <span onClick={() => setLoginModal(false)}> Sign Up</span>
                     </b>
