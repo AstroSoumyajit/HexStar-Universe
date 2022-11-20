@@ -67,12 +67,12 @@ const Collaborators = () => {
         </h1>
         <div className="border-[#363636] border-2 w-full" />
       </div>
-      <div class="overflow-hidden">
-        <div class="flex -mx-4 img-ticker items-center">
+      <div className="overflow-hidden">
+        <div className="flex -mx-4 img-ticker items-center">
           {collaboratorData.map((data, i) => {
             return (
               <img
-                class="mx-16 flex-none"
+                className="mx-16 flex-none"
                 src={data.image}
                 key={i}
               />
@@ -81,7 +81,7 @@ const Collaborators = () => {
           {collaboratorData.map((data, i) => {
             return (
               <img
-                class="mx-16 flex-none"
+                className="mx-16 flex-none"
                 src={data.image}
                 key={i}
               />

@@ -35,7 +35,7 @@ const Mentor = () => {
       <div className="flex justify-between xl:space-x-20 lg:space-x-16 md:space-x-12 space-x-6 items-center overflow-scroll scrollbar-hide relative">
         {mentorData.map((data, i) => {
           return (
-            <div className="flex flex-col items-center space-y-4">
+            <div className="flex flex-col items-center space-y-4" key={i}>
               <img src={data.image} className="max-w-[18rem]" />
             </div>
           );
