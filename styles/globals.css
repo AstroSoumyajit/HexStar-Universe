@@ -153,3 +153,17 @@
   height: fit-content;
   z-index: -1000;
 }
+
+@keyframes ticker-kf {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-108rem, 0, 0);
+  }
+}
+
+.img-ticker {
+  animation: ticker-kf 25s linear infinite;
+}

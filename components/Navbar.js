@@ -1,5 +1,5 @@
 import React from "react";
-import { BsInstagram } from "react-icons/bs";
+import { BsBellFill, BsInstagram } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsFacebook } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
@@ -21,9 +21,8 @@ import { useLogin } from "../context/LoginContext";
 const Navbar = ({ active, path }) => {
   const [searchInput, setSearchInput] = useState("");
   // const [userData, setuserData] = useState(null);
-  const {userData} = useLogin()
+  const { userData } = useLogin();
   const setOpenChange = useContext(ModalUpdateContext);
-
 
   const { data: session } = useSession();
 
@@ -44,22 +43,6 @@ const Navbar = ({ active, path }) => {
     }
   }
 
-  const getUserData = async () => {
-    const docRef = doc(
-      db,
-      "users",
-      `${window.sessionStorage.getItem("userId")}`
-    );
-
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      setuserData(docSnap.data());
-    } else {
-      console.log("No such document!");
-    }
-  };
-
 
   return (
     <div className="w-full z-50">
@@ -71,7 +54,7 @@ const Navbar = ({ active, path }) => {
               className="w-3/4 md:w-full cursor-pointer"
             />
           </Link>
-          <div className="hidden md:block lg:w-1/2 min-w-[25rem] relative">
+          <div className="hidden md:block lg:w-1/3 min-w-[20rem] relative">
             <input
               type="text"
               placeholder="Search for space talks, events, etc..."
@@ -133,17 +116,11 @@ const Navbar = ({ active, path }) => {
                 </button>
               </Link>
             </div>
-            <div>
-              <Link href="#">
-                <a className="text-white border-2 font-gilroy border-white rounded-full px-4 py-2 font-semibold">
-                  Apply as Mentor
-                </a>
-              </Link>
-            </div>
+
             <div>
               {!session && !userData ? (
                 <button
-                  className="text-white   bg-zinc-700 rounded-full px-4 py-1.5 font-sweet_sans_pro border-zinc-400 border-2"
+                  className="text-white   bg-zinc-700 rounded-full px-4 py-1.5 font-sweet_sans_pro border-zinc-400 border-2 text-base"
                   onClick={() => {
                     setOpenChange();
                   }}
@@ -157,26 +134,36 @@ const Navbar = ({ active, path }) => {
                 />
               )}
             </div>
+            <div>
+              <BsBellFill className="text-3xl text-white cursor-pointer" />
+            </div>
           </div>
         </div>
-        <div className="md:hidden">
-          <div className="flex flex-row space-x items-center">
-            <Link href="https://discord.com/invite/XxuJMhAMaD">
-              <button className="flex flex-row items-center border-2 border-[#9E00FF] rounded-full font-gilroy text-[#9E00FF] px-2 py-[2px] font-semibold md:text-lg text-[10px] sm:text-md">
-                <FaDiscord
-                  style={{
-                    fontSize: "20px",
-                    marginLeft: "4px",
-                    marginRight: "4px",
-                  }}
-                />
-                Community
+        <div className="md:hidden flex justify-between items-center ">
+          <div className="flex flex-row space-x-2 items-center cursor-pointer">
+            
+            <div>
+            {!session && !userData ? (
+              <button
+                className="text-white   bg-zinc-700 rounded-full px-4 py-1 font-sweet_sans_pro border-zinc-400 border-2 text-xs"
+                onClick={() => {
+                  setOpenChange();
+                }}
+              >
+                Sign In
               </button>
-            </Link>
+            ) : (
+              <NavbarAvatarDropDown
+                img={session?.user?.image || `/Images/user.jpg`}
+                name={session?.user?.name || userData.name}
+              />
+            )}
+          </div>
             <div className="w-14">
               <DrawerSection path={path} />
             </div>
           </div>
+         
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import CitizenScience from "../components/CitizenScience";
 import Collaborators from "../components/Collaborators";
 import Events from "../components/Events";
@@ -28,6 +29,7 @@ import Link from "next/link";
 import {
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   setDoc,
@@ -106,6 +108,21 @@ export default function Home({ providers }) {
   //   }, 1500);
   // }, []);
 
+  React.useEffect(() => {
+    return async () => {
+      const userId = window.sessionStorage.getItem("user_id");
+      console.log(userId)
+      if (userId) {
+        const userRef = doc(db, "users", userId);
+        const userDocSnap = await getDoc(userRef);
+
+        if (userDocSnap.exists()) {
+          setUserData(userDocSnap.data())
+        } 
+      }
+    };
+  }, []);
+
   const SubmitUserData = async () => {
     const id = Date.now();
     const docRef = await setDoc(doc(db, "users", `${id}`), {
@@ -123,6 +140,7 @@ export default function Home({ providers }) {
     });
 
     setModalChnage();
+    window.sessionStorage.setItem("user_id", id);
   };
 
   const Login = async () => {
@@ -145,6 +163,7 @@ export default function Home({ providers }) {
 
       if (authUser) {
         setUserData(authUser);
+        window.sessionStorage.setItem("user_id", authUser.id);
       } else {
         alert("Password Invalid");
       }
@@ -165,20 +184,20 @@ export default function Home({ providers }) {
 
   return (
     <div className="bg-[#000] overflow-x-auto ">
-      <div
-        className={`absolute h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6 ${
+      {/* <div
+        className={` h-screen w-[80vw] z-50 overflow-y-auto xl:ml-36 lg:ml-24 md:ml-16 ml-6 ${
           showanimation === false && "hidden"
         }`}
       >
-        {/* <Lottie
+        <Lottie
           options={defaultOptions}
           // height={1000}
           // width={1000}
           isStopped={showanimation}
           isPaused={showanimation}
           onClick={() => conosle.log ('Disabled')}
-        /> */}
-      </div>
+        />
+      </div> */}
       <Head>
         <title>HexStar Universe</title>
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
@@ -388,7 +407,7 @@ export default function Home({ providers }) {
             >
               <img src="/ellipse.png" className="absolute top-0" />
               <img src="/planet.png" className="absolute bottom-1 right-1" />
-              <div className="flex flex-col justify-center pt-28">
+              <div className="flex flex-col justify-center xl:pt-28 lg:pt-20 md:pt-16 pt-8">
                 <section className="flex flex-col text-white space-y-12 z-50">
                   <div className="space-y-6 ">
                     {LoginModal ? (

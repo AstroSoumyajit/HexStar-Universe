@@ -41,10 +41,10 @@ const WSW = () => {
   return (
     <div>
       <div className="flex w-full items-center">
-        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
+        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
           WSW
         </h1>
-        <hr className="border-[#363636] border-2  hidden md:block w-[80%]" />
+        <hr className="border-[#363636] border-2  w-full" />
       </div>
       <div className="py-8 w-full flex items-center justify-between">
         <button

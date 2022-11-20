@@ -31,10 +31,10 @@ const Webinars = ({ title }) => {
     <div className="my-8" id="webinars">
       <div className="hidden md:block">
       <div className="flex w-full items-center">
-      <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
+      <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
           Webinars
         </h1>
-        <hr className="border-[#363636] border-2  hidden md:block w-[80%]" />
+        <hr className="border-[#363636] border-2  hidden md:block w-full" />
       </div>
       </div>
       <img src="/webinarsHeading.png" className="md:hidden"/>
@@ -140,7 +140,7 @@ const Webinars = ({ title }) => {
 
       {english && (
         <div>
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 m-auto md:gap-8 gap-12">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 m-auto gap-6">
             {!allWebinars
               ? englishWebinar.slice(0, 8).map((data) => {
                   return (

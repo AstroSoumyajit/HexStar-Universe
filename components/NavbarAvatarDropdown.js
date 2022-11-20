@@ -34,8 +34,7 @@ const NavbarAvatarDropDown = ({ img, name }) => {
         <Avatar
           src={img}
           alt={name}
-          sx={{ width: "45px", height: "45px" }}
-          className=" cursor-pointer border-2 border-[#ffffff] hidden lg:flex"
+          className=" cursor-pointer border-2 border-[#ffffff] hidden lg:flex w-12 h-12 "
         />
       </IconButton>
       <Menu
@@ -61,6 +60,7 @@ const NavbarAvatarDropDown = ({ img, name }) => {
           <MenuItem
             onClick={() => {
               session ? signOut() : setUserData(null);
+              window.sessionStorage.removeItem("user_id");
               handleClose();
             }}
             className=" font-nunito"

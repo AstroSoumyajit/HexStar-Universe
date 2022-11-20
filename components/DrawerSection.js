@@ -59,7 +59,7 @@ const DrawerSection = ({path}) => {
   return (
     <div className="font-sweet_sans_pro">
       <IconButton onClick={() => setIsDrawerOpen (true)}>
-        <img src="/Images/icons/eva_menu-outline.svg" className="w-16" />
+        <img src="/Images/icons/eva_menu-outline.svg" className="" />
       </IconButton>
       <Drawer
         style={{height: 'full'}}

@@ -44,10 +44,10 @@ const CitizenScience = () => {
     <div>
       <div className="" id='citizenscience'>
       <div className="flex w-full items-center justify-between">
-        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
+        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
           CITIZEN SCIENCE
         </h1>
-        <hr className="border-[#363636] border-2 w-[80%]" />
+        <hr className="border-[#363636] border-2 w-full" />
       </div>
         <div className="font-sweet_sans_pro text-xl text-white grid md:grid-cols-2 grid-cols-1 gap-y-8 aligh-items-center py-8">
           {data.map (item => {

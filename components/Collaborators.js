@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import { Pagination, Navigation, Autoplay } from "swiper";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useState } from "react";
+import { Ticker } from "react-ticker";
 
 const testimonials = [
   {
@@ -60,94 +61,33 @@ const Collaborators = () => {
   const [mySwiper, setMySwiper] = useState(null);
   return (
     <div className="mt-12 mb-36" id="collaborators">
-      <h1 className="font-cascade bg-clip-text md:text-4xl my-8 bg-gradient-to-b from-[#FFFFFF] to-[#8000FF] text-transparent text-lg">
-        Collaborators & Partners
-      </h1>
-      <div className="w-full flex items-center justify-between xl:py-12 md:py-8 py-4">
-        <button
-          className="mr-1 text-[#fff] rounded-full"
-          onClick={() => {
-            if (mySwiper) mySwiper.slidePrev();
-          }}
-        >
-          <IoIosArrowBack size={30} />
-        </button>
-        <Swiper
-          onInit={(ev) => setMySwiper(ev)}
-          slidesPerView={2}
-          slidesPerGroup={1}
-          loop={true}
-          loopFillGroupWithBlank={true}
-          autoplay={{ delay: 5000 }}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 30,
-            },
-          }}
-          navigation={true}
-          modules={[Pagination, Navigation, Autoplay]}
-          className="mySwiper homeSwiperSliderCards mx-auto"
-        >
+      <div className="flex w-full items-center">
+        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
+          Collaborators and Partners
+        </h1>
+        <div className="border-[#363636] border-2 w-full" />
+      </div>
+      <div class="overflow-hidden">
+        <div class="flex -mx-4 img-ticker items-center">
           {collaboratorData.map((data, i) => {
             return (
-              <SwiperSlide key={i}>
-                <div className="flex flex-col items-center space-y-4">
-                  <img src={data.image} className="max-w-[18rem]" />
-                </div>
-              </SwiperSlide>
+              <img
+                class="mx-16 flex-none"
+                src={data.image}
+                key={i}
+              />
             );
           })}
-        </Swiper>
-        <button
-          className="mr-1 text-[#fff] rounded-full"
-          onClick={() => {
-            if (mySwiper) mySwiper.slideNext();
-          }}
-        >
-          <IoIosArrowForward size={30} />
-        </button>
-      </div>
-      <div className="md:w-4/5 mx-auto my-8">
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={30}
-          navigation={true}
-          modules={[Navigation]}
-          breakpoints={{
-            760: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-          }}
-          className="mySwiper"
-        >
-          {testimonials.map((data) => {
+          {collaboratorData.map((data, i) => {
             return (
-              <SwiperSlide key={data.key}>
-                <div className="relative border border-white rounded-3xl text-white font-gilroy space-y-8 md:p-12 p-8 md:text-lg text-sm text-center">
-                  <img src="/QuoteLeft.png" className="absolute top-4 left-4" />
-                  <h1>{data.comment}</h1>
-                  <h1>⭐⭐⭐⭐⭐</h1>
-                  <h1>
-                    {data.speaker}, {data.speakerdetails}
-                  </h1>
-                </div>
-              </SwiperSlide>
+              <img
+                class="mx-16 flex-none"
+                src={data.image}
+                key={i}
+              />
             );
           })}
-        </Swiper>
+        </div>
       </div>
     </div>
   );

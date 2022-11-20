@@ -28,12 +28,12 @@ const Events = () => {
   return (
     <div className="box-border" id="events">
       <div className="flex w-full items-center">
-        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8">
+        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
           Events
         </h1>
         <hr className="border-[#363636] border-2 w-full" />
       </div>
-      <img src="/eventHeading.png" className="md:hidden" />
+  
       <div className="py-8 w-full flex items-center justify-between">
         <button
           className="mr-4 text-[#fff] rounded-full"
