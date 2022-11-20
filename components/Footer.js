@@ -39,7 +39,7 @@ const Footer = () => {
     <div className="">
       <div className="space-y-12 my-24" id="footer">
         <img src="/Images/logo.svg" />
-        <div className="grid grid-cols-5">
+        <div className="grid lg:grid-cols-5 grid-cols-1">
           <section className="col-span-2 space-y-8">
             <h1 className="text-base font-gilroy text-white">
               Get updates on new programs, workshops, the latest developments,
@@ -79,8 +79,8 @@ const Footer = () => {
               </div>
             </div>
           </section>
-          <section className="col-span-3 flex justify-around">
-            <div className="font-gilroy text-white text-xl flex flex-col space-y-8">
+          <section className="col-span-3 flex lg:flex-row flex-col justify-around space-y-8 lg:space-y-0">
+            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl lg:flex-col flex flex-row md:space-x-16 space-x-4 text-sm text-center lg:text-left lg:space-x-0 lg:space-y-8">
               <Link href="/">
                 <a>Home</a>
               </Link>
@@ -97,7 +97,7 @@ const Footer = () => {
                 <a>Citizen Science</a>
               </Link>
             </div>
-            <div className="font-gilroy text-white text-xl flex flex-col space-y-8">
+            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl lg:flex-col flex flex-row md:space-x-16 space-x-4 text-sm text-center lg:text-left lg:space-x-0 lg:space-y-8">
               <Link href="/aboutus">
                 <a>About Us</a>
               </Link>
@@ -111,7 +111,7 @@ const Footer = () => {
                 <a>Refund Policy</a>
               </Link>
             </div>
-            <div className="font-gilroy text-white text-xl flex flex-col space-y-8">
+            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl lg:flex-col flex flex-row md:space-x-16 space-x-4 text-sm text-center lg:text-left lg:space-x-0 lg:space-y-8">
               <Link href="/aboutus">
                 <a>Community</a>
               </Link>
@@ -126,7 +126,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="text-center relative bottom-0 text-white py-4 space-y-4 text-xl">
+      <div className="text-center relative bottom-0 text-white py-4 space-y-4 lg:text-xl md:text-lg text-sm">
         <footer className="text-center">
           Copyright © 2022 Hex-Star Universe - All Rights Reserved
         </footer>
