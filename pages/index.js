@@ -62,17 +62,6 @@ export default function Home({ providers }) {
 
   const ref = useRef(null);
 
-  useEffect(() => {
-    if (window.sessionStorage.getItem("modal_shown")) {
-      console.log("found");
-    } else {
-      setInterval(() => {
-        sessionStorage.setItem("modal_shown", true);
-        setModalChnage();
-      }, 5000);
-    }
-  }, [router.isReady]);
-
   const handleCreateAccount = () => {
     if (
       name === "" ||
