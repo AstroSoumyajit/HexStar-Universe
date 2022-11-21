@@ -5,36 +5,37 @@ import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
+import { Link } from "@material-ui/core";
 
 const WSW = () => {
   const Usw = [
     {
       image: "/Images/WSW/image1.png",
-      link: "https://unstop.com/workshop/asteroid-search-campaign-30-hex-star-universe-335553",
+      link: "https://www.youtube.com/watch?v=aMqsGqciYi8&list=PLVxsiKzswmFS-RmPc7qYaGsThXuCUOD-v&index=2 ",
     },
     {
       image: "/Images/WSW/image2.png",
-      link: "https://rzp.io/l/DeepSkyImgProcessing",
+      link: "https://www.youtube.com/watch?v=u7z3l17rzYw&list=PLVxsiKzswmFS-RmPc7qYaGsThXuCUOD-v&index=1",
     },
     {
       image: "/Images/WSW/image3.png",
-      link: "https://pages.razorpay.com/orbitalmechanics",
+      link: "https://www.youtube.com/watch?v=kJkRK9-QwGE&list=PLVxsiKzswmFS-RmPc7qYaGsThXuCUOD-v&index=3",
     },
     {
       image: "/Images/WSW/image4.png",
-      link: "https://rzp.io/l/RocketryMasterclass",
+      link: "https://www.youtube.com/watch?v=DtrL8KMIvLc&list=PLVxsiKzswmFS-RmPc7qYaGsThXuCUOD-v&index=4",
     },
     {
       image: "/Images/WSW/image5.png",
-      link: "https://rzp.io/l/RocketryMasterclass",
+      link: "https://www.youtube.com/watch?v=IX3Ssw1JSeg&list=PLVxsiKzswmFS-RmPc7qYaGsThXuCUOD-v&index=5",
     },
     {
       image: "/Images/WSW/image6.png",
-      link: "https://rzp.io/l/RocketryMasterclass",
+      link: "https://www.youtube.com/watch?v=90nPIjgzFBg&list=PLVxsiKzswmFS-RmPc7qYaGsThXuCUOD-v&index=6",
     },
     {
       image: "/Images/WSW/image7.png",
-      link: "https://rzp.io/l/RocketryMasterclass",
+      link: "https://www.youtube.com/watch?v=jCjtvV5GvrQ&list=PLVxsiKzswmFS-RmPc7qYaGsThXuCUOD-v&index=7",
     },
   ];
   const [mySwiper, setMySwiper] = useState(null);
@@ -42,7 +43,7 @@ const WSW = () => {
     <div>
       <div className="flex w-full items-center">
         <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
-          WSW
+          WSW 2022
         </h1>
         <hr className="border-[#363636] border-2  w-full" />
       </div>
@@ -86,9 +87,11 @@ const WSW = () => {
           {Usw.map((data, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="flex flex-col items-center space-y-4">
-                  <img src={data.image} className="" />
-                </div>
+                <Link href={data.link}>
+                  <div className="flex flex-col items-center space-y-4">
+                    <img src={data.image} className="" />
+                  </div>
+                </Link>
               </SwiperSlide>
             );
           })}

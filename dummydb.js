@@ -1,5 +1,26 @@
 export const webinarData = [
   {
+    key: 19,
+    linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+    title: "Rocket Propulsion",
+    thumbnail: "/Images/Webinars/english/image/image19.png",
+    speaker: "Vani Sadadiwala",
+    speakerImage: "/Images/Webinars/english/person/person19.png",
+    videoID: "9Uh9HfxJyZo",
+    language:"english"
+  },
+  {
+    key: 20,
+    linkEmbed: "https://www.youtube.com/embed/ovAbClBbb8s",
+    title: "How to help Scientists through Citizen Science Projects",
+    thumbnail: "/Images/Webinars/english/image/image20.png",
+    speaker: "-Dr. Himadri Sekhar Dasn",
+    speakerImage: "/Images/Webinars/english/person/person20.png",
+    videoID: "ovAbClBbb8s",
+    language:"english"
+  },
+  
+  {
     key: 18,
     linkEmbed: "https://youtube.com/embed/RhZrf5iBVTo",
     title: "Exoplanet Exploration and Aerodymics of Aerofoil",
@@ -187,5 +208,25 @@ export const webinarData = [
     speakerImage: "/Images/Webinars/bengali/person/person1.png",
     videoID: "jTjlu4q2M7E",
     language:"bengali"
+  },
+  {
+    key: Date.now(),
+    linkEmbed: "https://youtube.com/embed/Dhk-pccFTY8",
+    title: "কৃষ্ণগহ্বৰ আৰু ৱৰ্মহলৰ (মহাকাশীয় সুৰঙ্গৰ) আচহুৱা ৰহস্য",
+    thumbnail: "/Images/Webinars/bengali/image/image2.png",
+    speaker: "-অংশুমান বৰুৱা",
+    speakerImage: "/Images/Webinars/bengali/person/person2.png",
+    videoID: "Dhk-pccFTY8",
+    language:"bengali"
+  },
+  {
+    key: Date.now(),
+    linkEmbed: "https://youtube.com/embed/jCjtvV5GvrQ",
+    title: "சோலார் சிஸ்டம் ஸ்கோப்",
+    thumbnail: "/Images/Webinars/tamil/image/image1.png",
+    speaker: "சோலார் சிஸ்டம் ஸ்கோப்",
+    speakerImage: "/Images/Webinars/tamil/person/person1.png",
+    videoID: "jCjtvV5GvrQ",
+    language:"tamil"
   },
 ];

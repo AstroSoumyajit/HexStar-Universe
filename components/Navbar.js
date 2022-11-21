@@ -125,7 +125,7 @@ const Navbar = ({ active, path }) => {
                     setOpenChange();
                   }}
                 >
-                  Sign In
+                  Sign Up
                 </button>
               ) : (
                 <NavbarAvatarDropDown
@@ -150,7 +150,7 @@ const Navbar = ({ active, path }) => {
                   setOpenChange();
                 }}
               >
-                Sign In
+                Sign Up
               </button>
             ) : (
               <NavbarAvatarDropDown

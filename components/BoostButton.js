@@ -9,7 +9,7 @@ const BoostButton = () => {
     });
   }
   return (
-    <div className="fixed bottom-8 right-8">
+    <div className="fixed bottom-8 right-8 z-50">
       <button className="bg-white rounded-full" onClick={gotoTop}>
         <IoMdRocket style={{fontSize: '40px', margin: '5px'}} />
       </button>

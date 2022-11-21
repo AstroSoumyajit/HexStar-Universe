@@ -23,6 +23,9 @@ const Webinars = ({ title }) => {
   const bengaliWebinar = webinarData.filter(
     (data) => data.language == "bengali"
   );
+  const tamilWebinars = webinarData.filter(
+    (data) => data.language == "tamil"
+  );
 
   // console.log(englishWebinar);
 
@@ -30,14 +33,14 @@ const Webinars = ({ title }) => {
   return (
     <div className="my-8" id="webinars">
       <div className="hidden md:block">
-      <div className="flex w-full items-center">
-      <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
-          Webinars
-        </h1>
-        <hr className="border-[#363636] border-2  hidden md:block w-full" />
+        <div className="flex w-full items-center">
+          <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
+            Webinars
+          </h1>
+          <hr className="border-[#363636] border-2  hidden md:block w-full" />
+        </div>
       </div>
-      </div>
-      <img src="/webinarsHeading.png" className="md:hidden"/>
+      <img src="/webinarsHeading.png" className="md:hidden" />
 
       <div className="pb-6">
         <button
@@ -188,7 +191,7 @@ const Webinars = ({ title }) => {
         </div>
       )}
       {bengali && (
-        <div className="my-8 min-h-[50vh]">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 m-auto gap-6">
           {bengaliWebinar.map((data) => {
             return (
               <WebinarsCard
@@ -212,11 +215,19 @@ const Webinars = ({ title }) => {
         </div>
       )}
       {tamil && (
-        <div className=" text-white  font-semibold">
-          {" "}
-          <h1 className="lg:text-6xl md:text-4xl text-2xl min-h-[50vh] flex justify-center items-center">
-            Comming Soon...
-          </h1>
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 m-auto gap-6">
+          {tamilWebinars.map((data) => {
+            return (
+              <WebinarsCard
+                key={data.key}
+                image={data.thumbnail}
+                title={data.title}
+                speaker={data.speaker}
+                speakerImage={data.speakerImage}
+                route={"bengali"}
+              />
+            );
+          })}
         </div>
       )}
       {telegu && (

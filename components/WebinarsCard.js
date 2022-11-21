@@ -7,7 +7,7 @@ const WebinarsCard = ({ image, title, speakerImage, speaker, route }) => {
     <div className="">
       <div className="space-y-4 hidden md:block w-fit hover:bg-[#161616] overflow-hidden hover:scale-110 duration-200 hover:p-4 rounded-xl group">
         <div className="relative">
-          <img src={image} className="rounded-3xl" />
+          <img src={image} className="rounded-3xl max-w-[20rem]" />
           {/* <Link href={`/${title}`}>
             <button className="font-sweet_sans_pro text-white rounded-md px-4 py-2 bg-[#2D2D2D] absolute bottom-4 left-4 ">
               Watch
