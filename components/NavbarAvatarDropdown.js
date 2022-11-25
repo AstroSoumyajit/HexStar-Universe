@@ -59,8 +59,13 @@ const NavbarAvatarDropDown = ({ img, name }) => {
           {/* <MenuItem onClick={handleClose} className=" font-nunito">Your Projects</MenuItem> */}
           <MenuItem
             onClick={() => {
-              session ? signOut() : setUserData(null);
-              window.sessionStorage.removeItem("user_id");
+              if (session) {
+                signOut();
+              } else {
+                window.sessionStorage.removeItem("user_id");
+                setUserData(null);
+                window.location.reload();
+              }
               handleClose();
             }}
             className=" font-nunito"

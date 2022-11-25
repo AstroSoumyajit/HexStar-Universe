@@ -7,6 +7,11 @@ import { border } from "@mui/system";
 // import {webinarData} from '../dummydb';
 import { webinarData } from "../dummydb";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../database/firebase";
+import { useSession } from "next-auth/react";
+import { useLogin } from "../context/LoginContext";
 
 const Webinars = ({ title }) => {
   const [allWebinars, setAllWebinars] = React.useState(false);
@@ -16,6 +21,11 @@ const Webinars = ({ title }) => {
   const [tamil, setTamil] = React.useState(false);
   const [telegu, setTelegu] = React.useState(false);
   const [showLanguage, setShowLanguage] = useState(false);
+  const { userData, setUserData } = useLogin();
+
+  const { data: session } = useSession();
+
+  console.log(userData);
 
   const englishWebinar = webinarData.filter(
     (data) => data.language == "english"
@@ -23,13 +33,8 @@ const Webinars = ({ title }) => {
   const bengaliWebinar = webinarData.filter(
     (data) => data.language == "bengali"
   );
-  const tamilWebinars = webinarData.filter(
-    (data) => data.language == "tamil"
-  );
+  const tamilWebinars = webinarData.filter((data) => data.language == "tamil");
 
-  // console.log(englishWebinar);
-
-  // console.log(webinarData)
   return (
     <div className="my-8" id="webinars">
       <div className="hidden md:block">
@@ -153,6 +158,7 @@ const Webinars = ({ title }) => {
                       title={data.title}
                       speaker={data.speaker}
                       speakerImage={data.speakerImage}
+                      videoId={data.videoID}
                       route={"english"}
                     />
                   );
@@ -166,6 +172,7 @@ const Webinars = ({ title }) => {
                       speaker={data.speaker}
                       speakerImage={data.speakerImage}
                       route={"english"}
+                      videoId={data.videoID}
                     />
                   );
                 })}
@@ -201,6 +208,7 @@ const Webinars = ({ title }) => {
                 speaker={data.speaker}
                 speakerImage={data.speakerImage}
                 route={"bengali"}
+                videoId={data.videoID}
               />
             );
           })}
@@ -225,6 +233,7 @@ const Webinars = ({ title }) => {
                 speaker={data.speaker}
                 speakerImage={data.speakerImage}
                 route={"bengali"}
+                videoId={data.videoID}
               />
             );
           })}

@@ -62,6 +62,11 @@ export default function Home({ providers }) {
 
   const ref = useRef(null);
 
+  let year = new Date().getFullYear();
+  const range = (min, max) =>
+    [...Array(max - min + 1).keys()].map((i) => i + min);
+
+  //check for if sign up Formis all good ?
   const handleCreateAccount = () => {
     if (
       name === "" ||
@@ -77,41 +82,7 @@ export default function Home({ providers }) {
     }
   };
 
-  const checkLoginForm = () => {
-    if (email === "" || password === "") {
-      return false;
-    } else {
-      return true;
-    }
-  };
-
-  let year = new Date().getFullYear();
-  const range = (min, max) =>
-    [...Array(max - min + 1).keys()].map((i) => i + min);
-
-  // useEffect(() => {
-  //   console.log("Function is called");
-  //   setShowanimation(true);
-  //   setTimeout(() => {
-  //     setShowanimation(false);
-  //   }, 1500);
-  // }, []);
-
-  React.useEffect(() => {
-    return async () => {
-      const userId = window.sessionStorage.getItem("user_id");
-      console.log(userId)
-      if (userId) {
-        const userRef = doc(db, "users", userId);
-        const userDocSnap = await getDoc(userRef);
-
-        if (userDocSnap.exists()) {
-          setUserData(userDocSnap.data())
-        } 
-      }
-    };
-  }, []);
-
+  //Submit users data to firebase and add inside Global Object
   const SubmitUserData = async () => {
     const id = Date.now();
     const docRef = await setDoc(doc(db, "users", `${id}`), {
@@ -132,6 +103,17 @@ export default function Home({ providers }) {
     window.sessionStorage.setItem("user_id", id);
   };
 
+  //ckeck if Login Form is good to go?
+  const checkLoginForm = () => {
+    if (email === "" || password === "") {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  //Check if users exists and can he Login?
+  //then add userid inside session storage-> next time when users eneters he gets login directly
   const Login = async () => {
     const q = query(collection(db, "users"), where("email", "==", `${email}`));
 
@@ -143,8 +125,6 @@ export default function Home({ providers }) {
       setUserArr(temp);
     });
 
-    console.log(UserArr);
-
     if (UserArr.length === 0) {
       alert("User not found");
     } else {
@@ -155,12 +135,33 @@ export default function Home({ providers }) {
         window.sessionStorage.setItem("user_id", authUser.id);
       } else {
         alert("Password Invalid");
+        return;
       }
     }
 
     setModalChnage();
     setUserArr([]);
   };
+
+  //whenever user enters the page or Refresh -> the user_id found from session and query inside firebase to retrieve data
+  const getUserData = async () => {
+    const userId = window.sessionStorage.getItem("user_id");
+    if (userId) {
+      const userRef = doc(db, "users", userId);
+      const userDocSnap = await getDoc(userRef);
+      if (userDocSnap.exists()) {
+        setUserData({ ...userDocSnap.data()});
+      }
+    }else{
+      return
+    }
+  };
+
+
+
+  React.useEffect(() => {
+    getUserData();
+  }, []);
 
   const defaultOptions = {
     loop: false,

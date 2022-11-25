@@ -1,8 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { useSession } from "next-auth/react";
+import { setUserId } from "firebase/analytics";
+import { deleteDoc, doc, addDoc, setDoc, getDoc } from "firebase/firestore";
+import { db } from "../database/firebase";
 
-const WebinarsCard = ({ image, title, speakerImage, speaker, route }) => {
-  // console.log(route)
+const WebinarsCard = ({
+  image,
+  title,
+  speakerImage,
+  speaker,
+  route,
+  videoId,
+}) => {
+  const { data: session } = useSession();
+
+  const [hasliked, setHasLiked] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    if (session) {
+      setUserId(session?.user?.uid || session.user.id);
+    } else if (window.sessionStorage.getItem("user_id")) {
+      setUserId(window.sessionStorage.getItem("user_id"));
+    }
+  }, [session, window]);
+  // console.log(userId)
+
+  const likePost = async () => {
+    if (hasliked && userId) {
+      await deleteDoc(doc(db, "users", `${userId}`, "likes", `${videoId}`));
+    } else {
+      const docRef = doc(db, `users/${userId}/likes`, `${videoId}`);
+      await setDoc(docRef, {
+        videoId: videoId,
+      });
+    }
+  };
+
+  //check wheather the video is liked?
+  const getLikedVideoBytheUser = async () => {
+    const likeRef = doc(db, "users", userId, "likes", videoId);
+    const userDocSnap = await getDoc(likeRef);
+    if (userDocSnap.exists()) {
+      setHasLiked(true);
+    }
+  };
+
+  useEffect(() => {
+    if (userId) {
+      getLikedVideoBytheUser();
+    }
+  }, []);
+
   return (
     <div className="">
       <div className="space-y-4 hidden md:block w-fit hover:bg-[#161616] overflow-hidden hover:scale-110 duration-200 hover:p-4 rounded-xl group">
@@ -26,11 +77,40 @@ const WebinarsCard = ({ image, title, speakerImage, speaker, route }) => {
             </h1>
           </div>
         </div>
-        <Link href={`/${route}/${title}`}>
-          <button className="bg-gradient-to-r from-[#000AFF] to-[#DB00FF] w-full py-1.5 text-white font-sweet_sans_pro rounded-md invisible group-hover:visible">
-            Watch Stream
-          </button>
-        </Link>
+        <div
+          className={`invisible group-hover:visible flex justify-between items-center ${
+            userId && "space-x-8"
+          }`}
+        >
+          <Link href={`/${route}/${title}`}>
+            <button className="bg-gradient-to-r from-[#000AFF] to-[#DB00FF] w-full py-1.5 text-white font-sweet_sans_pro rounded-md ">
+              Watch Stream
+            </button>
+          </Link>
+          <div>
+            {userId && (
+              <div>
+                {hasliked ? (
+                  <AiFillHeart
+                    className="text-3xl text-purple-600 cursor-pointer"
+                    onClick={() => {
+                      setHasLiked(!hasliked);
+                      likePost();
+                    }}
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    className="text-3xl text-purple-600 cursor-pointer"
+                    onClick={() => {
+                      setHasLiked(!hasliked);
+                      likePost();
+                    }}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       <div className="md:hidden grid grid-cols-7 gap-4">
