@@ -27,16 +27,21 @@ import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
   getDocs,
   query,
   setDoc,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import { db } from "../database/firebase";
 import { useLogin } from "../context/LoginContext";
+import { useVerifyModal } from "../context/VerifyCertificateModal";
+import { Dialog, Slide } from "@material-ui/core";
+import { MdVerified } from "react-icons/md";
 
 export default function Home({ providers }) {
   const [LoginModal, setLoginModal] = useState(false);
@@ -55,8 +60,12 @@ export default function Home({ providers }) {
   const [month, setMonth] = useState("");
   const [byear, setByear] = useState("");
   const [UserArr, setUserArr] = useState([]);
+  const { openVerify, setOpenVerify } = useVerifyModal();
+  const [certificateNumber, setCertificateNumber] = useState("");
+  const [openDialog, setOpenDialog] = useState(false);
 
   const [showanimation, setShowanimation] = useState(true);
+
   const route = useRouter().pathname;
   const router = useRouter();
 
@@ -65,6 +74,10 @@ export default function Home({ providers }) {
   let year = new Date().getFullYear();
   const range = (min, max) =>
     [...Array(max - min + 1).keys()].map((i) => i + min);
+
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
 
   //check for if sign up Formis all good ?
   const handleCreateAccount = () => {
@@ -150,18 +163,54 @@ export default function Home({ providers }) {
       const userRef = doc(db, "users", userId);
       const userDocSnap = await getDoc(userRef);
       if (userDocSnap.exists()) {
-        setUserData({ ...userDocSnap.data()});
+        setUserData({ ...userDocSnap.data() });
       }
-    }else{
-      return
+    } else {
+      return;
     }
   };
-
-
 
   React.useEffect(() => {
     getUserData();
   }, []);
+
+  //Check Certificate NUmber
+  const checkCertificate = () => {
+    if (certificateNumber.length !== 11) {
+      return false;
+    } else {
+      if (
+        certificateNumber.substring(0, 9) === "SMC202211" &&
+        parseInt(certificateNumber.substring(9, 11)) >= 1 &&
+        parseInt(certificateNumber.substring(9, 11)) <= 50
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+
+  const addVerificationDatatoDatabase = async () => {
+    if (checkCertificate()) {
+      const userRef = doc(
+        db,
+        "users",
+        `${
+          session?.user.uid ||
+          session?.user?.uid ||
+          window.sessionStorage.getItem("user_id")
+        }`
+      );
+      await updateDoc(userRef, {
+        certificateVerified: true,
+      });
+      setOpenVerify(false);
+      setOpenDialog(true);
+    } else {
+      alert("Certificate Not Verified");
+    }
+  };
 
   const defaultOptions = {
     loop: false,
@@ -194,6 +243,7 @@ export default function Home({ providers }) {
       </Head>
       <SideNav path={route} />
       <Navbar path={route} />
+
       <div className="md:ml-16 md:px-12 px-4">
         <Hero />
         <WSW />
@@ -442,6 +492,51 @@ export default function Home({ providers }) {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        open={openVerify}
+        onClose={() => setOpenVerify(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div className="absolute outline-0 top-1/2  left-1/2   -translate-x-1/2 -translate-y-1/2 font-gilroy text-white">
+          <div className="backdrop-blur-md bg-[#171717]/30 md:w-[25vw] w-[80vw] h-fit lg:p-8 p-4 rounded-xl space-y-4">
+            <h1 className="text-xl">Verify Your Certificate</h1>
+            <input
+              onChange={(e) => setCertificateNumber(e.target.value)}
+              className="focus:outline-none rounded-full px-4 py-2 border border-white bg-transparent w-full"
+              type="text"
+              placeholder="Enter Your Certificate Verification Number"
+            />
+            <section
+              className="bg-[#0064AC] text-white rounded-full px-4 py-2 text-xl w-fit cursor-pointer"
+              onClick={addVerificationDatatoDatabase}
+            >
+              Verify
+            </section>
+            <h1 className="text-sm text-[#6C6C6C] pt-8">
+              *Verification number should same as the below of your certificate
+            </h1>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        open={openDialog}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => setOpenDialog(false)}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <div className="absolute outline-0 top-1/2  left-1/2   -translate-x-1/2 -translate-y-1/2">
+          <div className="backdrop-blur-md bg-[#0000]/30 md:w-[25vw] w-[80vw] h-fit text-white space-y-6 p-4 flex flex-col justify-center items-center rounded-xl">
+            <MdVerified className="text-4xl text-[#00FF19]" />
+            <h1 className="text-xl">
+              Your Certificate is successfully{" "}
+              <span className="text-[#00FF19]">Verified</span>
+            </h1>
+            <h1>Certificate ID : {certificateNumber}</h1>
           </div>
         </div>
       </Modal>

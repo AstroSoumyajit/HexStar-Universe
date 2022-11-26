@@ -41,17 +41,19 @@ const WebinarsCard = ({
 
   //check wheather the video is liked?
   const getLikedVideoBytheUser = async () => {
-    const likeRef = doc(db, "users", userId, "likes", videoId);
-    const userDocSnap = await getDoc(likeRef);
-    if (userDocSnap.exists()) {
-      setHasLiked(true);
+    if (userId) {
+      const likeRef = doc(db, "users", userId, "likes", videoId);
+      const userDocSnap = await getDoc(likeRef);
+      if (userDocSnap.exists()) {
+        setHasLiked(true);
+      }
+    }else{
+      return
     }
   };
 
   useEffect(() => {
-    if (userId) {
-      getLikedVideoBytheUser();
-    }
+    getLikedVideoBytheUser();
   }, []);
 
   return (

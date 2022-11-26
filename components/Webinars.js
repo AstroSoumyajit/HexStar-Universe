@@ -25,8 +25,6 @@ const Webinars = ({ title }) => {
 
   const { data: session } = useSession();
 
-  console.log(userData);
-
   const englishWebinar = webinarData.filter(
     (data) => data.language == "english"
   );

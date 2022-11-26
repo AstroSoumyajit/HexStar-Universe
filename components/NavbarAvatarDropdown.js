@@ -7,11 +7,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLogin } from "../context/LoginContext";
 import { useSession } from "next-auth/react";
+import { BiUserCircle } from "react-icons/bi";
+import { MdExitToApp, MdVerified } from "react-icons/md";
+import { useVerifyModal } from "../context/VerifyCertificateModal";
 
 const NavbarAvatarDropDown = ({ img, name }) => {
   const { data: session } = useSession();
   const [anchorEl, setAnchorEl] = useState(null);
   const { userData, setUserData } = useLogin();
+  const { openVerify, setOpenVerify } = useVerifyModal();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -50,14 +54,32 @@ const NavbarAvatarDropDown = ({ img, name }) => {
           horizontal: "center",
         }}
       >
-        <div className="flex flex-col p-4 bg-[#272727] -my-2 text-white">
-          <Link href={"/profile/admin/[]"} as={`/profile/admin/`} passHref>
-            <MenuItem onClick={handleClose} className=" font-gilroy">
+        <div className="flex flex-col p-4 bg-[#272727] -my-2 text-white space-y-4">
+          <Link
+            href={`profile/${
+              userData?.id || session?.user?.uid || session?.user?.id
+            }`}
+            passHref
+          >
+            <div
+              onClick={handleClose}
+              className="flex justify-start items-center font-gilroy cursor-pointer hover:scale-105"
+            >
+              <BiUserCircle className="text-white text-3xl mr-4" />
               Profile
-            </MenuItem>
+            </div>
           </Link>
-          {/* <MenuItem onClick={handleClose} className=" font-nunito">Your Projects</MenuItem> */}
-          <MenuItem
+          <div
+            onClick={() => {
+              setOpenVerify(true);
+              handleClose();
+            }}
+            className="flex justify-start items-center font-gilroy cursor-pointer hover:scale-105"
+          >
+            <MdVerified className="text-white text-3xl mr-4" /> Verify
+            Certificate
+          </div>
+          <div
             onClick={() => {
               if (session) {
                 signOut();
@@ -68,10 +90,11 @@ const NavbarAvatarDropDown = ({ img, name }) => {
               }
               handleClose();
             }}
-            className=" font-nunito"
+            className="flex justify-start items-center font-gilroy cursor-pointer hover:scale-105"
           >
+            <MdExitToApp className="text-white text-3xl mr-4" />
             Sign Out
-          </MenuItem>
+          </div>
         </div>
       </Menu>
     </div>
