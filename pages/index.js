@@ -198,7 +198,7 @@ export default function Home({ providers }) {
         "users",
         `${
           session?.user.uid ||
-          session?.user?.uid ||
+          session?.user.id ||
           window.sessionStorage.getItem("user_id")
         }`
       );
