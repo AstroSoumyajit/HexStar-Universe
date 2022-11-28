@@ -204,6 +204,7 @@ export default function Home({ providers }) {
       );
       await updateDoc(userRef, {
         certificateVerified: true,
+        certificateId: certificateNumber
       });
       setOpenVerify(false);
       setOpenDialog(true);

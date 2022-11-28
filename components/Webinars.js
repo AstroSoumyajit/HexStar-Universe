@@ -8,7 +8,7 @@ import { border } from "@mui/system";
 import { webinarData } from "../dummydb";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot, query } from "firebase/firestore";
 import { db } from "../database/firebase";
 import { useSession } from "next-auth/react";
 import { useLogin } from "../context/LoginContext";
@@ -21,8 +21,7 @@ const Webinars = ({ title }) => {
   const [tamil, setTamil] = React.useState(false);
   const [telegu, setTelegu] = React.useState(false);
   const [showLanguage, setShowLanguage] = useState(false);
-  const { userData, setUserData } = useLogin();
-
+  const [favouritesVideoId, setFavouriteVideoId] = useState([]);
   const { data: session } = useSession();
 
   const englishWebinar = webinarData.filter(
@@ -32,6 +31,41 @@ const Webinars = ({ title }) => {
     (data) => data.language == "bengali"
   );
   const tamilWebinars = webinarData.filter((data) => data.language == "tamil");
+
+  //check wheather the video is liked?
+  const getUserLikeData = () => {
+    let temp = [];
+    return onSnapshot(
+      query(
+        collection(
+          db,
+          "users",
+          session?.user?.id ||
+            session?.user?.uid ||
+            window.sessionStorage.getItem("user_id"),
+          "likes"
+        )
+      ),
+      (snapshot) => {
+        temp = [];
+        snapshot.forEach((doc) => {
+          temp.push(doc.id);
+        });
+        setFavouriteVideoId(temp);
+      }
+    );
+  }
+
+  useEffect(() => {
+    if (
+      session?.user?.id ||
+      session?.user?.uid ||
+      window.sessionStorage.getItem("user_id")
+    ) {
+      getUserLikeData();
+    }
+  }, [db]);
+  console.log(favouritesVideoId)
 
   return (
     <div className="my-8" id="webinars">
@@ -157,7 +191,10 @@ const Webinars = ({ title }) => {
                       speaker={data.speaker}
                       speakerImage={data.speakerImage}
                       videoId={data.videoID}
-                      route={"english"}
+                      route={data.language}
+                      likedAlready={favouritesVideoId.find(
+                        (id) => id === data.videoID
+                      )}
                     />
                   );
                 })
@@ -171,6 +208,9 @@ const Webinars = ({ title }) => {
                       speakerImage={data.speakerImage}
                       route={"english"}
                       videoId={data.videoID}
+                      likedAlready={favouritesVideoId.find(
+                        (id) => id === data.videoID
+                      )}
                     />
                   );
                 })}
@@ -207,6 +247,9 @@ const Webinars = ({ title }) => {
                 speakerImage={data.speakerImage}
                 route={"bengali"}
                 videoId={data.videoID}
+                likedAlready={favouritesVideoId.find(
+                  (id) => id === data.videoID
+                )}
               />
             );
           })}
@@ -232,6 +275,9 @@ const Webinars = ({ title }) => {
                 speakerImage={data.speakerImage}
                 route={"bengali"}
                 videoId={data.videoID}
+                likedAlready={favouritesVideoId.find(
+                  (id) => id === data.videoID
+                )}
               />
             );
           })}

@@ -7,52 +7,57 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, onSnapshot, query } from "firebase/firestore";
 import { db } from "../../database/firebase";
 import { useSession } from "next-auth/react";
 import { useLogin } from "../../context/LoginContext";
 import UserProfile from "../../components/ProfilePage/UserProfile";
-import Favourite from "../../components/ProfilePage/Favourite";
+import Favourites from "../../components/ProfilePage/Favourites";
 
 const UserProfilePublic = () => {
   const { userData, setUserData } = useLogin();
   const [profile, setProfile] = useState(true);
   const [favourites, setFavourites] = useState(false);
   const [favouritesVideoData, setFavouriteVideoId] = useState([]);
-  const [data, setData] = useState(null);
   const { data: session } = useSession();
   const router = useRouter();
+
   const userId = router.query.userid;
+
   const getUserData = async () => {
-    if (userId) {
-      const userRef = doc(db, "users", userId);
-      const userDocSnap = await getDoc(userRef);
-      if (userDocSnap.exists()) {
-        setData({ ...userDocSnap.data() });
-      }
-    } else {
-      return;
+    const userRef = doc(db, "users", userId);
+    const userDocSnap = await getDoc(userRef);
+    if (userDocSnap.exists()) {
+      setUserData({ ...userDocSnap.data() });
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     getUserData();
     getUserLikeData();
-  }, []);
+  }, [db]);
 
-  const getUserLikeData = async () => {
-    if (userId) {
-      const likeSnapshot = await getDocs(
-        collection(db, "users", userId, "likes")
-      );
-      let temp = [];
-      likeSnapshot.forEach((doc) => {
-        temp.push(doc.id);
-      });
-      setFavouriteVideoId(temp);
-    } else {
-      return;
-    }
+  const getUserLikeData = () => {
+    let temp = [];
+    return onSnapshot(
+      query(
+        collection(
+          db,
+          "users",
+          session?.user?.id ||
+            session?.user?.uid ||
+            window.sessionStorage.getItem("user_id"),
+          "likes"
+        )
+      ),
+      (snapshot) => {
+        temp = [];
+        snapshot.forEach((doc) => {
+          temp.push(doc.id);
+        });
+        setFavouriteVideoId(temp);
+      }
+    );
   };
 
   return (
@@ -63,9 +68,13 @@ const UserProfilePublic = () => {
       </Head>
       <Navbar />
       <div className="divide-x-[1px] divide-[#1E1E1E]">
-        <div className="font-gilroy bg-black text-[#818181] fixed left-0 child:w-[10rem] child:text-center child:px-6 child:py-3 h-screen child:flex child:items-center child:justify-center child:rounded-lg px-2">
+        <div className="font-gilroy bg-black text-[#818181] fixed left-0 child:w-[10rem] child:text-center child:px-6 child:py-3 h-screen child:flex child:items-center child:justify-center child:rounded-lg px-2 space-y-4">
           <section
-            className="hover:bg-[#1E1E1E] hover:text-white"
+            className={`${
+              profile
+                ? "bg-[#1E1E1E] text-white"
+                : "hover:bg-[#1E1E1E] hover:text-white "
+            } cursor-pointer`}
             onClick={() => {
               setProfile(true);
               setFavourites(false);
@@ -74,7 +83,11 @@ const UserProfilePublic = () => {
             <BiUserCircle className="text-2xl mr-4" /> My Profile
           </section>
           <section
-            className="hover:bg-[#1E1E1E] hover:text-white"
+            className={`${
+              favourites
+                ? "bg-[#1E1E1E] text-white"
+                : "hover:bg-[#1E1E1E] hover:text-white "
+            } cursor-pointer`}
             onClick={() => {
               setFavourites(true);
               setProfile(false);
@@ -87,11 +100,11 @@ const UserProfilePublic = () => {
         <div className="text-white ml-[12rem] min-h-[91vh]">
           {profile && (
             <div>
-              {data ? (
+              {userData ? (
                 <UserProfile
-                  name={data.name}
+                  name={userData.name}
                   image={session?.user?.image || "/user.jpg"}
-                  email={session?.user?.email || data.email}
+                  email={session?.user?.email || userData.email}
                 />
               ) : (
                 <div className="flex justify-center items-center text-xl text-red-500 h-full">
@@ -103,9 +116,9 @@ const UserProfilePublic = () => {
           {favourites && (
             <div>
               {favouritesVideoData.length !== 0 ? (
-                <Favourite likedVideo={favouritesVideoData} />
+                <Favourites likedVideo={favouritesVideoData} />
               ) : (
-                <div>No Liked Video</div>
+                <div className="h-screen flex justify-center items-center text-3xl font-gilroy">No Liked Videos yet !</div>
               )}
             </div>
           )}

@@ -13,6 +13,7 @@ const WebinarsCard = ({
   speaker,
   route,
   videoId,
+  likedAlready,
 }) => {
   const { data: session } = useSession();
 
@@ -39,23 +40,6 @@ const WebinarsCard = ({
     }
   };
 
-  //check wheather the video is liked?
-  const getLikedVideoBytheUser = async () => {
-    if (userId) {
-      const likeRef = doc(db, "users", userId, "likes", videoId);
-      const userDocSnap = await getDoc(likeRef);
-      if (userDocSnap.exists()) {
-        setHasLiked(true);
-      }
-    }else{
-      return
-    }
-  };
-
-  useEffect(() => {
-    getLikedVideoBytheUser();
-  }, []);
-
   return (
     <div className="">
       <div className="space-y-4 hidden md:block w-fit hover:bg-[#161616] overflow-hidden hover:scale-110 duration-200 hover:p-4 rounded-xl group">
@@ -68,7 +52,7 @@ const WebinarsCard = ({
           </Link> */}
         </div>
 
-        <div className="flex flex-row items-center space-x-4 max-w-[23rem]">
+        <div className="flex flex-row items-center space-x-4 max-w-[20rem]">
           <img src={speakerImage} />
           <div className="flex flex-col space-x-4">
             <h1 className="font-sweet_sans_pro tracking-wider text-white">
@@ -92,7 +76,7 @@ const WebinarsCard = ({
           <div>
             {userId && (
               <div>
-                {hasliked ? (
+                {hasliked || likedAlready ? (
                   <AiFillHeart
                     className="text-3xl text-purple-600 cursor-pointer"
                     onClick={() => {
@@ -106,6 +90,7 @@ const WebinarsCard = ({
                     onClick={() => {
                       setHasLiked(!hasliked);
                       likePost();
+                      likedAlready = false;
                     }}
                   />
                 )}
