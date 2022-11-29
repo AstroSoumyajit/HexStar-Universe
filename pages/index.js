@@ -158,20 +158,26 @@ export default function Home({ providers }) {
 
   //whenever user enters the page or Refresh -> the user_id found from session and query inside firebase to retrieve data
   const getUserData = async () => {
-    const userId = window.sessionStorage.getItem("user_id");
-    if (userId) {
-      const userRef = doc(db, "users", userId);
-      const userDocSnap = await getDoc(userRef);
-      if (userDocSnap.exists()) {
-        setUserData({ ...userDocSnap.data() });
-      }
-    } else {
-      return;
+    const userId =
+      window.sessionStorage.getItem("user_id") ||
+      session?.user.id ||
+      session?.user.uid;
+
+    const userRef = doc(db, "users", userId);
+    const userDocSnap = await getDoc(userRef);
+    if (userDocSnap.exists()) {
+      setUserData({ ...userDocSnap.data() });
     }
   };
 
   React.useEffect(() => {
-    getUserData();
+    if (
+      window.sessionStorage.getItem("user_id") ||
+      session?.user.id ||
+      session?.user.uid
+    ) {
+      getUserData();
+    }
   }, []);
 
   //Check Certificate NUmber
@@ -204,7 +210,7 @@ export default function Home({ providers }) {
       );
       await updateDoc(userRef, {
         certificateVerified: true,
-        certificateId: certificateNumber
+        certificateId: certificateNumber,
       });
       setOpenVerify(false);
       setOpenDialog(true);

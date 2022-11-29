@@ -71,6 +71,7 @@ const NavbarAvatarDropDown = ({ img, name }) => {
           </Link>
           <div
             onClick={() => {
+              userData.certificate_verified
               setOpenVerify(true);
               handleClose();
             }}

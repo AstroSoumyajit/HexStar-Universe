@@ -65,7 +65,6 @@ const Webinars = ({ title }) => {
       getUserLikeData();
     }
   }, [db]);
-  console.log(favouritesVideoId)
 
   return (
     <div className="my-8" id="webinars">

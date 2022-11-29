@@ -18,7 +18,7 @@ import { db } from "../database/firebase";
 import { useRouter } from "next/router";
 import { useLogin } from "../context/LoginContext";
 
-const Navbar = ({ active, path }) => {
+const Navbar = ({ active, path, userPage }) => {
   const [searchInput, setSearchInput] = useState("");
   // const [userData, setuserData] = useState(null);
   const { userData } = useLogin();
@@ -46,7 +46,7 @@ const Navbar = ({ active, path }) => {
 
   return (
     <div className="w-full z-50">
-      <div className="md:h-24 h-16 bg-[#000000] border border-[#1E1E1E] flex flex-row justify-between items-center md:ml-16 md:px-8 px-4 space-x-4">
+      <div className={`md:h-24 h-16 bg-[#000000] border border-[#1E1E1E] flex flex-row justify-between items-center ${!userPage && "md:ml-16 md:px-8"}  px-4 space-x-4`}>
         <div className="flex flex-row md:space-x-8 space-x-2 items-center">
           <Link href="/">
             <img
