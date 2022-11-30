@@ -12,8 +12,8 @@ const Favourites = ({ likedVideo }) => {
 
   console.log(LikedVideosAllData);
   return (
-    <div className="">
-      <div className="grid-cols-4 grid justify-center items-center mt-8 ml-8">
+    <div className="mx-8 pt-8">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 m-auto gap-4">
         {LikedVideosAllData.map((data) => {
           return (
             <WebinarsCard

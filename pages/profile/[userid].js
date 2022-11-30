@@ -22,6 +22,7 @@ import UserProfile from "../../components/ProfilePage/UserProfile";
 import Favourites from "../../components/ProfilePage/Favourites";
 import Dashboard from "../../components/ProfilePage/Dashboard";
 import { BsCalendar2, BsJournalBookmark, BsSpeedometer2 } from "react-icons/bs";
+import MyCourses from "../../components/ProfilePage/MyCourses";
 
 const UserProfilePublic = () => {
   const { userData, setUserData } = useLogin();
@@ -220,7 +221,19 @@ const UserProfilePublic = () => {
               setOnetoOne(false);
             }}
           >
-            <BsCalendar2 className="text-2xl" />
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 12 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.40973 11.603L8.52228 13.8856L6.21333 12.2811L3.89144 13.8872L4.00409 11.603H3.02894L2.86087 15.0118H3.97764L6.21205 13.4663L8.43612 15.0118H9.55294L9.38487 11.603H8.40973ZM11.0587 4.63046L10.9919 3.16788L9.75881 2.37876L8.96954 1.14551L7.50693 1.07855L6.20691 0.405273L4.90689 1.0787L3.44427 1.14566L2.655 2.37876L1.42188 3.16788L1.3551 4.63046L0.681641 5.93051L1.3551 7.23059L1.42206 8.69314L2.655 9.48226L3.44415 10.7155L4.90676 10.7823L6.20691 11.4558L7.50693 10.7823L8.96954 10.7155L9.75869 9.48226L10.9919 8.69326L11.0587 7.23071L11.7322 5.93063L11.0587 4.63046ZM10.0955 6.97249L10.0419 8.14471L9.05345 8.77717L8.42099 9.76559L7.24874 9.81916L6.20691 10.3589L5.16495 9.81916L3.9927 9.76559L3.36024 8.77717L2.37195 8.14471L2.31841 6.97249L1.77844 5.93051L2.31829 4.88874L2.37195 3.71634L3.36024 3.08387L3.9927 2.09549L5.16495 2.04192L6.20691 1.50216L7.24886 2.04189L8.42111 2.09546L9.05357 3.08384L10.0419 3.71634L10.0954 4.88859L10.6354 5.93051L10.0955 6.97249Z"
+                fill={`${uploadBadges ? "#FFFFFF" : "#818181"}`}
+              />
+            </svg>
+
             <span className="hidden md:block">Upload Badges</span>
           </section>
 
@@ -307,7 +320,13 @@ const UserProfilePublic = () => {
               )}
             </div>
           )}
+          {eventCalender && <Dashboard />}
           {dashboard && <Dashboard />}
+          {roadmap && <Dashboard />}
+          {oneToOne && <Dashboard />}
+          {
+            myCourse && <MyCourses/>
+          }
         </div>
       </div>
     </div>
