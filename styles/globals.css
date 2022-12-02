@@ -167,3 +167,8 @@
 .img-ticker {
   animation: ticker-kf 25s linear infinite;
 }
+
+#donateForm{
+  text-align: center;
+}
+ 

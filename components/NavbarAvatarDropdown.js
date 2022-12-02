@@ -56,7 +56,7 @@ const NavbarAvatarDropDown = ({ img, name }) => {
       >
         <div className="flex flex-col p-4 bg-[#272727] -my-2 text-white space-y-4">
           <Link
-            href={`profile/${
+            href={`/profile/${
               userData?.id || session?.user?.uid || session?.user?.id
             }`}
             passHref

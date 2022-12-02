@@ -54,7 +54,7 @@ const Webinars = ({ title }) => {
         setFavouriteVideoId(temp);
       }
     );
-  }
+  };
 
   useEffect(() => {
     if (
@@ -70,7 +70,7 @@ const Webinars = ({ title }) => {
     <div className="my-8" id="webinars">
       <div className="hidden md:block">
         <div className="flex w-full items-center">
-          <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
+          <h1 className="font-gilroy bg-clip-text md:text-4xl md:my-8 my-4 text-white text-lg mr-8 whitespace-nowrap">
             Webinars
           </h1>
           <hr className="border-[#363636] border-2  hidden md:block w-full" />
@@ -80,10 +80,10 @@ const Webinars = ({ title }) => {
 
       <div className="pb-6">
         <button
-          className="text-white border border-white rounded-full px-4 py-2 flex items-center space-x-4 md:text-lg text-sm my-4 font-gilroy"
+          className="text-white border border-white rounded-full md:px-4 px-2 md:py-2 py-1 flex items-center space-x-4 md:text-lg text-sm my-2 md:my-4 font-gilroy"
           onClick={() => setShowLanguage(!showLanguage)}
         >
-          Select your Language <MdKeyboardArrowDown className="text-3xl" />
+          Select Language <MdKeyboardArrowDown className="text-3xl" />
         </button>
         {showLanguage && (
           <div className="flex justify-between scrollbar-hide xl:space-x-44 lg:space-x-32 :space-x-24 space-x-4 py-4 overflow-x-scroll">
@@ -93,7 +93,7 @@ const Webinars = ({ title }) => {
               } p-1 rounded-full`}
             >
               <button
-                className="md:w-36 w-28 focus:outline-none bg-gradient-to-r from-[#FF00F5] to-[#0038FF] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
+                className="md:w-36 w-24 focus:outline-none bg-gradient-to-r from-[#FF00F5] to-[#0038FF] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
                 onClick={() => {
                   setEnglish(true);
                   setBengali(false);
@@ -111,7 +111,7 @@ const Webinars = ({ title }) => {
               } p-1 rounded-full`}
             >
               <button
-                className="w-36 focus:outline-none bg-gradient-to-r from-[#2CDE00] to-[#0038FF] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
+                className="md:w-36 w-24 focus:outline-none bg-gradient-to-r from-[#2CDE00] to-[#0038FF] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
                 onClick={() => {
                   setEnglish(false);
                   setBengali(true);
@@ -127,7 +127,7 @@ const Webinars = ({ title }) => {
               className={`${hindi && "border-2 border-white"} p-1 rounded-full`}
             >
               <button
-                className="w-36 focus:outline-none bg-gradient-to-r from-[#FF00B8] to-[#F8C100] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider "
+                className="md:w-36 w-24 focus:outline-none bg-gradient-to-r from-[#FF00B8] to-[#F8C100] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider "
                 onClick={() => {
                   setEnglish(false);
                   setBengali(false);
@@ -143,7 +143,7 @@ const Webinars = ({ title }) => {
               className={`${tamil && "border-2 border-white"} p-1 rounded-full`}
             >
               <button
-                className="w-36 focus:outline-none bg-gradient-to-r from-[#0038FF] to-[#FF00F5] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
+                className="md:w-36 w-24 focus:outline-none bg-gradient-to-r from-[#0038FF] to-[#FF00F5] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
                 onClick={() => {
                   setEnglish(false);
                   setBengali(false);
@@ -161,7 +161,7 @@ const Webinars = ({ title }) => {
               } p-1 rounded-full`}
             >
               <button
-                className="w-36 focus:outline-none bg-gradient-to-r from-[#2400FF] to-[#87a0f3] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
+                className="md:w-36 w-24 focus:outline-none bg-gradient-to-r from-[#2400FF] to-[#87a0f3] md:px-4 px-2 md:py-2 py-1 rounded-full md:text-2xl text-base text-white font-semibold font-sweet_sans_pro tracking-wider"
                 onClick={() => {
                   setEnglish(false);
                   setBengali(false);
@@ -179,7 +179,7 @@ const Webinars = ({ title }) => {
 
       {english && (
         <div>
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 m-auto gap-6">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 m-auto gap-6 justify-items-center">
             {!allWebinars
               ? englishWebinar.slice(0, 8).map((data) => {
                   return (

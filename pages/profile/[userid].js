@@ -322,11 +322,10 @@ const UserProfilePublic = () => {
           )}
           {eventCalender && <Dashboard />}
           {dashboard && <Dashboard />}
+          {uploadBadges && <Dashboard />}
           {roadmap && <Dashboard />}
           {oneToOne && <Dashboard />}
-          {
-            myCourse && <MyCourses/>
-          }
+          {myCourse && <MyCourses />}
         </div>
       </div>
     </div>

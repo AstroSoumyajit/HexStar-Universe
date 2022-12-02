@@ -150,6 +150,8 @@ export default function Home({ providers }) {
         alert("Password Invalid");
         return;
       }
+
+      window.location.reload();
     }
 
     setModalChnage();
