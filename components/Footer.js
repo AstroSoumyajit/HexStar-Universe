@@ -112,13 +112,13 @@ const Footer = () => {
               </Link>
             </div>
             <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl lg:flex-col flex flex-row md:space-x-16 space-x-4 text-sm text-center lg:text-left lg:space-x-0 lg:space-y-8">
-              <Link href="/aboutus">
+              <Link href="https://discord.com/invite/XxuJMhAMaD">
                 <a>Community</a>
               </Link>
-              <Link href="/privacy&policy">
+              <Link href="https://forms.gle/kUhN9mFZCLsATEji6">
                 <a>Apply as Member</a>
               </Link>
-              <Link href="/terms&condition">
+              <Link href="https://forms.gle/cwzsiUy8jDhj7dzC9">
                 <a>Feedback</a>
               </Link>
             </div>
