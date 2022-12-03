@@ -125,11 +125,13 @@ const WebinarsCard = ({
               )}
             </div>
           )}
-                  
+          <button className="bg-zinc-600 text-white px-2 py-1 absolute bottom-2 left-2 rounded-md font-sweet_sans_pro_light text-sm">
+            <Link href={`/${route}/${title}`}>Watch</Link>
+          </button>
         </div>
 
         <div className="flex flex-row items-center space-x-4 max-w-[20rem]">
-          <img src={speakerImage} className="w-12 h-12"/>
+          <img src={speakerImage} className="w-12 h-12" />
           <div className="flex flex-col">
             <h1 className="font-sweet_sans_pro tracking-wider text-white text-sm">
               {title}

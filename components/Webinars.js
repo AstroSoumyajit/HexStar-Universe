@@ -272,7 +272,7 @@ const Webinars = ({ title }) => {
                 title={data.title}
                 speaker={data.speaker}
                 speakerImage={data.speakerImage}
-                route={"bengali"}
+                route={data.language}
                 videoId={data.videoID}
                 likedAlready={favouritesVideoId.find(
                   (id) => id === data.videoID

@@ -17,12 +17,15 @@ import { useEffect } from "react";
 
 import {
   addDoc,
+  arrayUnion,
   collection,
   doc,
+  getDoc,
   onSnapshot,
   orderBy,
   query,
   setDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../database/firebase";
 import { async } from "@firebase/util";
@@ -35,60 +38,136 @@ const MasterClass = () => {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [clickedMasterclass, setClickedMasterclass] = useState(-1);
-  const [mounted, setMounted] = useState(false);
+  const [payment, setPayment] = useState(false);
   const [MasterClassData, setMasterclassData] = useState([]);
   const { data: session } = useSession();
+  const [waiting, setWaiting] = useState(true);
 
-  const getMasterclassData = async () => {
+  const getMasterclassData = React.useCallback(async () => {
     let temp = [];
-    return onSnapshot(query(collection(db, "masterclass")), (snapshot) => {
-      temp = [];
-      snapshot.forEach((doc) => {
-        temp.push({ ...doc.data(), id: doc.id });
-      });
-      getWaitingListData(temp);
-    });
-  };
+    return onSnapshot(
+      query(collection(db, "masterclass"), orderBy("timestamp", "desc")),
+      (snapshot) => {
+        temp = [];
+        snapshot.forEach((doc) => {
+          temp.push({ ...doc.data(), id: doc.id });
+        });
+        console.log("The data ---> ", temp);
+        setMasterclassData(temp);
+      }
+    );
+  }, []);
 
-  const getWaitingListData = async (temp) => {
-    console.log("initiated");
-    temp.map((masterclass, i) => {
-      return onSnapshot(
-        query(collection(db, "masterclass", masterclass.id, "waiting_list")),
-        (snapshot) => {
-          let tempNew = [];
-          snapshot.forEach((doc) => {
-            tempNew.push(doc.data().user_id);
-          });
-          temp[i] = { ...temp[i], waitingList: tempNew };
-        }
+  const checkUserInWaitingList = React.useCallback(
+    async (index) => {
+      const userId =
+        session?.user?.uid ||
+        session?.user?.id ||
+        window.sessionStorage.getItem("user_id");
+      const docRef = doc(
+        db,
+        "masterclass",
+        MasterClassData[index].id,
+        "waiting_list",
+        userId
       );
-    });
-    setMasterclassData(temp);
-  };
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setWaiting(false);
+      }
+    },
+    [getMasterclassData, MasterClassData]
+  );
 
   const addUsertoWaitingList = async () => {
-    const masterclassRef = collection(
+    const userId =
+      session?.user?.uid ||
+      session?.user?.id ||
+      window.sessionStorage.getItem("user_id");
+    const docRef = doc(
       db,
-      "masterclass",
-      MasterClassData[clickedMasterclass].id,
-      "waiting_list"
+      `masterclass/${MasterClassData[clickedMasterclass].id}/waiting_list/${userId}`
     );
-    await addDoc(masterclassRef, {
-      user_id:
-        session?.user?.id ||
-        session?.user?.uid ||
-        window.sessionStorage.getItem("user_id"),
-      name: session?.user?.name || userData.name,
-    });
+    await setDoc(docRef, {});
     setOpen2(false);
   };
 
   useEffect(() => {
     getMasterclassData();
-  }, [db]);
+  }, []);
 
-  console.log(MasterClassData);
+  // console.log("The data ---> ", MasterClassData);
+
+  const addCourseToUser = async () => {
+    const userId =
+      session?.user?.uid ||
+      session?.user?.id ||
+      window.sessionStorage.getItem("user_id");
+
+    const docRef = doc(db, "masterclass", MasterClassData[0].id);
+    await updateDoc(docRef, {
+      course_purchased: arrayUnion(userId),
+    });
+  };
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  const makePayment = async () => {
+    const res = await initializeRazorpay();
+
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    // Make API call to the serverless API
+    const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
+      t.json()
+    );
+    var options = {
+      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      name: "Hexstar Universe",
+      currency: data.currency,
+      amount: 100 * 250,
+      order_id: data.id,
+      description: "Thankyou for your Purchase",
+      image: "/Images/logobg.svg",
+      handler: function (response) {
+        alert("Payment Successfull!!");
+        console.log(
+          response.razorpay_signature,
+          response.razorpay_order_id,
+          response.razorpay_payment_id
+        );
+        setPayment(true);
+      },
+      prefill: {
+        name: "Hexstar Universe",
+        email: "soumyajitdasgupta8@gmail.com",
+        contact: "8910123832",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+
+  console.log(payment);
 
   return (
     <div className="space-y-4" id="masterclass">
@@ -149,8 +228,9 @@ const MasterClass = () => {
                     className="max-w-[16rem]"
                     onClick={() => {
                       if (session || window.sessionStorage.getItem("user_id")) {
-                        i === 2 ? setOpen(true) : setOpen2(true);
+                        i === 0 ? setOpen(true) : setOpen2(true);
                         setClickedMasterclass(i);
+                        checkUserInWaitingList(i);
                       }
                     }}
                   />
@@ -186,31 +266,34 @@ const MasterClass = () => {
               <section className="flex justify-start items-center space-x-4">
                 <FaChalkboardTeacher className="text-3xl" />
                 <h1>
-                  <b>Classname: </b> {MasterClassData[2]?.name}
+                  <b>Classname: </b> {MasterClassData[0]?.name}
                 </h1>
               </section>
               <section className="flex justify-start items-center space-x-4">
                 <MdOutlineKeyboardVoice className="text-3xl" />
                 <h1>
-                  <b>Instructor: </b> {MasterClassData[2]?.Instructor}
+                  <b>Instructor: </b> {MasterClassData[0]?.Instructor}
                 </h1>
               </section>
               <section className="flex justify-start items-center space-x-4">
                 <BsCalendar4 className="text-3xl" />
                 <h1>
-                  <b>Date: </b> {MasterClassData[2]?.date}
+                  <b>Date: </b> {MasterClassData[0]?.date}
                 </h1>
               </section>
               <section className="flex justify-start items-center space-x-4">
                 <AiOutlineClockCircle className="text-3xl" />
                 <h1>
-                  <b>Time: </b> {MasterClassData[2]?.Time}
+                  <b>Time: </b> {MasterClassData[0]?.time}
                 </h1>
               </section>
               <div className="text-center">
-                <button className="bg-[#00A3FF] px-4 py-2 text-white font-gilroy rounded-md mx-auto">
+                <span
+                  className="cursor-pointer bg-[#00A3FF] px-4 py-2 text-white font-gilroy rounded-md mx-auto"
+                  onClick={addCourseToUser}
+                >
                   Enroll Now
-                </button>
+                </span>
               </div>
             </div>
           </div>
@@ -221,38 +304,23 @@ const MasterClass = () => {
         onClose={() => {
           setOpen2(false);
           setClickedMasterclass(-1);
+          setWaiting(true);
         }}
         aria-describedby="alert-dialog-slide-description"
       >
         <div className="absolute outline-0 top-1/2 lg:w-[25vw] md:w-[33vw] sm:w-[40vw] w-[80vw]  left-1/2 -translate-x-1/2 -translate-y-1/2 text-white">
           <div className="backdrop-blur-md bg-[#0000]/30 p-8 flex justify-center items-center border-[#747474] border rounded-md">
-            {MasterClassData[clickedMasterclass]?.waitingList.length !== 0 ? (
-              <div>
-                {MasterClassData[clickedMasterclass]?.waitingList.find(
-                  (id) =>
-                    id === session?.user?.id ||
-                    session?.user?.uid ||
-                    window.sessionStorage.getItem("user_id")
-                ) ? (
-                  <h1 className="bg-[#34ad16e0] px-4 py-2 text-white font-gilroy rounded-md mx-auto text-xl">
-                    Already in Waiting List{" "}
-                  </h1>
-                ) : (
-                  <h1
-                    className="bg-[#0038FF] px-4 py-2 text-white font-gilroy rounded-md mx-auto text-xl"
-                    onClick={() => addUsertoWaitingList(clickedMasterclass)}
-                  >
-                    Join Waitinglist
-                  </h1>
-                )}
-              </div>
+            {!waiting ? (
+              <h1 className="bg-[#34ad16e0] px-4 py-2 text-white font-gilroy rounded-md mx-auto text-xl">
+                Already in Waiting List
+              </h1>
             ) : (
-              <button
+              <h1
                 className="bg-[#0038FF] px-4 py-2 text-white font-gilroy rounded-md mx-auto text-xl"
                 onClick={() => addUsertoWaitingList(clickedMasterclass)}
               >
                 Join Waitinglist
-              </button>
+              </h1>
             )}
           </div>
         </div>
