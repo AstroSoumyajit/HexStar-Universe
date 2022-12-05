@@ -41,9 +41,10 @@ const MyCourses = () => {
     <div className="md:mx-8 mx-4">
       {courseList.length !== 0 ? (
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-col-1">
-          {courseList.map((data) => {
+          {courseList.map((data, i) => {
             return (
               <CourseCard
+                key={i}
                 modal_image={data.modal_image}
                 date={data.date}
                 time={data.time}
