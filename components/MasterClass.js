@@ -31,6 +31,7 @@ import { db } from "../database/firebase";
 import { async } from "@firebase/util";
 import { useSession } from "next-auth/react";
 import { useLogin } from "../context/LoginContext";
+import crypto from "crypto";
 
 const MasterClass = () => {
   const { userData, setUserData } = useLogin();
@@ -42,6 +43,69 @@ const MasterClass = () => {
   const [MasterClassData, setMasterclassData] = useState([]);
   const { data: session } = useSession();
   const [waiting, setWaiting] = useState(true);
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  const makePayment = async () => {
+    const res = await initializeRazorpay();
+
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    // Make API call to the serverless API
+    const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
+      t.json()
+    );
+    console.log(data);
+    var options = {
+      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      name: "Manu Arora Pvt Ltd",
+      currency: data.currency,
+      amount: 250,
+      order_id: data.id,
+      description: "Thankyou for your test donation",
+      image: "https://manuarora.in/logo.png",
+      handler: function (response) {
+        // Validate payment at server - using webhooks is a better idea.
+        VerifyPayment(response);
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+
+  const VerifyPayment = async (res) => {
+    let body = res.razorpay_order_id + "|" + res.razorpay_payment_id;
+
+    let expected_signature = crypto
+      .createHmac("sha256", process.env.RAZORPAY_SECRET)
+      .update(body.toString())
+      .digest("hex");
+
+    console.log("sig", res.razorpay_signature);
+    console.log("sigExpect", expected_signature);
+
+    if (res.razorpay_signature === expected_signature) {
+      addCourseToUser();
+    }
+  };
 
   const getMasterclassData = React.useCallback(async () => {
     let temp = [];
@@ -110,64 +174,6 @@ const MasterClass = () => {
       course_purchased: arrayUnion(userId),
     });
   };
-
-  const initializeRazorpay = () => {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-
-      document.body.appendChild(script);
-    });
-  };
-
-  const makePayment = async () => {
-    const res = await initializeRazorpay();
-
-    if (!res) {
-      alert("Razorpay SDK Failed to load");
-      return;
-    }
-
-    // Make API call to the serverless API
-    const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
-      t.json()
-    );
-    var options = {
-      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
-      name: "Hexstar Universe",
-      currency: data.currency,
-      amount: 100 * 250,
-      order_id: data.id,
-      description: "Thankyou for your Purchase",
-      image: "/Images/logobg.svg",
-      handler: function (response) {
-        alert("Payment Successfull!!");
-        console.log(
-          response.razorpay_signature,
-          response.razorpay_order_id,
-          response.razorpay_payment_id
-        );
-        setPayment(true);
-      },
-      prefill: {
-        name: "Hexstar Universe",
-        email: "soumyajitdasgupta8@gmail.com",
-        contact: "8910123832",
-      },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-  };
-
-  console.log(payment);
 
   return (
     <div className="space-y-4" id="masterclass">
@@ -290,7 +296,10 @@ const MasterClass = () => {
               <div className="text-center">
                 <span
                   className="cursor-pointer bg-[#00A3FF] px-4 py-2 text-white font-gilroy rounded-md mx-auto"
-                  onClick={addCourseToUser}
+                  onClick={() => {
+                    setOpen(false);
+                    makePayment();
+                  }}
                 >
                   Enroll Now
                 </span>

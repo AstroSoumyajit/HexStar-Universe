@@ -79,8 +79,8 @@ const Footer = () => {
               </div>
             </div>
           </section>
-          <section className="col-span-3 flex lg:flex-row flex-col justify-around space-y-8 lg:space-y-0">
-            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl lg:flex-col flex flex-row md:space-x-16 space-x-4 text-sm text-center lg:text-left lg:space-x-0 lg:space-y-8">
+          <section className="col-span-3 flex flex-row  justify-around space-x-4 space-y-0">
+            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl flex-col flex  md:space-x-16 space-x-0 space-y-4  text-sm text-left lg:space-x-0 lg:space-y-8">
               <Link href="/">
                 <a>Home</a>
               </Link>
@@ -97,7 +97,7 @@ const Footer = () => {
                 <a>Citizen Science</a>
               </Link>
             </div>
-            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl lg:flex-col flex flex-row md:space-x-16 space-x-4 text-sm text-center lg:text-left lg:space-x-0 lg:space-y-8">
+            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl flex-col flex md:space-x-16 space-x-0 space-y-4  text-sm text-left lg:space-x-0 lg:space-y-8">
               <Link href="/aboutus">
                 <a>About Us</a>
               </Link>
@@ -111,7 +111,7 @@ const Footer = () => {
                 <a>Refund Policy</a>
               </Link>
             </div>
-            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl lg:flex-col flex flex-row md:space-x-16 space-x-4 text-sm text-center lg:text-left lg:space-x-0 lg:space-y-8">
+            <div className="font-gilroy text-white sm:text-base md:text-base lg:text-lg xl:text-xl flex-col flex md:space-x-16 space-x-0 space-y-4  text-sm text-left lg:space-x-0 lg:space-y-8">
               <Link href="https://discord.com/invite/XxuJMhAMaD">
                 <a>Community</a>
               </Link>

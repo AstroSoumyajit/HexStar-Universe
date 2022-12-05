@@ -277,7 +277,7 @@ export default function Home({ providers }) {
         aria-describedby="modal-modal-description"
       >
         <div className="absolute outline-0 top-1/2  left-1/2  -translate-x-1/2 -translate-y-1/2 font-gilroy">
-          <div className="md:w-[60vw] w-[80vw] h-[65vh] md:grid-cols-2 grid-cols-1 grid justify-items-center place-items-center backdrop-blur-md bg-[#171717]/30 relative">
+          <div className="md:w-[60vw] w-[80vw] md:grid-cols-2 h-[90vh] md:h-fit grid-cols-1 grid justify-items-center place-items-center backdrop-blur-md bg-[#171717]/30 relative ">
             <img
               src="/Arrow.png"
               className="absolute z-10 bottom-32 hidden md:block w-[10rem]"
@@ -287,7 +287,7 @@ export default function Home({ providers }) {
                 showWelcome && "hidden md:block"
               }`}
             >
-              <form className="font-gilroy flex flex-col justify-center space-y-4 w-full   mx-auto text-white select-none ">
+              <form className="font-gilroy flex flex-col justify-center space-y-4 w-full p-8   mx-auto text-white select-none ">
                 <img
                   src="/backarrow.png"
                   className="w-6 absolute top-4 left-6 cursor-pointer md:hidden"
@@ -434,6 +434,7 @@ export default function Home({ providers }) {
                 {LoginModal ? (
                   <h1 className="text-center">
                     Don&apos;t have an account?
+                    <br/>
                     <b>
                       <span onClick={() => setLoginModal(false)}> Sign Up</span>
                     </b>
@@ -441,6 +442,7 @@ export default function Home({ providers }) {
                 ) : (
                   <h1 className="text-center">
                     Already have an account ?
+                    <br/>
                     <b>
                       <span onClick={() => setLoginModal(true)}> Log in</span>
                     </b>
@@ -450,7 +452,7 @@ export default function Home({ providers }) {
             </div>
 
             <div
-              className={`md:bg-[#171717] h-full font-gilroy  p-8 rounded-tr-3xl rounded-br-3xl relative  ${
+              className={`md:bg-[#171717] h-full font-gilroy  p-8 rounded-tr-3xl rounded-br-3xl relative ${
                 showWelcome ? "block" : "hidden"
               }`}
             >
@@ -460,9 +462,9 @@ export default function Home({ providers }) {
                 <section className="flex flex-col text-white space-y-12 z-50">
                   <div className="space-y-6 ">
                     {LoginModal ? (
-                      <h1 className="text-5xl">Welcome to Back !</h1>
+                      <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl">Welcome Back !</h1>
                     ) : (
-                      <h1 className="text-5xl">
+                      <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl">
                         Welcome to
                         <br /> our Community
                       </h1>
@@ -475,7 +477,7 @@ export default function Home({ providers }) {
                   {!LoginModal && (
                     <section className="flex justify-start items-center space-x-4">
                       <img src="/persons.png" className="w-fit" />
-                      <h1>5K+ space enthusiast</h1>
+                      <h1 className="hidden md:block">5K+ space enthusiast</h1>
                     </section>
                   )}
                 </section>
