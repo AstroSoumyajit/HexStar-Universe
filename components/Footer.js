@@ -4,8 +4,14 @@ import { FaDiscord } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
-import { IoLogoWhatsapp, IoIosArrowDroprightCircle } from "react-icons/io";
+import {
+  IoLogoWhatsapp,
+  IoIosArrowDroprightCircle,
+  IoCallOutline,
+} from "react-icons/io";
 import { MdEmail } from "react-icons/md";
+import { BiHomeAlt } from "react-icons/bi";
+import { FiPhoneCall } from "react-icons/fi";
 
 const Footer = () => {
   const footerItem = [
@@ -36,10 +42,10 @@ const Footer = () => {
     },
   ];
   return (
-    <div className="">
-      <div className="space-y-12 my-24" id="footer">
+    <div className="text-white">
+      <div className="space-y-12 lg:my-24 my-12" id="footer">
         <img src="/Images/logo.svg" />
-        <div className="grid lg:grid-cols-5 grid-cols-1">
+        <div className="grid lg:grid-cols-5 grid-cols-1 space-y-4 lg:space-y-0">
           <section className="col-span-2 space-y-8">
             <h1 className="text-base font-gilroy text-white">
               Get updates on new programs, workshops, the latest developments,
@@ -76,6 +82,23 @@ const Footer = () => {
                     <BsFacebook />
                   </a>
                 </Link>
+              </div>
+              <div className="space-y-4 hidden lg:block">
+                <span className="font-gilroy text-xl ">
+                  <b>Contact Us</b>
+                </span>
+                <h1 className="flex justify-start items-start">
+                  <BiHomeAlt className="text-5xl mr-4" />
+                  Address: 23/3 Jadav Sarkar road, Sonarpur, Kolkata - 700149
+                </h1>
+                <h1 className="flex justify-start items-center">
+                  <FiPhoneCall className="text-2xl mr-4" />
+                  +918910123832
+                </h1>
+                <h1 className="flex justify-start items-center">
+                  <MdEmail className="text-2xl mr-4" />
+                  network@hexstaruniverse.com
+                </h1>
               </div>
             </div>
           </section>
@@ -123,6 +146,23 @@ const Footer = () => {
               </Link>
             </div>
           </section>
+          <div className="space-y-2 lg:hidden text-sm mt-4">
+            <span className="font-gilroy text-lg">
+              <b>Contact Us</b>
+            </span>
+            <h1 className="flex justify-start items-start">
+              <BiHomeAlt className="text-3xl mr-4" />
+              Address: 23/3 Jadav Sarkar road, Sonarpur, Kolkata - 700149
+            </h1>
+            <h1 className="flex justify-start items-center">
+              <FiPhoneCall className="text-2xl mr-4" />
+              +918910123832
+            </h1>
+            <h1 className="flex justify-start items-center">
+              <MdEmail className="text-2xl mr-4" />
+              network@hexstaruniverse.com
+            </h1>
+          </div>
         </div>
       </div>
 
