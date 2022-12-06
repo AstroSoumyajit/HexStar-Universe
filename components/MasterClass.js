@@ -75,12 +75,12 @@ const MasterClass = () => {
     console.log(data);
     var options = {
       key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
-      name: "Manu Arora Pvt Ltd",
+      name: "Hexstar UNivere=se",
       currency: data.currency,
-      amount: 250,
+      amount: 10,
       order_id: data.id,
       description: "Thankyou for your test donation",
-      image: "https://manuarora.in/logo.png",
+      image: "/IMages/logosmall.svg",
       handler: function (response) {
         // Validate payment at server - using webhooks is a better idea.
         VerifyPayment(response);
