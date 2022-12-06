@@ -66,11 +66,7 @@ const UserProfilePublic = () => {
       query(
         collection(
           db,
-          "users",
-          session?.user?.id ||
-            session?.user?.uid ||
-            window.sessionStorage.getItem("user_id"),
-          "likes"
+          userId
         )
       ),
       (snapshot) => {

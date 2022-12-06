@@ -16,10 +16,10 @@ const MyCourses = () => {
       session?.user?.uid ||
       session?.user?.id ||
       window.sessionStorage.getItem("user_id");
-
+    const masterclassRef = collection(db, "masterclass");
     const q = query(
-      collection(db, "masterclass"),
-      where("course_purchased", "array-contains", userId)
+      masterclassRef,
+      where("course_purchased", "array-contains", `${userId}`)
     );
     const querySnapshot = await getDocs(q);
 

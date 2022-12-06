@@ -75,12 +75,12 @@ const MasterClass = () => {
     console.log(data);
     var options = {
       key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
-      name: "Hexstar UNivere=se",
+      name: "Hexstar Universe",
       currency: data.currency,
       amount: 10,
       order_id: data.id,
-      description: "Thankyou for your test donation",
-      image: "/IMages/logosmall.svg",
+      description: "Thankyou for your Purchase",
+      image: "/Images/logosmall.svg",
       handler: function (response) {
         // Validate payment at server - using webhooks is a better idea.
         VerifyPayment(response);
