@@ -58,22 +58,18 @@ const UserProfilePublic = () => {
   React.useEffect(() => {
     getUserData();
     getUserLikeData();
-  }, [db]);
+  }, []);
 
   const getUserLikeData = () => {
     let temp = [];
     return onSnapshot(
-      query(
-        collection(
-          db,
-          userId
-        )
-      ),
+      query(collection(db, "users", userId, "likes")),
       (snapshot) => {
         temp = [];
         snapshot.forEach((doc) => {
           temp.push(doc.id);
         });
+        console.log(temp);
         setFavouriteVideoId(temp);
       }
     );

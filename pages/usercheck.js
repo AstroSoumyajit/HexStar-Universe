@@ -10,7 +10,6 @@ const Usercheck = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
-  console.log(session)
   const userId = session?.user?.id.toString() || window.sessionStorage.getItem('user_id');
 
   const checkUser = React.useCallback(async () => {

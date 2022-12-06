@@ -72,7 +72,6 @@ const MasterClass = () => {
     const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
       t.json()
     );
-    console.log(data);
     var options = {
       key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
       name: "Hexstar Universe",
@@ -116,7 +115,7 @@ const MasterClass = () => {
         snapshot.forEach((doc) => {
           temp.push({ ...doc.data(), id: doc.id });
         });
-        console.log("The data ---> ", temp);
+        // console.log("The data ---> ", temp);
         setMasterclassData(temp);
       }
     );

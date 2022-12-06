@@ -9,9 +9,6 @@ export default async function handler(req, res) {
       .update(body.toString())
       .digest("hex");
 
-    console.log("sig", req.body.razorpay_signature);
-    console.log("sigExpect", expected_signature);
-
     let res = { status: "failed" };
     if (req.body.razorpay_signature === expected_signature) {
       res = { status: "success" };

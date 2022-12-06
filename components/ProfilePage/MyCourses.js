@@ -35,7 +35,7 @@ const MyCourses = () => {
     getCourseList();
   }, []);
 
-  console.log(courseList);
+  // console.log(courseList);
 
   return (
     <div className="md:mx-8 mx-4">
