@@ -25,14 +25,14 @@ const Mentor = () => {
   const [mySwiper, setMySwiper] = useState(null);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 relative">
       <div className="flex w-full items-center">
         <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
           Mentor & Instructor
         </h1>
         <hr className="border-[#363636] border-2  w-full" />
       </div>
-      <div className="flex justify-between xl:space-x-20 lg:space-x-16 md:space-x-12 space-x-6 items-center overflow-scroll scrollbar-hide relative">
+      <div className="flex justify-between xl:space-x-20 lg:space-x-16 md:space-x-12 space-x-6 items-center overflow-scroll scrollbar-hide ">
         {mentorData.map((data, i) => {
           return (
             <div className="flex flex-col items-center space-y-4" key={i}>
@@ -40,7 +40,7 @@ const Mentor = () => {
             </div>
           );
         })}
-        <div className="w-[10%] h-full bg-gradient-to-r from-transparent to-black absolute right-0">
+        <div className="w-1/12 h-full bg-gradient-to-r from-transparent to-black absolute right-0 top-0">
 
         </div>
       </div>
