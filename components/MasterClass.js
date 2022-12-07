@@ -81,7 +81,7 @@ const MasterClass = () => {
       description: "Thankyou for your Purchase",
       image: "/Images/logoNew.png",
       handler: function (response) {
-        // Validate payment at server - using webhooks is a better idea.
+        
         VerifyPayment(response);
       },
     };
@@ -115,7 +115,6 @@ const MasterClass = () => {
         snapshot.forEach((doc) => {
           temp.push({ ...doc.data(), id: doc.id });
         });
-        // console.log("The data ---> ", temp);
         setMasterclassData(temp);
       }
     );

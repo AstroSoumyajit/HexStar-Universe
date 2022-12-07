@@ -9,8 +9,6 @@ const Favourites = ({ likedVideo }) => {
     let videoData = webinarData.filter((data) => data.videoID === id);
     LikedVideosAllData.push(videoData[0]);
   });
-
-  console.log(LikedVideosAllData);
   return (
     <div className="md:mx-8 mx-2 pt-8">
       <div className="grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1 m-auto gap-8 justify-items-center">

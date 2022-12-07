@@ -4,7 +4,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 
 const CourseCard = ({ modal_image, date, time }) => {
   return (
-    <div className="space-y-2  p-4 min-w-[15rem]">
+    <div className="space-y-2  p-4 min-w-[15rem] max-w-[24rem]">
       <img src={modal_image} className="" />
       <section className="flex justify-start items-center space-x-4">
         <BsCalendar4Event />

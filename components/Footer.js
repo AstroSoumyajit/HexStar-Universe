@@ -146,7 +146,7 @@ const Footer = () => {
               </Link>
             </div>
           </section>
-          <div className="space-y-2 lg:hidden text-sm mt-4">
+          <div className="space-y-2 lg:hidden text-sm mt-4 font-gilroy">
             <span className="font-gilroy text-lg">
               <b>Contact Us</b>
             </span>
