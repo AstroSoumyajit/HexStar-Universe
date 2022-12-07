@@ -79,7 +79,7 @@ const MasterClass = () => {
       amount: 10,
       order_id: data.id,
       description: "Thankyou for your Purchase",
-      image: "/Images/logosmall.svg",
+      image: "/Images/logoNew.png",
       handler: function (response) {
         // Validate payment at server - using webhooks is a better idea.
         VerifyPayment(response);

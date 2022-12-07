@@ -483,7 +483,7 @@ export default function Home({ providers }) {
                 </section>
                 <div className="border border-white w-fit text-xl mx-auto rounded-lg h-10 flex justify-between items-center mt-8 md:hidden z-10 divide-x-2">
                   <span
-                    className="  text-white rounded-tl-lg rounded-bl-lg py-1 text-center  px-6  cursor-pointer hover:text-black hover:bg-white hover:rounded-lg"
+                    className="  text-white rounded-tl-lg rounded-bl-lg py-1 text-center  px-6 text-base md:text-lg  cursor-pointer hover:text-black hover:bg-white hover:rounded-lg"
                     onClick={() => {
                       setShowWelcome(false);
                       setLoginModal(false);
@@ -492,7 +492,7 @@ export default function Home({ providers }) {
                     Sign Up
                   </span>
                   <span
-                    className=" text-white rounded-tl-lg rounded-bl-lg py-1 text-center  px-6  cursor-pointer hover:text-black hover:bg-white hover:rounded-lg"
+                    className=" text-white rounded-tl-lg rounded-bl-lg py-1 text-center  px-6 text-base md:text-lg  cursor-pointer hover:text-black hover:bg-white hover:rounded-lg"
                     onClick={() => {
                       setShowWelcome(false);
                       setLoginModal(true);
