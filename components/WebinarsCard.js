@@ -102,7 +102,7 @@ const WebinarsCard = ({
 
       <div className="space-y-2 md:hidden w-fit hover:bg-[#161616] rounded-md">
         <div className="relative">
-          <img src={image} className="rounded-3xl max-w-[20rem]" />
+          <img src={image} className="rounded-3xl max-w-[18rem]" />
           {userId && (
             <div className="absolute top-2 right-2 md:hidden">
               {hasliked || likedAlready ? (
