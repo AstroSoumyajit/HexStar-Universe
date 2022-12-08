@@ -535,7 +535,7 @@ export default function Home({ providers }) {
       </Modal>
       <Modal
         open={openDialog}
-        TransitionComponent={Transition}
+        transitioncomponent={Transition}
         keepMounted
         onClose={() => setOpenDialog(false)}
         aria-describedby="alert-dialog-slide-description"

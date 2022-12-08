@@ -32,6 +32,7 @@ import { async } from "@firebase/util";
 import { useSession } from "next-auth/react";
 import { useLogin } from "../context/LoginContext";
 import crypto from "crypto";
+import { useCallback } from "react";
 
 const MasterClass = () => {
   const { userData, setUserData } = useLogin();
@@ -68,20 +69,33 @@ const MasterClass = () => {
       return;
     }
 
+    const params = {
+      amount: MasterClassData[0].price,
+      currency: "INR",
+    };
+
     // Make API call to the serverless API
-    const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
-      t.json()
-    );
+    const response = await fetch("/api/razorpay", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params),
+    });
+
+    const data = await response.json();
+
     var options = {
       key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
       name: "Hexstar Universe",
       currency: data.currency,
-      amount: 10,
+      amount: data.curency,
       order_id: data.id,
       description: "Thankyou for your Purchase",
       image: "/Images/logoNew.png",
       handler: function (response) {
-        
+        console.log(response);
         VerifyPayment(response);
       },
     };
@@ -90,21 +104,25 @@ const MasterClass = () => {
     paymentObject.open();
   };
 
-  const VerifyPayment = async (res) => {
-    let body = res.razorpay_order_id + "|" + res.razorpay_payment_id;
+  const VerifyPayment = useCallback(
+    async (res) => {
+      let body = res.razorpay_order_id + "|" + res.razorpay_payment_id;
 
-    let expected_signature = crypto
-      .createHmac("sha256", process.env.RAZORPAY_SECRET)
-      .update(body.toString())
-      .digest("hex");
+      let expected_signature = crypto
+        .createHmac("sha256", process.env.RAZORPAY_SECRET)
+        .update(body.toString())
+        .digest("hex");
 
-    console.log("sig", res.razorpay_signature);
-    console.log("sigExpect", expected_signature);
+      console.log("sig", res.razorpay_signature);
+      console.log("sigExpect", expected_signature);
 
-    if (res.razorpay_signature === expected_signature) {
-      addCourseToUser();
-    }
-  };
+      if (res.razorpay_signature === expected_signature) {
+        console.log(true);
+        addCourseToUser();
+      }
+    },
+    [addCourseToUser]
+  );
 
   const getMasterclassData = React.useCallback(async () => {
     let temp = [];
@@ -167,6 +185,7 @@ const MasterClass = () => {
       session?.user?.id ||
       window.sessionStorage.getItem("user_id");
 
+    console.log(userId);
     const docRef = doc(db, "masterclass", MasterClassData[0].id);
     await updateDoc(docRef, {
       course_purchased: arrayUnion(userId),

@@ -11,8 +11,9 @@ export default async function handler(req, res) {
 
     // Create an order -> generate the OrderID -> Send it to the Front-end
     const payment_capture = 1;
-    const amount = 10;
-    const currency = "INR";
+    const amount = req.body.amount;
+
+    const currency = req.body.currency;
     const options = {
       amount: (amount * 100).toString(),
       currency,
@@ -20,16 +21,19 @@ export default async function handler(req, res) {
       payment_capture,
     };
 
+    console.log(options);
+
+    const response = await razorpay.orders.create(options);
+
     try {
-      const response = await razorpay.orders.create(options);
-      res.status(200).json({
+      return res.status(200).json({
         id: response.id,
         currency: response.currency,
         amount: response.amount,
       });
-    } catch (err) {
-      console.log(err);
-      res.status(400).json(err);
+    } catch(err) {
+      console.log(err)
+      return res.status(500);
     }
   } else {
     // Handle any other HTTP method
