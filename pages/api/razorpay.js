@@ -3,37 +3,28 @@ const shortid = require("shortid");
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    // Initialize razorpay object
-    const razorpay = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY,
-      key_secret: process.env.RAZORPAY_SECRET,
-    });
-
-    // Create an order -> generate the OrderID -> Send it to the Front-end
-    const payment_capture = 1;
-    const amount = req.body.amount;
-
-    const currency = req.body.currency;
-    const options = {
-      amount: (amount * 100).toString(),
-      currency,
-      receipt: shortid.generate(),
-      payment_capture,
-    };
-
-    console.log(options);
-
-    const response = await razorpay.orders.create(options);
 
     try {
-      return res.status(200).json({
-        id: response.id,
-        currency: response.currency,
-        amount: response.amount,
+      const instance = new Razorpay({
+        key_id: process.env.RAZORPAY_KEY,
+        key_secret: process.env.RAZORPAY_SECRET,
       });
-    } catch(err) {
-      console.log(err)
-      return res.status(500);
+
+      const options = {
+        amount: 50000, // amount in smallest currency unit
+        currency: "INR",
+        receipt: "receipt_order_74394",
+        payment_capture:1
+      };
+
+      const order = await instance.orders.create(options);
+
+      if (!order) return res.status(500).send("Some error occured");
+
+      res.json(order);
+    } catch (error) {
+      console.log(error)
+      res.status(500).send(error);
     }
   } else {
     // Handle any other HTTP method

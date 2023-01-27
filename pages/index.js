@@ -42,6 +42,7 @@ import { useLogin } from "../context/LoginContext";
 import { useVerifyModal } from "../context/VerifyCertificateModal";
 import { Dialog, Slide } from "@material-ui/core";
 import { MdVerified } from "react-icons/md";
+import Cubesat from "../components/Cubesat";
 
 export default function Home({ providers }) {
   const [LoginModal, setLoginModal] = useState(false);
@@ -255,6 +256,7 @@ export default function Home({ providers }) {
 
       <div className="md:ml-16 md:px-12 px-4">
         <Hero />
+        <Cubesat/>
         <WSW />
         {/* <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />

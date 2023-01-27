@@ -14,6 +14,7 @@ import { BsCalendar4 } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { SiRazorpay } from "react-icons/si";
 import { useEffect } from "react";
+import axios from "axios";
 
 import {
   addDoc,
@@ -33,6 +34,7 @@ import { useSession } from "next-auth/react";
 import { useLogin } from "../context/LoginContext";
 import crypto from "crypto";
 import { useCallback } from "react";
+import MasterclassCard from "./Masterclass.Card";
 
 const MasterClass = () => {
   const { userData, setUserData } = useLogin();
@@ -45,64 +47,70 @@ const MasterClass = () => {
   const { data: session } = useSession();
   const [waiting, setWaiting] = useState(true);
 
-  const initializeRazorpay = () => {
+  function loadScript(src) {
     return new Promise((resolve) => {
       const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-
+      script.src = src;
       script.onload = () => {
         resolve(true);
       };
       script.onerror = () => {
         resolve(false);
       };
-
       document.body.appendChild(script);
     });
-  };
+  }
 
-  const makePayment = async () => {
-    const res = await initializeRazorpay();
+  async function displayRazorpay() {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
 
     if (!res) {
-      alert("Razorpay SDK Failed to load");
+      alert("Razorpay SDK failed to load. Are you online?");
       return;
     }
 
-    const params = {
-      amount: MasterClassData[0].price,
-      currency: "INR",
-    };
+    const result = await axios.post("http://localhost:3000/api/razorpay");
 
-    // Make API call to the serverless API
-    const response = await fetch("/api/razorpay", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(params),
-    });
+    if (!result) {
+      alert("Server error. Are you online?");
+      return;
+    }
 
-    const data = await response.json();
+    const { amount, id: order_id, currency } = result.data;
 
-    var options = {
+    const options = {
       key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
-      name: "Hexstar Universe",
-      currency: data.currency,
-      amount: data.curency,
-      order_id: data.id,
-      description: "Thankyou for your Purchase",
+      amount: amount.toString(),
+      currency: currency,
+      name: "Soumya Corp.",
+      description: "Test Transaction",
       image: "/Images/logoNew.png",
-      handler: function (response) {
-        console.log(response);
-        VerifyPayment(response);
+      order_id: order_id,
+      handler: async function (response) {
+        const data = {
+          orderCreationId: order_id,
+          razorpayPaymentId: response.razorpay_payment_id,
+          razorpayOrderId: response.razorpay_order_id,
+          razorpaySignature: response.razorpay_signature,
+        };
+
+        const result = await axios.post(
+          "http://localhost:3000/api/success",
+          data
+        );
+
+        alert(result.data.msg);
+      },
+      theme: {
+        color: "#61dafb",
       },
     };
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
-  };
+  }
 
   const VerifyPayment = useCallback(
     async (res) => {
@@ -196,10 +204,9 @@ const MasterClass = () => {
     <div className="space-y-4" id="masterclass">
       <div className="font-gilroy">
         <div className="flex w-full items-center">
-          <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-[#c4c4c4] text-lg mr-8 whitespace-nowrap">
+          <h1 className="lg:text-6xl md:text-4xl text-2xl md:text-right font-bold text-white mb-3" >
             Masterclass
           </h1>
-          <hr className="border-[#363636] border-2   w-full" />
         </div>
       </div>
       <div className="w-full flex items-center justify-between">
@@ -245,7 +252,7 @@ const MasterClass = () => {
           {MasterClassData.map((data, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="flex flex-col items-center space-y-4 cursor-pointer">
+                {/* <div className="flex flex-col items-center space-y-4 cursor-pointer">
                   <img
                     src={data.poster_image}
                     className="max-w-[16rem]"
@@ -257,7 +264,9 @@ const MasterClass = () => {
                       }
                     }}
                   />
-                </div>
+                  
+                </div> */}
+                <MasterclassCard/>
               </SwiperSlide>
             );
           })}
@@ -315,7 +324,7 @@ const MasterClass = () => {
                   className="cursor-pointer bg-[#00A3FF] px-4 py-2 text-white font-gilroy rounded-md mx-auto"
                   onClick={() => {
                     setOpen(false);
-                    makePayment();
+                    displayRazorpay();
                   }}
                 >
                   Enroll Now

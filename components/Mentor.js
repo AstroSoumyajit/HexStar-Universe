@@ -15,12 +15,6 @@ const Mentor = () => {
     {
       image: "/Images/mentor/image3.png",
     },
-    {
-      image: "/Images/mentor/image4.png",
-    },
-    {
-      image: "/Images/mentor/image5.png",
-    },
   ];
   const [mySwiper, setMySwiper] = useState(null);
 
@@ -32,7 +26,7 @@ const Mentor = () => {
         </h1>
         <hr className="border-[#363636] border-2  w-full" />
       </div>
-      <div className="flex justify-between xl:space-x-20 lg:space-x-16 md:space-x-12 space-x-6 items-center overflow-scroll scrollbar-hide ">
+      <div className="flex justify-start xl:space-x-20 lg:space-x-16 md:space-x-12 space-x-6 items-center overflow-scroll scrollbar-hide ">
         {mentorData.map((data, i) => {
           return (
             <div className="flex flex-col items-center space-y-4" key={i}>

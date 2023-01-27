@@ -67,13 +67,14 @@ const Webinars = ({ title }) => {
   }, [db]);
 
   return (
-    <div className="my-8" id="webinars">
+    <div className="my-8 font-gilroy" id="webinars">
       <div className="hidden md:block">
         <div className="flex w-full items-center">
-          <h1 className="font-gilroy bg-clip-text md:text-4xl md:my-8 my-4 text-white text-lg mr-8 whitespace-nowrap">
+          {/* <h1 className="font-gilroy bg-clip-text md:text-4xl md:my-8 my-4 text-white text-lg mr-8 whitespace-nowrap">
             Webinars
           </h1>
-          <hr className="border-[#363636] border-2  hidden md:block w-full" />
+          <hr className="border-[#363636] border-2  hidden md:block w-full" /> */}
+          <h1 className="lg:text-6xl md:text-4xl text-2xl md:text-right font-bold text-white mb-3">Space Talk Series</h1>
         </div>
       </div>
       <img src="/webinarsHeading.png" className="md:hidden" />
