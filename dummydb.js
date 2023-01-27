@@ -1,5 +1,36 @@
 export const webinarData = [
   {
+    key: 23,
+    linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+    title: "Peeping into cosmos through citizen science ",
+    thumbnail: "/Images/Webinars/english/image/image23.png",
+    speaker: "-Shubham Srivastav",
+    speakerImage: "/Images/Webinars/english/person/person23.png",
+    videoID: "9Uh9HfxJyZo",
+    language: "english",
+  },
+  {
+    key: 22,
+    linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+    title: "Glimpses of Cutting Edge Astrophysics",
+    thumbnail: "/Images/Webinars/english/image/image22.png",
+    speaker: "-Prof. Prajval Shastri",
+    speakerImage: "/Images/Webinars/english/person/person22.png",
+    videoID: "9Uh9HfxJyZo",
+    language: "english",
+  },
+  {
+    key: 21,
+    linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+    title:
+      "Decoding the mysteries of the universe: Dark Energy and Dark Matter",
+    thumbnail: "/Images/Webinars/english/image/image21.png",
+    speaker: "-Prof. Prajval Shastri",
+    speakerImage: "/Images/Webinars/english/person/person21.png",
+    videoID: "9Uh9HfxJyZo",
+    language: "english",
+  },
+  {
     key: 19,
     linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
     title: "Rocket Propulsion",
@@ -7,7 +38,7 @@ export const webinarData = [
     speaker: "Vani Sadadiwala",
     speakerImage: "/Images/Webinars/english/person/person19.png",
     videoID: "9Uh9HfxJyZo",
-    language:"english"
+    language: "english",
   },
   {
     key: 20,
@@ -17,9 +48,9 @@ export const webinarData = [
     speaker: "-Dr. Himadri Sekhar Dasn",
     speakerImage: "/Images/Webinars/english/person/person20.png",
     videoID: "ovAbClBbb8s",
-    language:"english"
+    language: "english",
   },
-  
+
   {
     key: 18,
     linkEmbed: "https://youtube.com/embed/RhZrf5iBVTo",
@@ -28,7 +59,7 @@ export const webinarData = [
     speaker: "-Golsar Akash",
     speakerImage: "/Images/Webinars/english/person/person18.png",
     videoID: "RhZrf5iBVTo ",
-    language:"english"
+    language: "english",
   },
   {
     key: 17,
@@ -38,7 +69,7 @@ export const webinarData = [
     speaker: "-Nivedha Govindarajan",
     speakerImage: "/Images/Webinars/english/person/person17.png",
     videoID: "nz5XXhrked4",
-    language:"english"
+    language: "english",
   },
   {
     key: 16,
@@ -48,7 +79,7 @@ export const webinarData = [
     speaker: "-Dr. Pretam Kumar Das",
     speakerImage: "/Images/Webinars/english/person/person16.png",
     videoID: "oYM3EFKGhtI",
-    language:"english"
+    language: "english",
   },
   {
     key: 15,
@@ -58,7 +89,7 @@ export const webinarData = [
     speaker: "-Elif Keve",
     speakerImage: "/Images/Webinars/english/person/person15.png",
     videoID: "IXqzrwr7sZg",
-    language:"english"
+    language: "english",
   },
   {
     key: 14,
@@ -68,7 +99,7 @@ export const webinarData = [
     speaker: "-Gabe Gabrielle",
     speakerImage: "/Images/Webinars/english/person/person14.png",
     videoID: "bkM3rlEADK0",
-    language:"english"
+    language: "english",
   },
   {
     key: 12,
@@ -87,7 +118,7 @@ export const webinarData = [
     speaker: "-Dr. Priya Hasan",
     speakerImage: "/Images/Webinars/english/person/person13.png",
     videoID: "1Bcm4LO-yOs",
-    language:"english"
+    language: "english",
   },
   {
     key: 10,
@@ -97,7 +128,7 @@ export const webinarData = [
     speaker: "",
     speakerImage: "/Images/Webinars/english/person/person10.png",
     videoID: "QQRZE56jwZI",
-    language:"english"
+    language: "english",
   },
   {
     key: 11,
@@ -107,7 +138,7 @@ export const webinarData = [
     speaker: "-Suraj . SChawla",
     speakerImage: "/Images/Webinars/english/person/person11.png",
     videoID: "XiVdh6oj38w",
-    language:"english"
+    language: "english",
   },
   {
     key: 1,
@@ -117,7 +148,7 @@ export const webinarData = [
     speaker: "-RR Elan Govan",
     speakerImage: "/Images/Webinars/english/person/person1.png",
     videoID: "r_3zZ0E6Y1M",
-    language:"english"
+    language: "english",
   },
   {
     key: 2,
@@ -127,7 +158,7 @@ export const webinarData = [
     speaker: "-Teja Begari",
     speakerImage: "/Images/Webinars/english/person/person2.png",
     videoID: "8iQiMBFsUy8",
-    language:"english"
+    language: "english",
   },
   {
     key: 3,
@@ -137,7 +168,7 @@ export const webinarData = [
     speaker: "-Eleonore Poli",
     speakerImage: "/Images/Webinars/english/person/person3.png",
     videoID: "NCrA8CjO_tU",
-    language:"english"
+    language: "english",
   },
   {
     key: 4,
@@ -147,7 +178,7 @@ export const webinarData = [
     speaker: "-Anuj Soni",
     speakerImage: "/Images/Webinars/english/person/person4.png",
     videoID: "GaUd9araJwg",
-    language:"english"
+    language: "english",
   },
   {
     key: 5,
@@ -157,7 +188,7 @@ export const webinarData = [
     speaker: "-Shivika Lamba",
     speakerImage: "/Images/Webinars/english/person/person5.png",
     videoID: "6x05_hOBrGQ",
-    language:"english"
+    language: "english",
   },
   {
     key: 6,
@@ -167,7 +198,7 @@ export const webinarData = [
     speaker: "-Amit Raka",
     speakerImage: "/Images/Webinars/english/person/person6.png",
     videoID: "Jl7FE1jwuKU",
-    language:"english"
+    language: "english",
   },
   {
     key: 7,
@@ -177,7 +208,7 @@ export const webinarData = [
     speaker: "-Dr. Anand Hota",
     speakerImage: "/Images/Webinars/english/person/person7.png",
     videoID: "1haxTbBn3j0",
-    language:"english"
+    language: "english",
   },
   {
     key: 8,
@@ -187,7 +218,7 @@ export const webinarData = [
     speaker: "-Amit Raka",
     speakerImage: "/Images/Webinars/english/person/person8.png",
     videoID: "3p0vbFi2Jh8",
-    language:"english"
+    language: "english",
   },
   {
     key: 9,
@@ -197,7 +228,7 @@ export const webinarData = [
     speaker: "-Pon Maa Kishan",
     speakerImage: "/Images/Webinars/english/person/person9.png",
     videoID: "tU7pZ5qA9QE",
-    language:"english"
+    language: "english",
   },
   {
     key: Date.now(),
@@ -207,7 +238,7 @@ export const webinarData = [
     speaker: "-গৌরব ব্যানার্জি",
     speakerImage: "/Images/Webinars/bengali/person/person1.png",
     videoID: "jTjlu4q2M7E",
-    language:"bengali"
+    language: "bengali",
   },
   {
     key: Date.now(),
@@ -217,7 +248,7 @@ export const webinarData = [
     speaker: "-অংশুমান বৰুৱা",
     speakerImage: "/Images/Webinars/bengali/person/person2.png",
     videoID: "Dhk-pccFTY8",
-    language:"bengali"
+    language: "bengali",
   },
   {
     key: Date.now(),
@@ -227,6 +258,6 @@ export const webinarData = [
     speaker: "சோலார் சிஸ்டம் ஸ்கோப்",
     speakerImage: "/Images/Webinars/tamil/person/person1.png",
     videoID: "jCjtvV5GvrQ",
-    language:"tamil"
+    language: "tamil",
   },
 ];

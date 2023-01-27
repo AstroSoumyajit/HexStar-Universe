@@ -14,6 +14,8 @@ const WebinarsCard = ({
   route,
   videoId,
   likedAlready,
+  gradient1 = "from-[#000AFF]",
+  gradient2 = "to-[#DB00FF]",
 }) => {
   const { data: session } = useSession();
 
@@ -42,9 +44,9 @@ const WebinarsCard = ({
 
   return (
     <div className="">
-      <div className="space-y-2 hidden md:block w-fit hover:bg-[#161616] overflow-hidden hover:scale-110 duration-200 hover:p-4 rounded-xl group">
-        <div className="relative">
-          <img src={image} className="rounded-3xl max-w-[20rem]" />
+      <div className="space-y-2 hidden md:flex w-[20rem] hover:bg-[#161616] overflow-hidden  flex-col justify-between hover:scale-110 duration-200 hover:p-4 rounded-xl group min-h-[22rem]">
+        <div className="relative ">
+          <img src={image} className="rounded-3xl mx-auto w-full" />
           {/* <Link href={`/${title}`}>
             <button className="font-sweet_sans_pro text-white rounded-md px-4 py-2 bg-[#2D2D2D] absolute bottom-4 left-4 ">
               Watch
@@ -69,7 +71,9 @@ const WebinarsCard = ({
           }`}
         >
           <Link href={`/${route}/${title}`}>
-            <button className="bg-gradient-to-r from-[#000AFF] to-[#DB00FF] w-full py-1.5 text-white font-sweet_sans_pro rounded-md ">
+            <button
+              className={`bg-gradient-to-r ${gradient1} ${gradient2} w-full py-1.5 text-white font-sweet_sans_pro rounded-md `}
+            >
               Watch Stream
             </button>
           </Link>

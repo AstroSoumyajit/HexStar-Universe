@@ -24,9 +24,57 @@ const Webinars = ({ title }) => {
   const [favouritesVideoId, setFavouriteVideoId] = useState([]);
   const { data: session } = useSession();
 
-  const englishWebinar = webinarData.filter(
-    (data) => data.language == "english"
-  );
+  const englishWebinar = [
+    {
+      key: 23,
+      linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+      title: "Peeping into cosmos through citizen science ",
+      thumbnail: "/Images/Webinars/english/image/image23.png",
+      speaker: "-Shubham Srivastav",
+      speakerImage: "/Images/Webinars/english/person/person23.png",
+      videoID: "9Uh9HfxJyZo",
+      language: "english",
+      gradient1: "from-[#FF5C00]",
+      gradient2: "to-[#FF0000]",
+    },
+    {
+      key: 22,
+      linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+      title: "Glimpses of Cutting Edge Astrophysics",
+      thumbnail: "/Images/Webinars/english/image/image22.png",
+      speaker: "-Prof. Prajval Shastri",
+      speakerImage: "/Images/Webinars/english/person/person22.png",
+      videoID: "9Uh9HfxJyZo",
+      language: "english",
+      gradient1: "from-[#6C00FE]",
+      gradient2: "to-[#2D00FE]",
+    },
+    {
+      key: 21,
+      linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+      title:
+        "Decoding the mysteries of the universe: Dark Energy and Dark Matter",
+      thumbnail: "/Images/Webinars/english/image/image21.png",
+      speaker: "-Prof. Prajval Shastri",
+      speakerImage: "/Images/Webinars/english/person/person21.png",
+      videoID: "9Uh9HfxJyZo",
+      language: "english",
+      gradient1: "from-[#3963F6]",
+      gradient2: "to-[#000000]",
+    },
+    {
+      key: 19,
+      linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+      title: "Rocket Propulsion",
+      thumbnail: "/Images/Webinars/english/image/image19.png",
+      speaker: "Vani Sadadiwala",
+      speakerImage: "/Images/Webinars/english/person/person19.png",
+      videoID: "9Uh9HfxJyZo",
+      language: "english",
+      gradient1: "from-[#7700D5]",
+      gradient2: "to-[#000000]",
+    },
+  ];
   const bengaliWebinar = webinarData.filter(
     (data) => data.language == "bengali"
   );
@@ -74,7 +122,9 @@ const Webinars = ({ title }) => {
             Webinars
           </h1>
           <hr className="border-[#363636] border-2  hidden md:block w-full" /> */}
-          <h1 className="lg:text-6xl md:text-4xl text-2xl md:text-right font-bold text-white mb-3">Space Talk Series</h1>
+          <h1 className="lg:text-6xl md:text-4xl text-2xl md:text-right font-bold text-white mb-3">
+            Space Talk Series
+          </h1>
         </div>
       </div>
       <img src="/webinarsHeading.png" className="md:hidden" />
@@ -180,57 +230,32 @@ const Webinars = ({ title }) => {
 
       {english && (
         <div>
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 m-auto gap-6 justify-items-center">
-            {!allWebinars
-              ? englishWebinar.slice(0, 8).map((data) => {
-                  return (
-                    <WebinarsCard
-                      key={data.key}
-                      image={data.thumbnail}
-                      title={data.title}
-                      speaker={data.speaker}
-                      speakerImage={data.speakerImage}
-                      videoId={data.videoID}
-                      route={data.language}
-                      likedAlready={favouritesVideoId.find(
-                        (id) => id === data.videoID
-                      )}
-                    />
-                  );
-                })
-              : englishWebinar.map((data) => {
-                  return (
-                    <WebinarsCard
-                      key={data.key}
-                      image={data.thumbnail}
-                      title={data.title}
-                      speaker={data.speaker}
-                      speakerImage={data.speakerImage}
-                      route={"english"}
-                      videoId={data.videoID}
-                      likedAlready={favouritesVideoId.find(
-                        (id) => id === data.videoID
-                      )}
-                    />
-                  );
-                })}
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 m-auto gap-6">
+            {englishWebinar.map((data) => {
+              return (
+                <WebinarsCard
+                  key={data.key}
+                  image={data.thumbnail}
+                  title={data.title}
+                  speaker={data.speaker}
+                  speakerImage={data.speakerImage}
+                  videoId={data.videoID}
+                  route={data.language}
+                  likedAlready={favouritesVideoId.find(
+                    (id) => id === data.videoID
+                  )}
+                  gradient1={data.gradient1}
+                  gradient2={data.gradient2}
+                />
+              );
+            })}
           </div>
-          <div className="relative flex py-5 items-center">
+          <div className="relative flex py-5 mt-8 items-center">
             <button
-              className={`${
-                allWebinars && "hidden"
-              } text-white  rounded-full px-4 py-2 font-sweet_sans_pro border border-white text-xl mx-auto`}
-              onClick={() => setAllWebinars(true)}
+              className={`text-white  rounded-full px-4 py-2 font-sweet_sans_pro border border-white text-xl mx-auto`}
+              onClick={() => (window.location.href = "/spacetalk/english")}
             >
               More
-            </button>
-            <button
-              className={`${
-                !allWebinars && "hidden"
-              } text-white  rounded-full px-4 py-2 font-sweet_sans_pro border border-white text-xl mx-auto`}
-              onClick={() => setAllWebinars(false)}
-            >
-              Less
             </button>
           </div>
         </div>

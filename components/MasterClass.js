@@ -134,16 +134,13 @@ const MasterClass = () => {
 
   const getMasterclassData = React.useCallback(async () => {
     let temp = [];
-    return onSnapshot(
-      query(collection(db, "masterclass"), orderBy("timestamp", "desc")),
-      (snapshot) => {
-        temp = [];
-        snapshot.forEach((doc) => {
-          temp.push({ ...doc.data(), id: doc.id });
-        });
-        setMasterclassData(temp);
-      }
-    );
+    return onSnapshot(query(collection(db, "masterclass")), (snapshot) => {
+      temp = [];
+      snapshot.forEach((doc) => {
+        temp.push({ ...doc.data(), id: doc.id });
+      });
+      setMasterclassData(temp);
+    });
   }, []);
 
   const checkUserInWaitingList = React.useCallback(
@@ -204,20 +201,20 @@ const MasterClass = () => {
     <div className="space-y-4" id="masterclass">
       <div className="font-gilroy">
         <div className="flex w-full items-center">
-          <h1 className="lg:text-6xl md:text-4xl text-2xl md:text-right font-bold text-white mb-3" >
+          <h1 className="lg:text-6xl md:text-4xl text-2xl md:text-right font-bold text-white mb-3">
             Masterclass
           </h1>
         </div>
       </div>
-      <div className="w-full flex items-center justify-between">
-        <button
+      <div className="lg:-mr-[20%] md:-mr-[40%] ">
+        {/* <button
           className="mr-1 text-[#fff] rounded-full"
           onClick={() => {
             if (mySwiper) mySwiper.slidePrev();
           }}
         >
           <IoIosArrowBack size={30} />
-        </button>
+        </button> */}
         <Swiper
           onInit={(ev) => setMySwiper(ev)}
           slidesPerView={2}
@@ -245,40 +242,32 @@ const MasterClass = () => {
               spaceBetween: 30,
             },
           }}
-          navigation={true}
+          // navigation={true}
           modules={[Pagination, Navigation, Autoplay]}
           className="mySwiper homeSwiperSliderCards mx-auto"
         >
           {MasterClassData.map((data, i) => {
             return (
               <SwiperSlide key={i}>
-                {/* <div className="flex flex-col items-center space-y-4 cursor-pointer">
-                  <img
-                    src={data.poster_image}
-                    className="max-w-[16rem]"
-                    onClick={() => {
-                      if (session || window.sessionStorage.getItem("user_id")) {
-                        i === 0 ? setOpen(true) : setOpen2(true);
-                        setClickedMasterclass(i);
-                        checkUserInWaitingList(i);
-                      }
-                    }}
-                  />
-                  
-                </div> */}
-                <MasterclassCard/>
+                <MasterclassCard
+                  title={data.title}
+                  image={data.image}
+                  gradient1={data.gradient1}
+                  gradient2={data.gradient2}
+                  gradient={data.gradient}
+                />
               </SwiperSlide>
             );
           })}
         </Swiper>
-        <button
+        {/* <button
           className="mr-1 text-[#fff] rounded-full"
           onClick={() => {
             if (mySwiper) mySwiper.slideNext();
           }}
         >
           <IoIosArrowForward size={30} />
-        </button>
+        </button> */}
       </div>
       {/* <div className="flex md:flex-row flex-col items-center justify-center md:space-x-8 space-y-8 md:space-y-0 my-8" /> */}
       {/* <div className="relative flex py-4 items-center">
