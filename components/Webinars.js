@@ -11,7 +11,8 @@ import { useEffect } from "react";
 import { collection, getDocs, onSnapshot, query } from "firebase/firestore";
 import { db } from "../database/firebase";
 import { useSession } from "next-auth/react";
-import { useLogin } from "../context/LoginContext";
+import { Pagination, Navigation, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const Webinars = ({ title }) => {
   const [allWebinars, setAllWebinars] = React.useState(false);
@@ -230,25 +231,63 @@ const Webinars = ({ title }) => {
 
       {english && (
         <div>
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 m-auto gap-6">
-            {englishWebinar.map((data) => {
-              return (
-                <WebinarsCard
-                  key={data.key}
-                  image={data.thumbnail}
-                  title={data.title}
-                  speaker={data.speaker}
-                  speakerImage={data.speakerImage}
-                  videoId={data.videoID}
-                  route={data.language}
-                  likedAlready={favouritesVideoId.find(
-                    (id) => id === data.videoID
-                  )}
-                  gradient1={data.gradient1}
-                  gradient2={data.gradient2}
-                />
-              );
-            })}
+          <div className="">
+            <Swiper
+              // onInit={(ev) => setMySwiper(ev)}
+              slidesPerView={1}
+              slidesPerGroup={2}
+              loop={true}
+              loopFillGroupWithBlank={true}
+              pagination={{
+                clickable: true,
+              }}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+                1334: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+                1574: {
+                  slidesPerView: 4,
+                  spaceBetween: 30,
+                },
+              }}
+              // navigation={true}
+              modules={[Pagination, Navigation, Autoplay]}
+              className="mySwiper homeSwiperSliderCards"
+            >
+              {englishWebinar.map((data, i) => {
+                return (
+                  <SwiperSlide key={i}>
+                    <WebinarsCard
+                      image={data.thumbnail}
+                      title={data.title}
+                      speaker={data.speaker}
+                      speakerImage={data.speakerImage}
+                      videoId={data.videoID}
+                      route={data.language}
+                      likedAlready={favouritesVideoId.find(
+                        (id) => id === data.videoID
+                      )}
+                      gradient1={data.gradient1}
+                      gradient2={data.gradient2}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+              <SwiperSlide>
+            <div className="w-[20rem] h-[24rem] rounded-xl font-nold text-3xl flex justify-center items-center text-white bg-[#161616z] ">
+              ...
+            </div>
+          </SwiperSlide>
+            </Swiper>
           </div>
           <div className="relative flex py-5 mt-8 items-center">
             <button

@@ -206,7 +206,7 @@ const MasterClass = () => {
           </h1>
         </div>
       </div>
-      <div className="lg:-mr-[20%] md:-mr-[40%] ">
+      <div className="lg:-mr-[20%] md:-mr-[40%] overflow-x-hidden">
         {/* <button
           className="mr-1 text-[#fff] rounded-full"
           onClick={() => {
@@ -259,6 +259,7 @@ const MasterClass = () => {
               </SwiperSlide>
             );
           })}
+         
         </Swiper>
         {/* <button
           className="mr-1 text-[#fff] rounded-full"

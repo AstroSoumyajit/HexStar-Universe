@@ -20,12 +20,9 @@ const Mentor = () => {
 
   return (
     <div className="space-y-8 relative">
-      <div className="flex w-full items-center">
-        <h1 className="font-gilroy bg-clip-text md:text-4xl my-8 text-white text-lg mr-8 whitespace-nowrap">
-          Mentor & Instructor
-        </h1>
-        <hr className="border-[#363636] border-2  w-full" />
-      </div>
+      <h1 className="lg:text-6xl md:text-4xl text-2xl font-gilroy font-bold text-white mb-3">
+        Mentor
+      </h1>
       <div className="flex justify-start xl:space-x-20 lg:space-x-16 md:space-x-12 space-x-6 items-center overflow-scroll scrollbar-hide ">
         {mentorData.map((data, i) => {
           return (
@@ -34,9 +31,7 @@ const Mentor = () => {
             </div>
           );
         })}
-        <div className="w-1/12 h-full bg-gradient-to-r from-transparent to-black absolute right-0 top-0">
-
-        </div>
+        <div className="w-1/12 h-full bg-gradient-to-r from-transparent to-black absolute right-0 top-0"></div>
       </div>
     </div>
   );
