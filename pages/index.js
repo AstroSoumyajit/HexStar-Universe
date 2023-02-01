@@ -184,7 +184,23 @@ export default function Home({ providers }) {
   }, []);
 
   //Check Certificate NUmber
-  const checkCertificate = () => {
+  // const checkCertificate = () => {
+  //   if (certificateNumber.length !== 11) {
+  //     return false;
+  //   } else {
+  //     if (
+  //       certificateNumber.substring(0, 9) === "SMC202211" &&
+  //       parseInt(certificateNumber.substring(9, 11)) >= 1 &&
+  //       parseInt(certificateNumber.substring(9, 11)) <= 50
+  //     ) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  // };
+
+  const checkCertificateSet1 = () => {
     if (certificateNumber.length !== 11) {
       return false;
     } else {
@@ -199,9 +215,24 @@ export default function Home({ providers }) {
       }
     }
   };
+  const checkCertificateSet2 = () => {
+    if (certificateNumber.length !== 10) {
+      return false;
+    } else {
+      if (
+        certificateNumber.substring(0, 7) === "CMC20230" &&
+        parseInt(certificateNumber.substring(7, 9)) >= 0 &&
+        parseInt(certificateNumber.substring(7, 9)) <= 85
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
 
   const addVerificationDatatoDatabase = async () => {
-    if (checkCertificate()) {
+    if (checkCertificateSet1() || checkCertificateSet2()) {
       const userRef = doc(
         db,
         "users",
@@ -256,7 +287,7 @@ export default function Home({ providers }) {
 
       <div className="md:ml-16 md:px-12 px-4">
         <Hero />
-        <Cubesat/>
+        <Cubesat />
         {/* <WSW /> */}
         {/* <Link href="https://rzp.io/l/DeepSkyImgProcessing">
           <img src="/scholarship.png" className="cursor-pointer mx-auto" />
@@ -436,7 +467,7 @@ export default function Home({ providers }) {
                 {LoginModal ? (
                   <h1 className="text-center">
                     Don&apos;t have an account?
-                    <br/>
+                    <br />
                     <b>
                       <span onClick={() => setLoginModal(false)}> Sign Up</span>
                     </b>
@@ -444,7 +475,7 @@ export default function Home({ providers }) {
                 ) : (
                   <h1 className="text-center">
                     Already have an account ?
-                    <br/>
+                    <br />
                     <b>
                       <span onClick={() => setLoginModal(true)}> Log in</span>
                     </b>
@@ -464,7 +495,9 @@ export default function Home({ providers }) {
                 <section className="flex flex-col text-white space-y-12 z-50">
                   <div className="space-y-6 ">
                     {LoginModal ? (
-                      <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl">Welcome Back !</h1>
+                      <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl">
+                        Welcome Back !
+                      </h1>
                     ) : (
                       <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl">
                         Welcome to
