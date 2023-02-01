@@ -4,7 +4,7 @@ import { HiStatusOnline } from "react-icons/hi";
 
 const MasterclassCard = ({ title, image, gradient1, gradient2, gradient }) => {
   return (
-    <div className="bg-[#161616] pt-2 pb-4 px-2 rounded-md space-y-6 font-gilroy">
+    <div className="bg-[#161616] pt-2 pb-4 px-2 rounded-md space-y-6 font-gilroy min-w-[20rem]">
       <div className="relative">
         <img src={image} />
         <h1 className="font-bold text-xl text-white absolute bottom-2 left-2">

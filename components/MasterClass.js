@@ -198,7 +198,7 @@ const MasterClass = () => {
   };
 
   return (
-    <div className="space-y-4" id="masterclass">
+    <div className="space-y-4 mb-8" id="masterclass">
       <div className="font-gilroy">
         <div className="flex w-full items-center">
           <h1 className="lg:text-6xl md:text-4xl text-2xl md:text-right font-bold text-white mb-3">
@@ -206,7 +206,8 @@ const MasterClass = () => {
           </h1>
         </div>
       </div>
-      <div className="lg:-mr-[20%] md:-mr-[40%] overflow-x-hidden">
+
+      <div className="">
         {/* <button
           className="mr-1 text-[#fff] rounded-full"
           onClick={() => {
@@ -215,7 +216,7 @@ const MasterClass = () => {
         >
           <IoIosArrowBack size={30} />
         </button> */}
-        <Swiper
+        {/* <Swiper
           onInit={(ev) => setMySwiper(ev)}
           slidesPerView={2}
           slidesPerGroup={1}
@@ -260,7 +261,7 @@ const MasterClass = () => {
             );
           })}
          
-        </Swiper>
+        </Swiper> */}
         {/* <button
           className="mr-1 text-[#fff] rounded-full"
           onClick={() => {
@@ -270,12 +271,26 @@ const MasterClass = () => {
           <IoIosArrowForward size={30} />
         </button> */}
       </div>
+
       {/* <div className="flex md:flex-row flex-col items-center justify-center md:space-x-8 space-y-8 md:space-y-0 my-8" /> */}
       {/* <div className="relative flex py-4 items-center">
         <button className="text-white border border-white rounded-full mx-auto  px-4 py-2 font-sweet_sans_pro text-xl">
           More
         </button>
       </div> */}
+      <div className="flex justify-start items-center gap-16 overflow-scroll scrollbar-hide">
+        {MasterClassData.map((data, i) => {
+          return (
+            <MasterclassCard
+              title={data.title}
+              image={data.image}
+              gradient1={data.gradient1}
+              gradient2={data.gradient2}
+              gradient={data.gradient}
+            />
+          );
+        })}
+      </div>
       <Modal
         open={open}
         onClose={() => setOpen(false)}

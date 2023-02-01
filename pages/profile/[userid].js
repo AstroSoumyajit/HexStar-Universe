@@ -82,7 +82,7 @@ const UserProfilePublic = () => {
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
       </Head>
       <Navbar userPage={true} />
-      <div className="divide-x-[1px] divide-[#1E1E1E]">
+      <div className="divide-x-[1px] divide-[#1E1E1E] md:pt-24 pt-16">
         <div
           className={`font-gilroy bg-black text-[#818181] fixed left-0 md:child:w-[15rem] ${
             scroll > 85 && "top-1"

@@ -44,9 +44,9 @@ const WebinarsCard = ({
 
   return (
     <div className="">
-      <div className="space-y-2 hidden md:flex w-[20rem] hover:bg-[#161616] overflow-hidden  flex-col justify-between hover:scale-110 duration-200 hover:p-4 rounded-xl group min-h-[22rem]">
+      <div className="space-y-2 hidden md:flex w-[20rem] bg-[#161616] overflow-hidden  flex-col justify-between  rounded-xl group min-h-[22rem]">
         <div className="relative ">
-          <img src={image} className="rounded-3xl mx-auto w-full" />
+          <img src={image} className="rounded-3xl mx-auto w-full p-2" />
           {/* <Link href={`/${title}`}>
             <button className="font-sweet_sans_pro text-white rounded-md px-4 py-2 bg-[#2D2D2D] absolute bottom-4 left-4 ">
               Watch
@@ -54,7 +54,7 @@ const WebinarsCard = ({
           </Link> */}
         </div>
 
-        <div className="flex flex-row items-center space-x-4 max-w-[20rem]">
+        <div className="flex flex-row items-center space-x-4 max-w-[20rem] px-4">
           <img src={speakerImage} />
           <div className="flex flex-col space-x-4">
             <h1 className="font-sweet_sans_pro tracking-wider text-white">
@@ -66,7 +66,7 @@ const WebinarsCard = ({
           </div>
         </div>
         <div
-          className={`invisible group-hover:visible flex justify-between items-center ${
+          className={`px-4 pb-4 flex justify-between items-center ${
             userId && "space-x-8"
           }`}
         >
@@ -104,7 +104,7 @@ const WebinarsCard = ({
         </div>
       </div>
 
-      <div className="space-y-2 md:hidden w-fit hover:bg-[#161616] rounded-md">
+      <div className="space-y-2 md:hidden w-fit bg-[#161616] rounded-md">
         <div className="relative">
           <img src={image} className="rounded-3xl max-w-[18rem]" />
           {userId && (
@@ -146,7 +146,7 @@ const WebinarsCard = ({
           </div>
         </div>
         {/* <div
-          className={`invisible group-hover:visible flex justify-between items-center ${
+          className={`invisible group-visible flex justify-between items-center ${
             userId && "space-x-8"
           }`}
         >

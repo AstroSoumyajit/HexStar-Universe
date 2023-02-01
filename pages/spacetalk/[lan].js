@@ -68,8 +68,8 @@ const VideoOpen = () => {
           </Head>
           <SideNav />
           <Navbar />
-          <div className="md:ml-16 md:px-12 px-4 py-8 space-y-8">
-            <h1 className="lg:text-6xl md:text-4xl text-2xl font-bold text-white md:mb-8">
+          <div className="md:ml-16 md:px-12 px-4 py-8 space-y-8 ">
+            <h1 className="lg:text-6xl md:text-4xl text-2xl font-bold text-white md:mb-8 md:pt-24 pt-16">
               Space Talk Series
             </h1>
             <div className="flex justify-start md:space-x-6 space-x-3">

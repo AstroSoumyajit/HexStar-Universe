@@ -1,7 +1,7 @@
 export const webinarData = [
   {
     key: 23,
-    linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+    linkEmbed: "https://www.youtube.com/embed/vA6SHgPGmQ0",
     title: "Peeping into cosmos through citizen science ",
     thumbnail: "/Images/Webinars/english/image/image23.png",
     speaker: "-Shubham Srivastav",
@@ -11,7 +11,7 @@ export const webinarData = [
   },
   {
     key: 22,
-    linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+    linkEmbed: "https://www.youtube.com/embed/sUR9UDDiuI",
     title: "Glimpses of Cutting Edge Astrophysics",
     thumbnail: "/Images/Webinars/english/image/image22.png",
     speaker: "-Prof. Prajval Shastri",
@@ -21,7 +21,7 @@ export const webinarData = [
   },
   {
     key: 21,
-    linkEmbed: "https://www.youtube.com/embed/9Uh9HfxJyZo",
+    linkEmbed: "https://www.youtube.com/embed/l32u0AoHVwU",
     title:
       "Decoding the mysteries of the universe: Dark Energy and Dark Matter",
     thumbnail: "/Images/Webinars/english/image/image21.png",

@@ -45,7 +45,7 @@ const Navbar = ({ active, path, userPage }) => {
 
 
   return (
-    <div className="w-full z-50">
+    <div className="w-full z-50 fixed top-0">
       <div className={`md:h-24 h-16 bg-[#000000] border border-[#1E1E1E] flex flex-row justify-between items-center ${!userPage && "md:ml-16 md:px-8"}  px-4 space-x-4`}>
         <div className="flex flex-row md:space-x-8 space-x-2 items-center">
           <Link href="/">

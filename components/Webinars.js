@@ -130,7 +130,7 @@ const Webinars = ({ title }) => {
       </div>
       <img src="/webinarsHeading.png" className="md:hidden" />
 
-      <div className="pb-6">
+      {/* <div className="pb-6">
         <button
           className="text-white border border-white rounded-full md:px-4 px-2 md:py-2 py-1 flex items-center space-x-4 md:text-lg text-sm my-2 md:my-4 font-gilroy"
           onClick={() => setShowLanguage(!showLanguage)}
@@ -227,6 +227,23 @@ const Webinars = ({ title }) => {
             </section>
           </div>
         )}
+      </div> */}
+      <div className="flex justify-start md:space-x-6 space-x-3 my-4">
+        <Link href="/spacetalk/english">
+          <h1 className="rounded-full border border-white px-4 py-2 w-20 text-sm md:text-base cursor-pointer md:w-28 text-center text-white font-gilroy ">
+            English
+          </h1>
+        </Link>
+        <Link href="/spacetalk/hindi">
+          <h1 className="rounded-full border border-white px-4 py-2 w-20 text-sm md:text-base cursor-pointer md:w-28 text-center text-white font-gilroy ">
+            Hindi
+          </h1>
+        </Link>
+        <Link href="/spacetalk/bengali">
+          <h1 className="rounded-full border border-white px-4 py-2 w-20 text-sm md:text-base cursor-pointer md:w-28 text-center text-white font-gilroy ">
+            Bengali
+          </h1>
+        </Link>
       </div>
 
       {english && (
@@ -236,7 +253,7 @@ const Webinars = ({ title }) => {
               // onInit={(ev) => setMySwiper(ev)}
               slidesPerView={1}
               slidesPerGroup={2}
-              loop={true}
+              loop={false}
               loopFillGroupWithBlank={true}
               pagination={{
                 clickable: true,
@@ -283,10 +300,10 @@ const Webinars = ({ title }) => {
                 );
               })}
               <SwiperSlide>
-            <div className="w-[20rem] h-[24rem] rounded-xl font-nold text-3xl flex justify-center items-center text-white bg-[#161616z] ">
-              ...
-            </div>
-          </SwiperSlide>
+                <div className="w-[20rem] h-[24rem] rounded-xl font-bold text-3xl flex justify-center items-center text-white bg-[#161616] cursor-pointer" onClick={()=> window.location.href = '/spacetalk/english'}>
+                  ...
+                </div>
+              </SwiperSlide>
             </Swiper>
           </div>
           <div className="relative flex py-5 mt-8 items-center">
