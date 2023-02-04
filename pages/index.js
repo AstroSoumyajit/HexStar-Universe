@@ -200,10 +200,13 @@ export default function Home({ providers }) {
   //   }
   // };
 
+  // SMC20221101
   const checkCertificateSet1 = () => {
+    // console.log("crtificateNumber: " + certificateNumber + "length: " + certificateNumber.length );
     if (certificateNumber.length !== 11) {
       return false;
     } else {
+      
       if (
         certificateNumber.substring(0, 9) === "SMC202211" &&
         parseInt(certificateNumber.substring(9, 11)) >= 1 &&
@@ -215,14 +218,16 @@ export default function Home({ providers }) {
       }
     }
   };
+  // CMC2023001
   const checkCertificateSet2 = () => {
+    // console.log("crtificateNumber: " + certificateNumber + "length: " + certificateNumber.length );
     if (certificateNumber.length !== 10) {
       return false;
     } else {
       if (
-        certificateNumber.substring(0, 7) === "CMC20230" &&
-        parseInt(certificateNumber.substring(7, 9)) >= 0 &&
-        parseInt(certificateNumber.substring(7, 9)) <= 85
+        certificateNumber.substring(0, 8) === "CMC20230" &&
+        parseInt(certificateNumber.substring(8, 10)) >= 0 &&
+        parseInt(certificateNumber.substring(8, 10)) <= 85
       ) {
         return true;
       } else {
