@@ -35,7 +35,6 @@ import { useLogin } from "../context/LoginContext";
 import crypto from "crypto";
 import { useCallback } from "react";
 import MasterclassCard from "./Masterclass.Card";
-
 const MasterClass = () => {
   const { userData, setUserData } = useLogin();
   const [mySwiper, setMySwiper] = useState(null);
@@ -281,7 +280,7 @@ const MasterClass = () => {
       <div className="flex justify-start items-center gap-16 overflow-scroll scrollbar-hide">
         {MasterClassData.map((data, i) => {
           return (
-            <MasterclassCard
+            <MasterclassCard key={i}
               title={data.title}
               image={data.image}
               gradient1={data.gradient1}

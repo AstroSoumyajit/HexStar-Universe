@@ -201,8 +201,10 @@ export default function Home({ providers }) {
   // };
 
   // SMC20221101
+  console.log("data: " + JSON.stringify(session));
   const checkCertificateSet1 = () => {
     // console.log("crtificateNumber: " + certificateNumber + "length: " + certificateNumber.length );
+
     if (certificateNumber.length !== 11) {
       return false;
     } else {
