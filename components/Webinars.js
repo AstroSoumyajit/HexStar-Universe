@@ -75,6 +75,27 @@ const Webinars = ({ title }) => {
       gradient1: "from-[#7700D5]",
       gradient2: "to-[#000000]",
     },
+    {
+      key: 20,
+      linkEmbed: "https://www.youtube.com/embed/ovAbClBbb8s",
+      title: "How to help Scientists through Citizen Science Projects",
+      thumbnail: "/Images/Webinars/english/image/image20.png",
+      speaker: "-Dr. Himadri Sekhar Dasn",
+      speakerImage: "/Images/Webinars/english/person/person20.png",
+      videoID: "ovAbClBbb8s",
+      language: "english",
+  },
+
+  {
+      key: 18,
+      linkEmbed: "https://youtube.com/embed/RhZrf5iBVTo",
+      title: "Exoplanet Exploration and Aerodymics of Aerofoil",
+      thumbnail: "/Images/Webinars/english/image/image18.png",
+      speaker: "-Golsar Akash",
+      speakerImage: "/Images/Webinars/english/person/person18.png",
+      videoID: "RhZrf5iBVTo ",
+      language: "english",
+  },
   ];
   const bengaliWebinar = webinarData.filter(
     (data) => data.language == "bengali"
@@ -128,7 +149,7 @@ const Webinars = ({ title }) => {
           </h1>
         </div>
       </div>
-      <img src="/webinarsHeading.png" className="md:hidden" />
+      {/* <img src="/webinarsHeading.png" className="md:hidden" /> */}
 
       {/* <div className="pb-6">
         <button
@@ -255,9 +276,7 @@ const Webinars = ({ title }) => {
               slidesPerGroup={2}
               loop={false}
               loopFillGroupWithBlank={true}
-              pagination={{
-                clickable: true,
-              }}
+              
               breakpoints={{
                 0: {
                   slidesPerView: 1,
@@ -268,7 +287,7 @@ const Webinars = ({ title }) => {
                   spaceBetween: 30,
                 },
                 1334: {
-                  slidesPerView: 3,
+                  slidesPerView: 4,
                   spaceBetween: 30,
                 },
                 1574: {
@@ -300,20 +319,15 @@ const Webinars = ({ title }) => {
                 );
               })}
               <SwiperSlide>
-                <div className="w-[20rem] h-[24rem] rounded-xl font-bold text-3xl flex justify-center items-center text-white bg-[#161616] cursor-pointer" onClick={()=> window.location.href = '/spacetalk/english'}>
+                <div className="w-[15rem] h-[22rem] rounded-xl font-bold text-3xl flex justify-center items-center text-white bg-[#161616] cursor-pointer" onClick={()=> window.location.href = '/spacetalk/english'}>
                   ...
                 </div>
               </SwiperSlide>
             </Swiper>
           </div>
-          <div className="relative flex py-5 mt-8 items-center">
-            <button
-              className={`text-white  rounded-full px-4 py-2 font-sweet_sans_pro border border-white text-xl mx-auto`}
-              onClick={() => (window.location.href = "/spacetalk/english")}
-            >
-              More
-            </button>
-          </div>
+          {/* <div className="relative flex py-5 mt-8 items-center">
+           
+          </div> */}
         </div>
       )}
       {bengali && (

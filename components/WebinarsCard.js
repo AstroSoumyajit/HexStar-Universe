@@ -33,8 +33,10 @@ const WebinarsCard = ({
 
   const likePost = async () => {
     if (hasliked && userId) {
+      alert("like: " + videoId);
       await deleteDoc(doc(db, "users", `${userId}`, "likes", `${videoId}`));
     } else {
+      alert("like: " + videoId);
       const docRef = doc(db, `users/${userId}/likes`, `${videoId}`);
       await setDoc(docRef, {
         videoId: videoId,
@@ -66,13 +68,12 @@ const WebinarsCard = ({
           </div>
         </div>
         <div
-          className={`px-4 pb-4 flex justify-between items-center ${
-            userId && "space-x-8"
-          }`}
+          className={`px-4 pb-4 flex justify-between items-center ${userId && "space-x-8"
+            }`}
         >
           <Link href={`/${route}/${title}`}>
             <button
-              className={`bg-gradient-to-r ${gradient1} ${gradient2} w-full py-1.5 text-white font-sweet_sans_pro rounded-md `}
+              className={`bg-gradient-to-r ${gradient1} ${gradient2} w-full py-1.5 text-white  font-sweet_sans_pro rounded-md `}
             >
               Watch Stream
             </button>
@@ -105,36 +106,64 @@ const WebinarsCard = ({
       </div>
 
       <div className="space-y-2 md:hidden w-fit bg-[#161616] rounded-md">
-        <div className="relative">
-          <img src={image} className="rounded-3xl max-w-[18rem]" />
-          {userId && (
-            <div className="absolute top-2 right-2 md:hidden">
-              {hasliked || likedAlready ? (
-                <AiFillHeart
-                  className="text-3xl text-purple-600 cursor-pointer bg-[hsl(280,88%,90%)] rounded-full p-1"
-                  onClick={() => {
-                    setHasLiked(!hasliked);
-                    likePost();
-                  }}
-                />
-              ) : (
-                <AiOutlineHeart
-                  className="text-3xl text-purple-600 cursor-pointer bg-[hsl(280,88%,90%)] rounded-full p-1"
-                  onClick={() => {
-                    setHasLiked(!hasliked);
-                    likePost();
-                    likedAlready = false;
-                  }}
-                />
-              )}
-            </div>
-          )}
-          <button className="bg-zinc-600 text-white px-2 py-1 absolute bottom-2 left-2 rounded-md font-sweet_sans_pro_light text-sm">
-            <Link href={`/${route}/${title}`}>Watch</Link>
-          </button>
+      <div className="relative ">
+          <img src={image} className="rounded-3xl mx-auto w-full p-2" />
+          {/* <Link href={`/${title}`}>
+            <button className="font-sweet_sans_pro text-white rounded-md px-4 py-2 bg-[#2D2D2D] absolute bottom-4 left-4 ">
+              Watch
+            </button>
+          </Link> */}
         </div>
 
-        <div className="flex flex-row items-center space-x-4 max-w-[20rem]">
+        <div className="flex flex-row items-center space-x-4 max-w-[20rem] px-4">
+          <img src={speakerImage} />
+          <div className="flex flex-col space-x-4">
+            <h1 className="font-sweet_sans_pro tracking-wider text-white">
+              {title}
+            </h1>
+            <h1 className="text-[#7B7A7A] text-md font-sweet_sans_pro_light">
+              {speaker}
+            </h1>
+          </div>
+        </div>
+        <div
+          className={`px-4 pb-4 flex justify-between items-center ${userId && "space-x-8"
+            }`}
+        >
+          <Link href={`/${route}/${title}`}>
+            <button
+              className={`bg-gradient-to-r ${gradient1} ${gradient2} w-full py-1.5 text-white  font-sweet_sans_pro rounded-md `}
+            >
+              Watch Stream
+            </button>
+          </Link>
+          <div>
+            {userId && (
+              <div>
+                {hasliked || likedAlready ? (
+                  <AiFillHeart
+                    className="text-3xl text-purple-600 cursor-pointer"
+                    onClick={() => {
+                      setHasLiked(hasliked);
+                      likePost();
+                    }}
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    className="text-3xl text-purple-600 cursor-pointer"
+                    onClick={() => {
+                      setHasLiked(!hasliked);
+                      likePost();
+                      likedAlready = false;
+                    }}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* <div className="flex flex-row items-center space-x-4 max-w-[20rem]">
           <img src={speakerImage} className="w-12 h-12" />
           <div className="flex flex-col">
             <h1 className="font-sweet_sans_pro tracking-wider text-white text-sm">
@@ -143,8 +172,40 @@ const WebinarsCard = ({
             <h1 className="text-[#7B7A7A] text-md font-sweet_sans_pro_light">
               {speaker}
             </h1>
+            <Link href={`/${route}/${title}`}>
+              <button
+                className={`bg-gradient-to-r ${gradient1} ${gradient2} w-full py-1.5 text-white  font-sweet_sans_pro rounded-md `}
+              >
+                Watch Stream
+              </button>
+            </Link><div>
+              {userId && (
+                <div>
+                  {hasliked || likedAlready ? (
+                    <AiFillHeart
+                      className="text-3xl text-purple-600 cursor-pointer"
+                      onClick={() => {
+                        setHasLiked(!hasliked);
+                        likePost();
+                      }}
+                    />
+                  ) : (
+                    <AiOutlineHeart
+                      className="text-3xl text-purple-600 cursor-pointer"
+                      onClick={() => {
+                        setHasLiked(!hasliked);
+                        likePost();
+                        likedAlready = false;
+                      }}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </div> */}
+
+        {/* commented */}
         {/* <div
           className={`invisible group-visible flex justify-between items-center ${
             userId && "space-x-8"
@@ -180,6 +241,7 @@ const WebinarsCard = ({
             )}
           </div>
         </div> */}
+        {/* commented */}
       </div>
     </div>
   );

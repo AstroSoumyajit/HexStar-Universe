@@ -281,6 +281,8 @@ const MasterClass = () => {
         {MasterClassData.map((data, i) => {
           return (
             <MasterclassCard key={i}
+            MasterClassData={MasterClassData[data.gradient]}
+            id = {data.id}
               title={data.title}
               image={data.image}
               gradient1={data.gradient1}
@@ -290,7 +292,8 @@ const MasterClass = () => {
           );
         })}
       </div>
-      <Modal
+      
+      {/* <Modal
         open={open}
         onClose={() => setOpen(false)}
         aria-describedby="alert-dialog-slide-description"
@@ -363,7 +366,7 @@ const MasterClass = () => {
             )}
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
